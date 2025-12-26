@@ -121,11 +121,12 @@ class OllamaService {
      * Generate response using AI provider (DeepSeek or Ollama - FREE models only)
      */
     async generateResponse(userMessage, interactionHistory = [], visitorId = null) {
+        let apiConfig = null;
         try {
             console.log('🤖 Generating response for:', userMessage.substring(0, 50));
             
             // Get API configuration
-            const apiConfig = this.getApiConfig();
+            apiConfig = this.getApiConfig();
             console.log('📡 Using provider:', apiConfig.provider);
             console.log('📡 Using model:', apiConfig.model);
             
@@ -159,7 +160,11 @@ class OllamaService {
                 });
             }
             
-            // Call AI API
+            // Call AI API (apiConfig is guaranteed to be defined here)
+            if (!apiConfig) {
+                throw new Error('Configuration API non disponible. Veuillez vérifier AI_PROVIDER dans Vercel.');
+            }
+            
             const headers = this.getHeaders(apiConfig);
             let response;
             
@@ -237,7 +242,16 @@ class OllamaService {
             
             // NO FALLBACK - Return error message instead
             const errorMessage = error.response?.data?.error?.message || error.message || 'Erreur inconnue';
-            const actualProvider = apiConfig?.provider || AI_PROVIDER;
+            
+            // Safely get provider name (apiConfig might not be defined if getApiConfig() failed)
+            let actualProvider = AI_PROVIDER;
+            if (apiConfig && apiConfig.provider) {
+                actualProvider = apiConfig.provider;
+            } else if (error.message && error.message.includes('Unknown AI provider')) {
+                // If getApiConfig() failed due to unknown provider, extract it from error
+                actualProvider = AI_PROVIDER;
+            }
+            
             throw new Error(`Erreur lors de l'appel à l'API ${actualProvider}: ${errorMessage}. Veuillez vérifier votre configuration API dans Vercel.`);
         }
     }
