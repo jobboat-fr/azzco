@@ -14,7 +14,16 @@ router.post('/message', async (req, res) => {
         const { message, visitorId, sessionId } = req.body;
 
         if (!message || !message.trim()) {
-            return res.status(400).json({ error: 'Le message est requis' });
+            return res.json({ 
+                response: 'Je suis désolé, votre message semble vide. Pouvez-vous réessayer ?',
+                persona: 'professional',
+                confidence: 0,
+                contextKeywords: [],
+                visitorId: visitorId || uuidv4(),
+                sessionId: sessionId || uuidv4(),
+                responseTime: 0,
+                model: 'fallback'
+            });
         }
 
         const startTime = Date.now();
@@ -24,46 +33,54 @@ router.post('/message', async (req, res) => {
         // Get interaction history (simplified - in production, fetch from DB)
         const interactionHistory = [];
 
-        // Generate response
-        const result = await ollamaService.generateResponse(
-            message,
-            interactionHistory,
-            finalVisitorId
-        );
+        // Generate response with error handling
+        let result;
+        try {
+            result = await ollamaService.generateResponse(
+                message,
+                interactionHistory,
+                finalVisitorId
+            );
+        } catch (ollamaError) {
+            console.error('Ollama service error:', ollamaError.message);
+            // Return fallback response
+            result = {
+                response: 'Je suis désolé, je rencontre actuellement des difficultés techniques. Pouvez-vous réessayer dans quelques instants ?',
+                persona: 'professional',
+                confidence: 0,
+                contextKeywords: [],
+                model: 'fallback'
+            };
+        }
 
         const responseTime = Date.now() - startTime;
 
-        // Log interaction (non-blocking)
-        try {
-            await logChatInteraction({
-                visitorId: finalVisitorId,
-                sessionId: finalSessionId,
-                message: message,
-                response: result.response,
-                persona: result.persona,
-                contextKeywords: result.contextKeywords.join(','),
-                responseTime: responseTime
-            });
-        } catch (logError) {
-            console.warn('Chat interaction logging failed:', logError.message);
-            // Continue anyway
-        }
+        // Log interaction (non-blocking, fire and forget)
+        logChatInteraction({
+            visitorId: finalVisitorId,
+            sessionId: finalSessionId,
+            message: message,
+            response: result.response,
+            persona: result.persona,
+            contextKeywords: result.contextKeywords.join(','),
+            responseTime: responseTime
+        }).catch(err => {
+            console.warn('Chat interaction logging failed:', err.message);
+        });
 
-        // Log visitor if new (non-blocking)
+        // Log visitor if new (non-blocking, fire and forget)
         if (!visitorId) {
-            try {
-                await logVisitor({
-                    visitorId: finalVisitorId,
-                    ipAddress: req.ip || req.connection.remoteAddress,
-                    userAgent: req.get('user-agent'),
-                    referrer: req.get('referer')
-                });
-            } catch (visitorError) {
-                console.warn('Visitor logging failed:', visitorError.message);
-                // Continue anyway
-            }
+            logVisitor({
+                visitorId: finalVisitorId,
+                ipAddress: req.ip || req.connection.remoteAddress,
+                userAgent: req.get('user-agent'),
+                referrer: req.get('referer')
+            }).catch(err => {
+                console.warn('Visitor logging failed:', err.message);
+            });
         }
 
+        // Always return valid JSON
         res.json({
             response: result.response,
             persona: result.persona,
@@ -76,7 +93,18 @@ router.post('/message', async (req, res) => {
         });
     } catch (error) {
         console.error('Chatbot error:', error);
-        res.status(500).json({ error: 'Erreur lors de la génération de la réponse' });
+        // Always return valid JSON, never 500
+        res.json({ 
+            response: 'Je suis désolé, une erreur est survenue. Pouvez-vous réessayer ?',
+            persona: 'professional',
+            confidence: 0,
+            contextKeywords: [],
+            visitorId: req.body.visitorId || uuidv4(),
+            sessionId: req.body.sessionId || uuidv4(),
+            responseTime: 0,
+            model: 'fallback',
+            error: 'Service temporarily unavailable'
+        });
     }
 });
 

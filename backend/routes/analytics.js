@@ -62,21 +62,24 @@ router.post('/pageview', async (req, res) => {
         const { visitorId, pagePath, pageTitle, timeSpent, scrollDepth } = req.body;
 
         if (!visitorId || !pagePath) {
-            return res.status(400).json({ error: 'visitorId et pagePath sont requis' });
+            return res.json({ success: true, warning: 'Missing required fields' });
         }
 
-        await logPageView({
+        // Non-blocking logging
+        logPageView({
             visitorId,
             pagePath,
             pageTitle,
             timeSpent: timeSpent || 0,
             scrollDepth: scrollDepth || 0
+        }).catch(err => {
+            console.warn('Page view logging failed:', err.message);
         });
 
         res.json({ success: true });
     } catch (error) {
         console.error('Analytics pageview error:', error);
-        // Return success even if logging fails to avoid breaking the frontend
+        // Always return valid JSON
         res.json({ success: true, warning: 'Logging failed but request processed' });
     }
 });
@@ -90,19 +93,22 @@ router.post('/event', async (req, res) => {
         const { visitorId, eventType, eventData } = req.body;
 
         if (!visitorId || !eventType) {
-            return res.status(400).json({ error: 'visitorId et eventType sont requis' });
+            return res.json({ success: true, warning: 'Missing required fields' });
         }
 
-        await logEvent({
+        // Non-blocking logging
+        logEvent({
             visitorId,
             eventType,
             eventData: typeof eventData === 'object' ? JSON.stringify(eventData) : eventData
+        }).catch(err => {
+            console.warn('Event logging failed:', err.message);
         });
 
         res.json({ success: true });
     } catch (error) {
         console.error('Analytics event error:', error);
-        // Return success even if logging fails to avoid breaking the frontend
+        // Always return valid JSON
         res.json({ success: true, warning: 'Logging failed but request processed' });
     }
 });

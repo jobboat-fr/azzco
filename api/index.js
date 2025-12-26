@@ -76,11 +76,12 @@ if (process.env.VERCEL) {
         next();
     });
     
-    // Better error handling for Vercel
+    // Better error handling for Vercel - Always return valid JSON
     app.use((err, req, res, next) => {
         console.error('Vercel Error:', err);
         if (!res.headersSent) {
-            res.status(500).json({ 
+            res.json({ 
+                success: false,
                 error: 'Une erreur interne est survenue',
                 message: process.env.NODE_ENV === 'development' ? err.message : undefined,
                 stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
