@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investir - AZZ&CO LABS</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="assets/images/logo.svg" alt="AZZ&CO LABS" class="logo-img" />
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="mission.html" class="nav-link">Mission</a></li>
+                <li><a href="jobboat.html" class="nav-link">JobBoat</a></li>
+                <li><a href="invest.html" class="nav-link active">Investir</a></li>
+                <li><a href="outwings.html" class="nav-link">OutWings</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Investment Hero -->
+    <section class="hero bg-dark" style="min-height: 60vh; padding-top: 120px;">
+        <div class="hero-content">
+            <span class="section-tag" style="color: var(--color-gold); border-color: var(--color-gold);">
+                Offre Early Bird - Temps Limité
+            </span>
+            <h1 class="hero-title" style="font-size: clamp(2.5rem, 6vw, 4.5rem); margin-top: 1rem; color: var(--color-white);">
+                Rejoignez Notre Aventure
+            </h1>
+            <p class="hero-description" style="max-width: 800px; color: rgba(255, 255, 255, 0.8);">
+                Nous serions honorés de vous compter parmi nos partenaires. En investissant avec nous, 
+                vous participez à quelque chose de plus grand : une vision où la technologie sert vraiment les gens. 
+                Nous vous offrons des conditions privilégiées pour vous remercier de votre confiance.
+            </p>
+        </div>
+    </section>
+
+    <!-- Investment Packages -->
+    <section class="section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                <!-- Starter -->
+                <div class="investment-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: 300; letter-spacing: -0.5px;">Starter</h3>
+                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; border: var(--border-light);">
+                            Entrée
+                        </span>
+                    </div>
+                    <div class="investment-amount">
+                        <span class="currency">€</span>5,000
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.9375rem; font-weight: 300;">
+                        Votre point d'entrée dans notre aventure
+                    </p>
+                    <ul style="list-style: none; margin-bottom: 2.5rem; space-y: 1rem;">
+                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
+                            Vous devenez partie prenante de notre succès
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
+                            Accès en avant-première à JobBoat
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
+                            Nous vous tenons informé régulièrement
+                        </li>
+                        <li style="padding: 0.75rem 0; font-weight: 300;">
+                            Vous êtes invité à nos événements
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary" style="width: 100%; text-align: center;">Nous rejoindre</a>
+                </div>
+
+                <!-- Growth - Featured -->
+                <div class="investment-card featured">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: 300; letter-spacing: -0.5px;">Growth</h3>
+                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; background: var(--gradient-gold); color: var(--color-black);">
+                            Populaire
+                        </span>
+                    </div>
+                    <div class="investment-amount">
+                        <span class="currency">€</span>10,000
+                    </div>
+                    <p style="color: var(--text-gold); margin-bottom: 2rem; font-size: 0.9375rem; font-weight: 400;">
+                        Notre gratitude : +5% d'actions supplémentaires
+                    </p>
+                    <ul style="list-style: none; margin-bottom: 2.5rem;">
+                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
+                            Tous les avantages du Starter
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
+                            +5% d'actions en remerciement de votre confiance
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
+                            Votre voix compte dans nos décisions
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
+                            Découvrez OutWings en avant-première
+                        </li>
+                        <li style="padding: 0.75rem 0; font-weight: 300;">
+                            Nous vous rencontrons régulièrement
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-invest" style="width: 100%; text-align: center;">Rejoindre maintenant</a>
+                </div>
+
+                <!-- Scale -->
+                <div class="investment-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: 300; letter-spacing: -0.5px;">Scale</h3>
+                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; border: var(--border-gold); color: var(--text-gold);">
+                            Premium
+                        </span>
+                    </div>
+                    <div class="investment-amount">
+                        <span class="currency">€</span>25,000+
+                    </div>
+                    <p style="color: var(--text-gold); margin-bottom: 2rem; font-size: 0.9375rem; font-weight: 400;">
+                        Notre reconnaissance : +10% d'actions supplémentaires
+                    </p>
+                    <ul style="list-style: none; margin-bottom: 2.5rem;">
+                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
+                            Tous les avantages du Growth
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
+                            +10% d'actions en signe de notre gratitude
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
+                            Vous participez à notre conseil consultatif
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
+                            Accès privilégié à nos insights
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
+                            Vous contribuez au développement de nos produits
+                        </li>
+                        <li style="padding: 0.75rem 0; font-weight: 300;">
+                            Une relation privilégiée avec notre équipe
+                        </li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary" style="width: 100%; text-align: center;">Discutons ensemble</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Invest -->
+    <section class="section bg-ice">
+        <div class="container">
+            <div style="text-align: center; padding: 4rem 2rem; border: var(--border-light); background: var(--bg-primary);">
+                <h2 style="font-size: 2.5rem; font-weight: 200; margin-bottom: 3rem; letter-spacing: -1px;">
+                    Pourquoi Nous Faire Confiance ?
+                </h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; margin-top: 3rem; text-align: left;">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 400; margin-bottom: 1rem; color: var(--text-primary);">
+                            Un Marché Qui Vous Attend
+                        </h3>
+                        <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.8; font-weight: 300;">
+                            Nous opérons dans un secteur en pleine expansion, où les opportunités sont nombreuses. 
+                            En nous rejoignant maintenant, vous participez à cette croissance.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 400; margin-bottom: 1rem; color: var(--text-primary);">
+                            Une Approche Unique
+                        </h3>
+                        <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.8; font-weight: 300;">
+                            Nous avons développé une compréhension approfondie de ce qui fait la différence. 
+                            Notre approche éthique et centrée sur l'humain nous distingue.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 400; margin-bottom: 1rem; color: var(--text-primary);">
+                            Des Conditions Avantageuses
+                        </h3>
+                        <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.8; font-weight: 300;">
+                            Nous vous proposons des conditions privilégiées pour vous remercier de votre confiance. 
+                            Votre investissement est valorisé et reconnu.
+                        </p>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem;">
+                    <a href="contact.html" class="btn btn-invest" style="font-size: 1rem; padding: 1rem 3rem;">
+                        Parlons de votre projet
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="assets/images/logo.svg" alt="AZZ&CO LABS" class="footer-logo" />
+                    <p style="margin-top: 1rem; font-weight: 300;">Innovation Technologique & Intelligence Artificielle</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="mission.html">Mission</a></li>
+                        <li><a href="jobboat.html">JobBoat</a></li>
+                        <li><a href="invest.html">Investir</a></li>
+                        <li><a href="outwings.html">OutWings</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Légal</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Confidentialité</a></li>
+                        <li><a href="gdpr.html">RGPD</a></li>
+                        <li><a href="terms.html">Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:azerrached3@gmail.com">Email</a></li>
+                        <li><a href="tel:+33602560229">Téléphone</a></li>
+                        <li><a href="https://www.linkedin.com/in/azer-rached-239258377/" target="_blank">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AZZ&CO LABS. Tous droits réservés.</p>
+                <p class="footer-note" style="margin-top: 0.5rem;">Basé à Paris, France</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-toggle" id="chatbotToggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+        </div>
+        <div class="chatbot-container" id="chatbotContainer">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <h3>Votre Assistant Dédié</h3>
+                    <p style="font-size: 0.875rem; font-weight: 300; color: var(--text-secondary); margin-top: 0.25rem;">
+                        Je suis là pour vous servir. Comment puis-je vous aider ?
+                    </p>
+                </div>
+                <button class="chatbot-close" id="chatbotClose">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chatbot-message bot-message">
+                    <div class="message-content">
+                        <p>Bonjour. Je suis là pour vous servir. Je serais ravi de vous aider à découvrir ce que nous pouvons faire pour vous, ou répondre à toutes vos questions. Que souhaitez-vous savoir ?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Tapez votre message..." />
+                <button id="chatbotSend" class="chatbot-send">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+    <script src="speed-insights.js"></script>
+</body>
+</html>

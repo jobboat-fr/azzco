@@ -1,0 +1,803 @@
+/* ============================================
+   AZZ&CO LABS - Luxury Icy Futuristic Design
+   Colors: White, Black, Gold
+   ============================================ */
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Luxury Color Palette - Icy Futuristic */
+    --color-black: #000000;
+    --color-black-soft: #0a0a0a;
+    --color-black-light: #1a1a1a;
+    --color-white: #ffffff;
+    --color-white-soft: #fafafa;
+    --color-white-warm: #f5f5f5;
+    --color-gold: #d4af37;
+    --color-gold-light: #f4e4bc;
+    --color-gold-bright: #ffd700;
+    --color-gold-glow: rgba(212, 175, 55, 0.3);
+    --color-ice: #e8f4f8;
+    --color-ice-light: #f0f8fa;
+    
+    /* Text Colors */
+    --text-primary: #000000;
+    --text-secondary: #4a4a4a;
+    --text-tertiary: #8a8a8a;
+    --text-white: #ffffff;
+    --text-gold: #d4af37;
+    
+    /* Background Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #fafafa;
+    --bg-tertiary: #f5f5f5;
+    --bg-grey-light: #f8f8f8;
+    --bg-grey-medium: #e8e8e8;
+    --bg-grey-dark: #d0d0d0;
+    --bg-dark: #000000;
+    --bg-dark-soft: #0a0a0a;
+    --bg-ice: #f0f8fa;
+    
+    /* Gradients - Luxury & Icy */
+    --gradient-gold: linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #f4e4bc 100%);
+    --gradient-gold-subtle: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+    --gradient-ice: linear-gradient(180deg, #ffffff 0%, #f0f8fa 100%);
+    --gradient-dark: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+    --gradient-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+    
+    /* Shadows - Luxury depth */
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-large: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.2);
+    --shadow-gold-glow: 0 0 40px rgba(212, 175, 55, 0.3);
+    --shadow-ice: 0 4px 20px rgba(232, 244, 248, 0.5);
+    
+    /* Borders */
+    --border-light: 1px solid rgba(0, 0, 0, 0.08);
+    --border-gold: 1px solid rgba(212, 175, 55, 0.3);
+    --border-gold-bright: 1px solid rgba(212, 175, 55, 0.5);
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+    --spacing-3xl: 6rem;
+    
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    --font-display: 'Inter', sans-serif;
+    
+    /* Transitions - Smooth luxury */
+    --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-gold: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--text-primary);
+    line-height: 1.8;
+    overflow-x: hidden;
+    background: var(--bg-primary);
+    font-size: 18px;
+    font-weight: 300;
+}
+
+/* Navigation - Luxury Minimalist */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: var(--border-light);
+    transition: var(--transition-base);
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow-soft);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    transition: var(--transition-base);
+}
+
+.logo-img:hover {
+    opacity: 0.8;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 3rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 0.9375rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: relative;
+    transition: var(--transition-base);
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gradient-gold);
+    transition: var(--transition-base);
+}
+
+.nav-link:hover {
+    color: var(--text-gold);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: var(--text-gold);
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 24px;
+    height: 1px;
+    background: var(--text-primary);
+    transition: var(--transition-base);
+}
+
+/* Hero Section - Icy Luxury */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-ice);
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 200;
+    letter-spacing: -2px;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    line-height: 1.1;
+}
+
+.hero-title .gradient-text {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    line-height: 1.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Buttons - Luxury Gold */
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid transparent;
+    transition: var(--transition-base);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--color-black);
+    color: var(--color-white);
+    border-color: var(--color-black);
+}
+
+.btn-primary:hover {
+    background: var(--color-black-soft);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-invest {
+    background: var(--gradient-gold);
+    color: var(--color-black);
+    border-color: transparent;
+    font-weight: 500;
+}
+
+.btn-invest:hover {
+    box-shadow: var(--shadow-gold-glow);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border-color: var(--border-light);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-secondary);
+    border-color: var(--color-gold);
+    color: var(--text-gold);
+}
+
+/* Container */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Section Styles */
+.section {
+    padding: 6rem 0;
+    position: relative;
+}
+
+/* Background variations with grey shades */
+.section.bg-grey-light {
+    background: var(--bg-grey-light);
+}
+
+.section.bg-grey-medium {
+    background: var(--bg-grey-medium);
+}
+
+.section.bg-pattern {
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            var(--bg-primary),
+            var(--bg-primary) 10px,
+            var(--bg-grey-light) 10px,
+            var(--bg-grey-light) 20px
+        );
+}
+
+.section.bg-gradient-grey {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-grey-light) 50%, var(--bg-primary) 100%);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-gold);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: var(--border-gold);
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 200;
+    letter-spacing: -1px;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.section-description {
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Cards - Luxury Minimalist */
+.card {
+    background: var(--bg-primary);
+    border: var(--border-light);
+    border-radius: 0;
+    padding: 2.5rem;
+    transition: var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--gradient-gold);
+    transform: scaleX(0);
+    transition: var(--transition-base);
+}
+
+.card:hover {
+    border-color: var(--color-gold);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-4px);
+}
+
+.card:hover::before {
+    transform: scaleX(1);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+}
+
+.card-text {
+    font-size: 1.125rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    line-height: 1.9;
+}
+
+/* Investment Cards */
+.investment-card {
+    background: var(--bg-primary);
+    border: var(--border-light);
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: var(--transition-base);
+}
+
+.investment-card.featured {
+    border-color: var(--color-gold);
+    border-width: 2px;
+}
+
+.investment-card:hover {
+    box-shadow: var(--shadow-gold);
+    transform: translateY(-8px);
+}
+
+.investment-amount {
+    font-size: 3rem;
+    font-weight: 200;
+    color: var(--text-primary);
+    margin: 1.5rem 0;
+    letter-spacing: -2px;
+}
+
+.investment-amount .currency {
+    font-size: 1.5rem;
+    color: var(--text-gold);
+    vertical-align: top;
+}
+
+/* Forms - Luxury Minimalist */
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    border: var(--border-light);
+    transition: var(--transition-base);
+    font-family: var(--font-primary);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px var(--color-gold-glow);
+}
+
+/* Footer */
+.footer {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 4rem 0 2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-logo {
+    height: 80px;
+    width: auto;
+    margin-bottom: 1.5rem;
+    filter: brightness(0) invert(1);
+    opacity: 1;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-section h4 {
+    font-size: 0.875rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    color: var(--color-gold);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-section ul li a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 300;
+    transition: var(--transition-base);
+}
+
+.footer-section ul li a:hover {
+    color: var(--color-gold);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--text-tertiary);
+}
+
+/* Chatbot Widget */
+.chatbot-widget {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+}
+
+.chatbot-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--gradient-gold);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-gold);
+    transition: var(--transition-base);
+}
+
+.chatbot-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-gold-glow);
+}
+
+.chatbot-container {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 380px;
+    height: 600px;
+    background: var(--bg-primary);
+    border: var(--border-light);
+    box-shadow: var(--shadow-large);
+    display: none;
+    flex-direction: column;
+}
+
+.chatbot-container.active {
+    display: flex;
+}
+
+.chatbot-header {
+    padding: 1.5rem;
+    border-bottom: var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.chatbot-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.chatbot-close:hover {
+    color: var(--text-primary);
+}
+
+.chatbot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+.chatbot-message {
+    margin-bottom: 1.5rem;
+}
+
+.message-content {
+    padding: 1rem 1.25rem;
+    border-radius: 0;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.bot-message .message-content {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-left: 2px solid var(--color-gold);
+}
+
+.user-message .message-content {
+    background: var(--color-black);
+    color: var(--color-white);
+    margin-left: auto;
+    max-width: 80%;
+}
+
+.chatbot-input-container {
+    padding: 1.5rem;
+    border-top: var(--border-light);
+    display: flex;
+    gap: 1rem;
+}
+
+.chatbot-input {
+    flex: 1;
+    padding: 0.875rem;
+    border: var(--border-light);
+    font-size: 0.9375rem;
+    font-weight: 300;
+    font-family: var(--font-primary);
+}
+
+.chatbot-input:focus {
+    outline: none;
+    border-color: var(--color-gold);
+}
+
+.chatbot-send {
+    width: 44px;
+    height: 44px;
+    background: var(--color-black);
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    transition: var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbot-send:hover {
+    background: var(--color-gold);
+    color: var(--color-black);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: var(--bg-primary);
+        flex-direction: column;
+        padding: 5rem 2rem;
+        transition: var(--transition-base);
+        box-shadow: var(--shadow-large);
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .hero-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .chatbot-container {
+        width: 100%;
+        height: 100vh;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+/* Utility Classes */
+.text-gold {
+    color: var(--text-gold);
+}
+
+.bg-dark {
+    background: var(--bg-dark);
+    color: var(--color-white);
+}
+
+.bg-ice {
+    background: var(--bg-ice);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes goldGlow {
+    0%, 100% {
+        box-shadow: var(--shadow-gold);
+    }
+    50% {
+        box-shadow: var(--shadow-gold-glow);
+    }
+}
+
+.gold-glow {
+    animation: goldGlow 2s ease-in-out infinite;
+}
