@@ -37,170 +37,408 @@
     </nav>
 
     <!-- Investment Hero -->
-    <section class="hero bg-dark" style="min-height: 60vh; padding-top: 120px;">
-        <div class="hero-content">
-            <span class="section-tag" style="color: var(--color-gold); border-color: var(--color-gold);">
-                Offre Early Bird - Temps Limité
+    <section class="hero bg-dark" style="min-height: 70vh; padding-top: 120px; background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 70%); pointer-events: none;"></div>
+        <div class="hero-content" style="position: relative; z-index: 1;">
+            <span class="section-tag" style="color: var(--color-gold); border-color: var(--color-gold); background: rgba(212, 175, 55, 0.1); padding: 0.5rem 1.5rem;">
+                🚀 Early Bird - Opportunité Exclusive
             </span>
-            <h1 class="hero-title" style="font-size: clamp(2.5rem, 6vw, 4.5rem); margin-top: 1rem; color: var(--color-white);">
-                Rejoignez Notre Aventure
+            <h1 class="hero-title" style="font-size: clamp(2.5rem, 7vw, 5rem); margin-top: 1.5rem; color: var(--color-white); line-height: 1.1;">
+                Rejoignez la Révolution
+                <br>
+                <span style="background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    Investissez dans l'Avenir
+                </span>
             </h1>
-            <p class="hero-description" style="max-width: 800px; color: rgba(255, 255, 255, 0.8);">
-                Nous serions honorés de vous compter parmi nos partenaires. En investissant avec nous, 
-                vous participez à quelque chose de plus grand : une vision où la technologie sert vraiment les gens. 
-                Nous vous offrons des conditions privilégiées pour vous remercier de votre confiance.
+            <p class="hero-description" style="max-width: 900px; color: rgba(255, 255, 255, 0.9); font-size: 1.375rem; line-height: 1.9; margin-top: 2rem;">
+                Vous êtes au bon endroit, au bon moment. Nous construisons quelque chose d'exceptionnel, et nous cherchons 
+                des partenaires visionnaires pour partager cette aventure. Des business plans détaillés sont disponibles 
+                sur demande pour chaque innovation. C'est votre chance de faire partie de l'histoire.
             </p>
+            <div style="margin-top: 3rem;">
+                <a href="#invest-options" class="btn btn-invest" style="font-size: 1.125rem; padding: 1.25rem 3rem; box-shadow: var(--shadow-gold-glow);">
+                    Découvrir les Opportunités
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Investment Packages -->
+    <!-- CTO Call - High Priority -->
+    <section class="section" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%); border-top: 3px solid var(--color-gold); border-bottom: 3px solid var(--color-gold);">
+        <div class="container">
+            <div style="max-width: 1000px; margin: 0 auto; text-align: center; padding: 4rem 2rem;">
+                <div style="display: inline-block; padding: 0.5rem 1.5rem; background: var(--color-gold); color: var(--color-black); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 2rem;">
+                    🔥 Offre Prioritaire
+                </div>
+                <h2 style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 200; margin-bottom: 2rem; color: var(--text-primary); line-height: 1.3;">
+                    Nous Cherchons un CTO Exceptionnel
+                </h2>
+                <p style="font-size: 1.375rem; line-height: 2; color: var(--text-secondary); margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Si vous êtes un leader technique visionnaire, passionné par l'IA et l'innovation, et que vous voulez 
+                    construire quelque chose de significatif, nous avons une offre qui va vous intéresser. Package compétitif, 
+                    equity significatif, et l'opportunité de façonner l'avenir de la technologie.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; text-align: left;">
+                    <div class="card" style="background: var(--bg-primary); border: 2px solid var(--color-gold);">
+                        <h3 style="font-size: 1.25rem; font-weight: 400; margin-bottom: 1rem; color: var(--text-gold);">Package Premium</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Rémunération compétitive + equity significatif + bonus de performance
+                        </p>
+                    </div>
+                    <div class="card" style="background: var(--bg-primary); border: 2px solid var(--color-gold);">
+                        <h3 style="font-size: 1.25rem; font-weight: 400; margin-bottom: 1rem; color: var(--text-gold);">Impact Réel</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Vous façonnez la direction technique de produits qui changent la vie des gens
+                        </p>
+                    </div>
+                    <div class="card" style="background: var(--bg-primary); border: 2px solid var(--color-gold);">
+                        <h3 style="font-size: 1.25rem; font-weight: 400; margin-bottom: 1rem; color: var(--text-gold);">Croissance</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Construisez votre équipe, développez votre vision, grandissez avec nous
+                        </p>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem;">
+                    <a href="contact.html" class="btn btn-invest" style="font-size: 1.125rem; padding: 1.25rem 3.5rem; box-shadow: var(--shadow-gold-glow);">
+                        Postuler pour le Poste de CTO
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Options -->
+    <section id="invest-options" class="section bg-grey-light">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <span class="section-tag">Options d'Investissement</span>
+                <h2 class="section-title" style="margin-top: 1rem;">
+                    Choisissez Votre Aventure
+                </h2>
+                <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 800px; margin: 2rem auto 0; line-height: 1.9;">
+                    Nous offrons plusieurs façons de nous rejoindre. Que vous soyez un investisseur individuel, un fond, 
+                    un partenaire stratégique, ou que vous souhaitiez rejoindre notre équipe, nous avons une option pour vous.
+                </p>
+            </div>
+
+            <!-- Investment Cards -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; margin-top: 4rem;">
+                <!-- Seed Round -->
+                <div class="investment-card" style="background: var(--bg-primary); border: 2px solid var(--border-light); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: var(--gradient-gold-subtle); border-radius: 0 0 0 100%;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <h3 style="font-size: 1.75rem; font-weight: 300; letter-spacing: -0.5px;">Seed Round</h3>
+                            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.5rem 1rem; background: var(--color-gold); color: var(--color-black); font-weight: 600;">
+                                Hot 🔥
+                            </span>
+                        </div>
+                        <div class="investment-amount" style="font-size: 3.5rem;">
+                            <span class="currency">€</span>5K - 50K
+                        </div>
+                        <p style="color: var(--text-gold); margin: 1.5rem 0 2rem; font-size: 1rem; font-weight: 400;">
+                            Votre ticket d'entrée dans l'avenir
+                        </p>
+                        <ul style="list-style: none; margin-bottom: 2.5rem; space-y: 1rem;">
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Equity proportionnel à votre investissement
+                            </li>
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Accès exclusif en avant-première à tous nos produits
+                            </li>
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Business plan détaillé sur demande
+                            </li>
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Mises à jour régulières et transparence totale
+                            </li>
+                            <li style="padding: 1rem 0; font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Invitation à nos événements exclusifs
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary" style="width: 100%; text-align: center; font-size: 1.0625rem; padding: 1.125rem;">
+                            Rejoindre le Seed Round
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Series A - Featured -->
+                <div class="investment-card featured" style="background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-grey-light) 100%); border: 3px solid var(--color-gold); position: relative; transform: scale(1.05); box-shadow: var(--shadow-gold-glow);">
+                    <div style="position: absolute; top: -15px; right: 30px; background: var(--gradient-gold); color: var(--color-black); padding: 0.5rem 1.5rem; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
+                        ⭐ POPULAIRE
+                    </div>
+                    <div style="position: absolute; top: 0; right: 0; width: 150px; height: 150px; background: var(--gradient-gold-subtle); border-radius: 0 0 0 100%; opacity: 0.5;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; margin-top: 1rem;">
+                            <h3 style="font-size: 1.75rem; font-weight: 300; letter-spacing: -0.5px;">Series A</h3>
+                            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.5rem 1rem; background: var(--color-black); color: var(--color-white); font-weight: 600;">
+                                Premium 💎
+                            </span>
+                        </div>
+                        <div class="investment-amount" style="font-size: 4rem; color: var(--text-gold);">
+                            <span class="currency">€</span>50K - 250K
+                        </div>
+                        <p style="color: var(--text-gold); margin: 1.5rem 0 2rem; font-size: 1.125rem; font-weight: 500;">
+                            Bonus exclusif : +8% d'equity supplémentaire
+                        </p>
+                        <ul style="list-style: none; margin-bottom: 2.5rem;">
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Tous les avantages du Seed Round
+                            </li>
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ +8% d'equity en bonus de confiance
+                            </li>
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Business plans complets pour JobBoat & OutWings
+                            </li>
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Siège au conseil consultatif
+                            </li>
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Accès direct à l'équipe fondatrice
+                            </li>
+                            <li style="padding: 1rem 0; font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Influence sur la roadmap produit
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-invest" style="width: 100%; text-align: center; font-size: 1.125rem; padding: 1.25rem; box-shadow: var(--shadow-gold-glow);">
+                            Rejoindre la Series A
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Strategic Partner -->
+                <div class="investment-card" style="background: var(--bg-primary); border: 2px solid var(--border-light); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: var(--gradient-gold-subtle); border-radius: 0 0 0 100%;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <h3 style="font-size: 1.75rem; font-weight: 300; letter-spacing: -0.5px;">Partenaire Stratégique</h3>
+                            <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.5rem 1rem; border: 2px solid var(--color-gold); color: var(--text-gold); font-weight: 600;">
+                                VIP 🎯
+                            </span>
+                        </div>
+                        <div class="investment-amount" style="font-size: 3.5rem;">
+                            <span class="currency">€</span>250K+
+                        </div>
+                        <p style="color: var(--text-gold); margin: 1.5rem 0 2rem; font-size: 1rem; font-weight: 400;">
+                            Construisons l'avenir ensemble
+                        </p>
+                        <ul style="list-style: none; margin-bottom: 2.5rem;">
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Tous les avantages de la Series A
+                            </li>
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ +12% d'equity supplémentaire
+                            </li>
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Business plans exclusifs + projections financières
+                            </li>
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Siège au conseil d'administration
+                            </li>
+                            <li style="padding: 1rem 0; border-bottom: var(--border-light); font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Partenariats stratégiques privilégiés
+                            </li>
+                            <li style="padding: 1rem 0; font-weight: 300; font-size: 1.0625rem;">
+                                ✅ Co-développement de produits
+                            </li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary" style="width: 100%; text-align: center; font-size: 1.0625rem; padding: 1.125rem;">
+                            Devenir Partenaire
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alternative Investment Methods -->
     <section class="section">
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 4rem;">
-                <!-- Starter -->
-                <div class="investment-card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                        <h3 style="font-size: 1.5rem; font-weight: 300; letter-spacing: -0.5px;">Starter</h3>
-                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; border: var(--border-light);">
-                            Entrée
-                        </span>
-                    </div>
-                    <div class="investment-amount">
-                        <span class="currency">€</span>5,000
-                    </div>
-                    <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.9375rem; font-weight: 300;">
-                        Votre point d'entrée dans notre aventure
-                    </p>
-                    <ul style="list-style: none; margin-bottom: 2.5rem; space-y: 1rem;">
-                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
-                            Vous devenez partie prenante de notre succès
-                        </li>
-                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
-                            Accès en avant-première à JobBoat
-                        </li>
-                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
-                            Nous vous tenons informé régulièrement
-                        </li>
-                        <li style="padding: 0.75rem 0; font-weight: 300;">
-                            Vous êtes invité à nos événements
-                        </li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-primary" style="width: 100%; text-align: center;">Nous rejoindre</a>
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 4rem;">
+                    <span class="section-tag">Diversité des Options</span>
+                    <h2 class="section-title" style="margin-top: 1rem;">
+                        Plusieurs Façons de Nous Rejoindre
+                    </h2>
                 </div>
-
-                <!-- Growth - Featured -->
-                <div class="investment-card featured">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                        <h3 style="font-size: 1.5rem; font-weight: 300; letter-spacing: -0.5px;">Growth</h3>
-                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; background: var(--gradient-gold); color: var(--color-black);">
-                            Populaire
-                        </span>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
+                    <div class="card" style="background: var(--bg-grey-light);">
+                        <h3 class="card-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">💰 Investissement en Capital</h3>
+                        <p class="card-text" style="font-size: 1.125rem;">
+                            Investissement direct en equity. Vous devenez actionnaire et participez à notre croissance. 
+                            Conditions négociables selon le montant et votre profil.
+                        </p>
                     </div>
-                    <div class="investment-amount">
-                        <span class="currency">€</span>10,000
+                    <div class="card" style="background: var(--bg-grey-light);">
+                        <h3 class="card-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">🤝 Partenariat Stratégique</h3>
+                        <p class="card-text" style="font-size: 1.125rem;">
+                            Au-delà du capital, nous cherchons des partenaires qui apportent expertise, réseau, ou ressources 
+                            complémentaires. Créons de la valeur ensemble.
+                        </p>
                     </div>
-                    <p style="color: var(--text-gold); margin-bottom: 2rem; font-size: 0.9375rem; font-weight: 400;">
-                        Notre gratitude : +5% d'actions supplémentaires
-                    </p>
-                    <ul style="list-style: none; margin-bottom: 2.5rem;">
-                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
-                            Tous les avantages du Starter
-                        </li>
-                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
-                            +5% d'actions en remerciement de votre confiance
-                        </li>
-                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
-                            Votre voix compte dans nos décisions
-                        </li>
-                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
-                            Découvrez OutWings en avant-première
-                        </li>
-                        <li style="padding: 0.75rem 0; font-weight: 300;">
-                            Nous vous rencontrons régulièrement
-                        </li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-invest" style="width: 100%; text-align: center;">Rejoindre maintenant</a>
+                    <div class="card" style="background: var(--bg-grey-light);">
+                        <h3 class="card-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">👥 Rejoindre l'Équipe</h3>
+                        <p class="card-text" style="font-size: 1.125rem;">
+                            Nous cherchons des personnes partageant nos valeurs pour rejoindre notre équipe. Equity, 
+                            impact réel, et croissance personnelle garantis.
+                        </p>
+                    </div>
+                    <div class="card" style="background: var(--bg-grey-light);">
+                        <h3 class="card-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">📊 Convertible Notes</h3>
+                        <p class="card-text" style="font-size: 1.125rem;">
+                            Option flexible pour investisseurs qui préfèrent convertir leur investissement en equity lors 
+                            d'un prochain tour de financement.
+                        </p>
+                    </div>
+                    <div class="card" style="background: var(--bg-grey-light);">
+                        <h3 class="card-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">🎯 Revenue Sharing</h3>
+                        <p class="card-text" style="font-size: 1.125rem;">
+                            Pour certains investisseurs, nous proposons un modèle de partage de revenus sur des produits 
+                            spécifiques. Parlez-nous de vos préférences.
+                        </p>
+                    </div>
+                    <div class="card" style="background: var(--bg-grey-light);">
+                        <h3 class="card-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">🚀 SAFE (Simple Agreement)</h3>
+                        <p class="card-text" style="font-size: 1.125rem;">
+                            Pour les investisseurs qui veulent une structure simple et rapide. Conversion automatique lors 
+                            du prochain tour de financement.
+                        </p>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Scale -->
-                <div class="investment-card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                        <h3 style="font-size: 1.5rem; font-weight: 300; letter-spacing: -0.5px;">Scale</h3>
-                        <span style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.75rem; border: var(--border-gold); color: var(--text-gold);">
-                            Premium
-                        </span>
+    <!-- Business Plans Section -->
+    <section class="section bg-gradient-grey">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto; text-align: center; padding: 4rem 2rem; background: var(--bg-primary); border: var(--border-light);">
+                <span class="section-tag">Documentation Complète</span>
+                <h2 style="font-size: 2.5rem; font-weight: 200; margin: 2rem 0; letter-spacing: -1px;">
+                    Business Plans Disponibles sur Demande
+                </h2>
+                <p style="font-size: 1.375rem; line-height: 2; color: var(--text-secondary); margin-bottom: 3rem;">
+                    Pour chaque innovation - JobBoat, OutWings, et nos projets futurs - nous avons préparé des business plans 
+                    détaillés et complets. Analyses de marché, projections financières, stratégies de croissance, tout y est. 
+                    Ces documents sont disponibles sur demande pour les investisseurs sérieux.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; text-align: left;">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 400; margin-bottom: 1rem; color: var(--text-gold);">📄 JobBoat Business Plan</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Analyse complète du marché, modèle économique, projections 10 ans, stratégie de lancement
+                        </p>
                     </div>
-                    <div class="investment-amount">
-                        <span class="currency">€</span>25,000+
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 400; margin-bottom: 1rem; color: var(--text-gold);">📄 OutWings Business Plan</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Architecture produit, opportunités marché, roadmap technique, projections financières
+                        </p>
                     </div>
-                    <p style="color: var(--text-gold); margin-bottom: 2rem; font-size: 0.9375rem; font-weight: 400;">
-                        Notre reconnaissance : +10% d'actions supplémentaires
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 400; margin-bottom: 1rem; color: var(--text-gold);">📊 Plan Stratégique Global</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Vision d'ensemble, synergies entre produits, stratégie de croissance, plan d'exit
+                        </p>
+                    </div>
+                </div>
+                <div style="margin-top: 3rem;">
+                    <a href="contact.html" class="btn btn-secondary" style="font-size: 1.0625rem; padding: 1.125rem 3rem;">
+                        Demander les Business Plans
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team & Equity Section -->
+    <section class="section bg-grey-light">
+        <div class="container">
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 4rem;">
+                    <span class="section-tag">Notre Engagement</span>
+                    <h2 class="section-title" style="margin-top: 1rem;">
+                        Nous Cherchons des Personnes Partageant Nos Valeurs
+                    </h2>
+                    <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 800px; margin: 2rem auto 0; line-height: 1.9;">
+                        Au-delà des investisseurs, nous cherchons des co-fondateurs, des talents, des visionnaires qui croient 
+                        en notre mission. Si vous partagez nos valeurs et voulez construire quelque chose de significatif, 
+                        parlons-en.
                     </p>
-                    <ul style="list-style: none; margin-bottom: 2.5rem;">
-                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
-                            Tous les avantages du Growth
-                        </li>
-                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
-                            +10% d'actions en signe de notre gratitude
-                        </li>
-                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
-                            Vous participez à notre conseil consultatif
-                        </li>
-                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
-                            Accès privilégié à nos insights
-                        </li>
-                        <li style="padding: 0.75rem 0; border-bottom: var(--border-light); font-weight: 300;">
-                            Vous contribuez au développement de nos produits
-                        </li>
-                        <li style="padding: 0.75rem 0; font-weight: 300;">
-                            Une relation privilégiée avec notre équipe
-                        </li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-primary" style="width: 100%; text-align: center;">Discutons ensemble</a>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; margin-top: 3rem;">
+                    <div class="card" style="background: var(--bg-primary); border: 2px solid var(--color-gold);">
+                        <h3 class="card-title" style="font-size: 1.5rem; color: var(--text-gold); margin-bottom: 1.5rem;">🎯 CTO - Offre Prioritaire</h3>
+                        <p class="card-text" style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                            Leader technique recherché. Package premium, equity significatif, liberté créative totale. 
+                            Vous façonnez l'avenir technologique de l'entreprise.
+                        </p>
+                        <a href="contact.html" class="btn btn-invest" style="width: 100%; text-align: center;">
+                            Postuler Maintenant
+                        </a>
+                    </div>
+                    <div class="card" style="background: var(--bg-primary);">
+                        <h3 class="card-title" style="font-size: 1.5rem; margin-bottom: 1.5rem;">👥 Rejoindre l'Équipe</h3>
+                        <p class="card-text" style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                            Développeurs, designers, product managers, marketeurs - nous cherchons des talents passionnés. 
+                            Equity, croissance, impact réel.
+                        </p>
+                        <a href="contact.html" class="btn btn-secondary" style="width: 100%; text-align: center;">
+                            Nous Contacter
+                        </a>
+                    </div>
+                    <div class="card" style="background: var(--bg-primary); border: 2px solid var(--color-gold);">
+                        <h3 class="card-title" style="font-size: 1.5rem; color: var(--text-gold); margin-bottom: 1.5rem;">💎 Equity pour l'Équipe</h3>
+                        <p class="card-text" style="font-size: 1.125rem; margin-bottom: 1.5rem;">
+                            <strong>Important :</strong> Nous avons réservé un pourcentage dédié d'actions qui sera distribué 
+                            aux fondateurs, travailleurs et membres de l'équipe lors de l'exit. Votre contribution sera reconnue.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Invest -->
-    <section class="section bg-ice">
+    <section class="section">
         <div class="container">
-            <div style="text-align: center; padding: 4rem 2rem; border: var(--border-light); background: var(--bg-primary);">
+            <div style="text-align: center; padding: 4rem 2rem; border: var(--border-light); background: var(--bg-grey-light); max-width: 1000px; margin: 0 auto;">
                 <h2 style="font-size: 2.5rem; font-weight: 200; margin-bottom: 3rem; letter-spacing: -1px;">
-                    Pourquoi Nous Faire Confiance ?
+                    Pourquoi C'est le Moment
                 </h2>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; margin-top: 3rem; text-align: left;">
                     <div>
-                        <h3 style="font-size: 1.25rem; font-weight: 400; margin-bottom: 1rem; color: var(--text-primary);">
-                            Un Marché Qui Vous Attend
+                        <h3 style="font-size: 1.5rem; font-weight: 400; margin-bottom: 1.5rem; color: var(--text-primary);">
+                            🚀 Marché en Explosion
                         </h3>
-                        <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.8; font-weight: 300;">
-                            Nous opérons dans un secteur en pleine expansion, où les opportunités sont nombreuses. 
-                            En nous rejoignant maintenant, vous participez à cette croissance.
+                        <p style="color: var(--text-secondary); font-size: 1.125rem; line-height: 1.9; font-weight: 300;">
+                            L'IA et l'automatisation sont en train de transformer chaque industrie. Nous sommes positionnés 
+                            au cœur de cette révolution. Le timing est parfait.
                         </p>
                     </div>
                     <div>
-                        <h3 style="font-size: 1.25rem; font-weight: 400; margin-bottom: 1rem; color: var(--text-primary);">
-                            Une Approche Unique
+                        <h3 style="font-size: 1.5rem; font-weight: 400; margin-bottom: 1.5rem; color: var(--text-primary);">
+                            💡 Vision Unique
                         </h3>
-                        <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.8; font-weight: 300;">
-                            Nous avons développé une compréhension approfondie de ce qui fait la différence. 
-                            Notre approche éthique et centrée sur l'humain nous distingue.
+                        <p style="color: var(--text-secondary); font-size: 1.125rem; line-height: 1.9; font-weight: 300;">
+                            Nous ne construisons pas juste des produits. Nous créons des écosystèmes où l'IA amplifie 
+                            l'humain, pas le remplace. C'est notre différenciation.
                         </p>
                     </div>
                     <div>
-                        <h3 style="font-size: 1.25rem; font-weight: 400; margin-bottom: 1rem; color: var(--text-primary);">
-                            Des Conditions Avantageuses
+                        <h3 style="font-size: 1.5rem; font-weight: 400; margin-bottom: 1.5rem; color: var(--text-primary);">
+                            📈 Potentiel Énorme
                         </h3>
-                        <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.8; font-weight: 300;">
-                            Nous vous proposons des conditions privilégiées pour vous remercier de votre confiance. 
-                            Votre investissement est valorisé et reconnu.
+                        <p style="color: var(--text-secondary); font-size: 1.125rem; line-height: 1.9; font-weight: 300;">
+                            Avec JobBoat, OutWings, et nos projets futurs, nous touchons des marchés massifs. 
+                            L'opportunité de croissance est exceptionnelle.
                         </p>
                     </div>
                 </div>
-                <div style="margin-top: 3rem;">
-                    <a href="contact.html" class="btn btn-invest" style="font-size: 1rem; padding: 1rem 3rem;">
-                        Parlons de votre projet
+                <div style="margin-top: 4rem;">
+                    <a href="contact.html" class="btn btn-invest" style="font-size: 1.125rem; padding: 1.25rem 3.5rem; box-shadow: var(--shadow-gold-glow);">
+                        Discutons de Votre Projet
                     </a>
                 </div>
             </div>
@@ -213,7 +451,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <img src="assets/images/logo.svg" alt="AZZ&CO LABS" class="footer-logo" />
-                    <p style="margin-top: 1rem; font-weight: 300;">Innovation Technologique & Intelligence Artificielle</p>
+                    <p style="margin-top: 1rem; font-weight: 300; font-size: 1rem;">Innovation Technologique & Intelligence Artificielle</p>
                 </div>
                 <div class="footer-section">
                     <h4>Navigation</h4>
@@ -240,7 +478,7 @@
                     <ul>
                         <li><a href="mailto:azerrached3@gmail.com">Email</a></li>
                         <li><a href="tel:+33602560229">Téléphone</a></li>
-                        <li><a href="https://www.linkedin.com/in/azer-rached-239258377/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://www.linkedin.com/company/azz-co-labs" target="_blank">LinkedIn Entreprise</a></li>
                     </ul>
                 </div>
             </div>
