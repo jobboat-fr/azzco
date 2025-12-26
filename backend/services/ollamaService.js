@@ -133,22 +133,22 @@ class OllamaService {
         
         // Simple keyword-based responses
         if (messageLower.includes('jobboat')) {
-            return "JobBoat est notre plateforme révolutionnaire qui combine l'algorithme de TikTok, le réseautage de LinkedIn, et le swipe de Tinder pour transformer la recherche d'emploi. L'application est actuellement en phase de préparation légale. Pour plus d'informations, n'hésitez pas à nous contacter via notre formulaire de contact.";
+            return "JobBoat est une plateforme que nous construisons spécialement pour vous. Elle réunit le meilleur des expériences que vous connaissez pour créer quelque chose d'unique qui s'adapte à vos besoins. Nous préparons tout avec soin pour vous offrir la meilleure expérience possible. Seriez-vous intéressé d'en savoir plus ?";
         }
         
         if (messageLower.includes('outwings')) {
-            return "OutWings est notre prochain projet confidentiel - une application de nouvelle génération pour les sorties de groupes. Le projet est encore en développement et n'est pas encore accessible au public. Restez connectés pour les mises à jour !";
+            return "OutWings est un projet que nous préparons avec attention pour vous. Nous travaillons à créer quelque chose de spécial pour transformer vos sorties de groupes. Nous vous tiendrons informé dès que ce sera prêt. Souhaitez-vous être tenu au courant ?";
         }
         
         if (messageLower.includes('contact') || messageLower.includes('email') || messageLower.includes('téléphone')) {
-            return "Vous pouvez nous contacter via email à azerrached3@gmail.com, par téléphone au +33 6 02 56 02 29, ou via LinkedIn. Vous pouvez également utiliser le formulaire de contact sur notre site web.";
+            return "Nous serions ravis d'échanger avec vous. Vous pouvez nous contacter par email à azerrached3@gmail.com, par téléphone au +33 6 02 56 02 29, ou via LinkedIn. Notre formulaire de contact est également à votre disposition sur cette page.";
         }
         
         if (messageLower.includes('mission') || messageLower.includes('philosophie')) {
-            return "Notre mission est d'utiliser l'intelligence artificielle pour aider les gens à travailler et gagner leur vie, pas pour les remplacer. Nous croyons en une approche centrée sur l'humain où la technologie amplifie les capacités plutôt que de les remplacer.";
+            return "Notre mission est simple : vous servir. Nous mettons toute notre expertise à votre disposition pour vous aider à réussir. Votre succès est notre priorité, et nous travaillons chaque jour pour vous offrir les meilleurs outils et accompagnement possibles.";
         }
         
-        return "Merci pour votre message ! Je suis là pour vous aider à en savoir plus sur AZZ&CO LABS, nos produits JobBoat et OutWings, ou répondre à toute autre question. N'hésitez pas à me poser vos questions ou utilisez notre formulaire de contact pour une assistance plus détaillée.";
+        return "Merci de m'avoir contacté ! Je suis là pour vous servir et répondre à toutes vos questions. Comment puis-je vous aider aujourd'hui ? N'hésitez pas à me poser vos questions ou à utiliser notre formulaire de contact si vous souhaitez échanger directement avec notre équipe.";
     }
 }
 
