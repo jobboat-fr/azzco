@@ -4,7 +4,7 @@
   "description": "AZZ&CO LABS Official Website",
   "private": true,
   "scripts": {
-    "build": "cd backend && npm install",
+    "build": "cd backend && npm install && echo 'Build complete - static files served from root, API in /api'",
     "start": "cd backend && node server.js",
     "vercel-build": "cd backend && npm install"
   },
