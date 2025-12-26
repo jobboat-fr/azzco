@@ -207,12 +207,22 @@ function getDatabase() {
     if (usePostgres) {
         const pgDb = getPostgresDatabase();
         if (!pgDb) {
+            // On Vercel, return null instead of throwing (analytics service handles this)
+            if (IS_VERCEL) {
+                console.warn('⚠️  PostgreSQL not available - returning null');
+                return null;
+            }
             throw new Error('PostgreSQL database not initialized. Call initDatabase() first.');
         }
         return pgDb;
     }
     
     if (!db) {
+        // On Vercel, return null instead of throwing (analytics service handles this)
+        if (IS_VERCEL) {
+            console.warn('⚠️  Database not available on Vercel - returning null');
+            return null;
+        }
         throw new Error('SQLite database not initialized. Call initDatabase() first.');
     }
     return db;
