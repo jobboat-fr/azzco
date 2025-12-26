@@ -1,0 +1,11 @@
+# Ignore files that shouldn't be deployed
+backend/data/*.db
+backend/data/*.db-journal
+backend/node_modules/
+*.log
+*.md
+!README.md
+backend/README*.md
+backend/scripts/
+backend/test-backend.js
+backend/utils/

@@ -1,54 +1,29 @@
 {
-  "version": 2,
-  "builds": [
+  "buildCommand": "cd backend && npm install",
+  "rewrites": [
     {
-      "src": "backend/server.js",
-      "use": "@vercel/node"
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
     },
     {
-      "src": "*.html",
-      "use": "@vercel/static"
+      "source": "/mission",
+      "destination": "/mission.html"
+    },
+    {
+      "source": "/jobboat",
+      "destination": "/jobboat.html"
+    },
+    {
+      "source": "/invest",
+      "destination": "/invest.html"
+    },
+    {
+      "source": "/outwings",
+      "destination": "/outwings.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "backend/server.js"
-    },
-    {
-      "src": "/mission",
-      "dest": "/mission.html"
-    },
-    {
-      "src": "/jobboat",
-      "dest": "/jobboat.html"
-    },
-    {
-      "src": "/invest",
-      "dest": "/invest.html"
-    },
-    {
-      "src": "/outwings",
-      "dest": "/outwings.html"
-    },
-    {
-      "src": "/contact",
-      "dest": "/contact.html"
-    },
-    {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/(.*\\.(html|css|js|svg|png|jpg|jpeg|gif|ico|woff|woff2|ttf|eot))",
-      "dest": "/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }

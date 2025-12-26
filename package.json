@@ -4,7 +4,7 @@
   "description": "AZZ&CO LABS Official Website",
   "private": true,
   "scripts": {
-    "build": "echo 'No build step required for static site'",
+    "build": "cd backend && npm install",
     "start": "cd backend && node server.js"
   },
   "keywords": [
