@@ -5,31 +5,26 @@ const personaDetector = require('./personaDetector');
 // AI Provider Configuration - ONLY Ollama with Qwen 2
 const AI_PROVIDER = 'ollama'; // Fixed to Ollama only
 
-// Ollama Configuration - Qwen 2
-// On Vercel, we need a cloud service. Options:
-// 1. OpenRouter (supports Qwen 2) - https://openrouter.ai
-// 2. DeepSeek (supports Qwen 2) - https://api.deepseek.com
-// 3. Custom Ollama cloud instance
+// AI Configuration - Qwen 2 with fallback
+// Primary: OpenRouter (Qwen 2)
+// Fallback: DeepSeek (Qwen 2)
 
 const IS_VERCEL = !!process.env.VERCEL;
 const IS_PRODUCTION = process.env.NODE_ENV === 'production' || IS_VERCEL;
 
-// For production/Vercel: Use OpenRouter or DeepSeek (both support Qwen 2)
-// For local: Use localhost Ollama
-let OLLAMA_API_URL, OLLAMA_MODEL, OLLAMA_API_KEY;
+// OpenRouter (Primary)
+const OPENROUTER_URL = process.env.OLLAMA_API_URL || process.env.OPENROUTER_URL || 'https://openrouter.ai/api/v1';
+const OPENROUTER_MODEL = process.env.OLLAMA_MODEL || process.env.OPENROUTER_MODEL || 'qwen/qwen-2.5-7b-instruct';
+const OPENROUTER_API_KEY = process.env.OLLAMA_API_KEY || process.env.OPENROUTER_API_KEY || '5814484fb98c4ed0ac478de9935428fc.2ehRIt8p5BDvJjdzgzUrNc4_';
 
-if (IS_PRODUCTION) {
-    // Production: Use OpenRouter (supports Qwen 2) or DeepSeek
-    // OpenRouter endpoint for Qwen 2
-    OLLAMA_API_URL = process.env.OLLAMA_API_URL || process.env.OLLAMA_BASE_URL || 'https://openrouter.ai/api/v1';
-    OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'qwen/qwen-2.5-7b-instruct'; // Qwen 2 via OpenRouter
-    OLLAMA_API_KEY = process.env.OLLAMA_API_KEY || process.env.OPENROUTER_API_KEY || '5814484fb98c4ed0ac478de9935428fc.2ehRIt8p5BDvJjdzgzUrNc4_';
-} else {
-    // Local development: Use local Ollama
-    OLLAMA_API_URL = process.env.OLLAMA_API_URL || process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
-    OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'qwen2:latest';
-    OLLAMA_API_KEY = process.env.OLLAMA_API_KEY || '';
-}
+// DeepSeek (Fallback)
+const DEEPSEEK_URL = process.env.DEEPSEEK_URL || 'https://api.deepseek.com/v1';
+const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL || 'deepseek-chat'; // Supports Qwen-like models
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY || 'sk-51049ef2af114b72a98c17837c393017';
+
+// Local Ollama (for development)
+const LOCAL_OLLAMA_URL = process.env.OLLAMA_BASE_URL || 'http://localhost:11434';
+const LOCAL_OLLAMA_MODEL = 'qwen2:latest';
 
 const TIMEOUT = parseInt(process.env.OLLAMA_TIMEOUT) || 30000;
 
@@ -38,39 +33,41 @@ const TIMEOUT = parseInt(process.env.OLLAMA_TIMEOUT) || 30000;
  */
 class OllamaService {
     /**
-     * Get API configuration for Ollama with Qwen 2
+     * Get API configuration - tries OpenRouter first, then DeepSeek
      */
-    getApiConfig() {
-        if (!OLLAMA_API_URL) {
-            throw new Error('OLLAMA_API_URL not configured. Please set it in Vercel environment variables.');
-        }
-        
-        if (!OLLAMA_MODEL) {
-            throw new Error('OLLAMA_MODEL not configured. Please set it in Vercel environment variables.');
-        }
-        
-        // Check if using OpenRouter (cloud service)
-        const isOpenRouter = OLLAMA_API_URL.includes('openrouter.ai');
-        const isLocal = OLLAMA_API_URL.includes('localhost') || OLLAMA_API_URL.includes('127.0.0.1');
-        
-        console.log(`🔑 Using ${isOpenRouter ? 'OpenRouter' : isLocal ? 'Local Ollama' : 'Ollama Cloud'}: ${OLLAMA_API_URL}`);
-        console.log(`🤖 Using model: ${OLLAMA_MODEL}`);
-        
-        if (isOpenRouter) {
-            // OpenRouter uses OpenAI-compatible format
-            return {
-                url: `${OLLAMA_API_URL}/chat/completions`,
-                model: OLLAMA_MODEL,
-                apiKey: OLLAMA_API_KEY || '',
-                provider: 'ollama',
-                format: 'openai' // OpenRouter uses OpenAI format
-            };
+    getApiConfig(useFallback = false) {
+        if (IS_PRODUCTION) {
+            if (useFallback) {
+                // Fallback: DeepSeek
+                console.log(`🔑 Using DeepSeek (fallback): ${DEEPSEEK_URL}`);
+                console.log(`🤖 Model: ${DEEPSEEK_MODEL}`);
+                return {
+                    url: `${DEEPSEEK_URL}/chat/completions`,
+                    model: DEEPSEEK_MODEL,
+                    apiKey: DEEPSEEK_API_KEY,
+                    provider: 'deepseek',
+                    format: 'openai'
+                };
+            } else {
+                // Primary: OpenRouter
+                console.log(`🔑 Using OpenRouter: ${OPENROUTER_URL}`);
+                console.log(`🤖 Model: ${OPENROUTER_MODEL}`);
+                return {
+                    url: `${OPENROUTER_URL}/chat/completions`,
+                    model: OPENROUTER_MODEL,
+                    apiKey: OPENROUTER_API_KEY,
+                    provider: 'openrouter',
+                    format: 'openai'
+                };
+            }
         } else {
-            // Native Ollama format (local or cloud)
+            // Local development
+            console.log(`🔑 Using Local Ollama: ${LOCAL_OLLAMA_URL}`);
+            console.log(`🤖 Model: ${LOCAL_OLLAMA_MODEL}`);
             return {
-                url: `${OLLAMA_API_URL}/api/generate`,
-                model: OLLAMA_MODEL,
-                apiKey: OLLAMA_API_KEY || '',
+                url: `${LOCAL_OLLAMA_URL}/api/generate`,
+                model: LOCAL_OLLAMA_MODEL,
+                apiKey: '',
                 provider: 'ollama',
                 format: 'ollama'
             };
@@ -91,7 +88,7 @@ class OllamaService {
         }
         
         // OpenRouter requires additional headers
-        if (OLLAMA_API_URL.includes('openrouter.ai')) {
+        if (apiConfig.provider === 'openrouter' || apiConfig.url.includes('openrouter.ai')) {
             headers['HTTP-Referer'] = process.env.OPENROUTER_REFERER || 'https://azzcolabs.business';
             headers['X-Title'] = process.env.OPENROUTER_TITLE || 'AZZ&CO LABS';
         }
@@ -177,30 +174,59 @@ class OllamaService {
                 fullPrompt = `${fullPrompt}\n\nHISTORIQUE:\n${historyText}`;
             }
             
-            // Call Ollama API
-            if (!apiConfig) {
-                throw new Error('Configuration API non disponible. Veuillez vérifier OLLAMA_API_URL dans Vercel.');
-            }
-            
-            const headers = this.getHeaders(apiConfig);
-            console.log('📡 Calling Ollama API with Qwen 2...');
-            
-            let response;
+            // Try OpenRouter first, then DeepSeek fallback
+            let lastError = null;
+            let apiConfig = null;
+            let response = null;
             let generatedText = '';
             
-            if (apiConfig.format === 'openai') {
-                // OpenRouter format (OpenAI-compatible)
-                console.log('📡 Using OpenRouter (OpenAI-compatible) format');
-                console.log('📡 URL:', apiConfig.url);
-                console.log('📡 Model:', apiConfig.model);
-                console.log('📡 Headers:', JSON.stringify(headers).replace(/Bearer [^\"]+/, 'Bearer ***'));
+            // Try OpenRouter (primary)
+            try {
+                apiConfig = this.getApiConfig(false); // OpenRouter
+                const headers = this.getHeaders(apiConfig);
                 
                 const messages = [
                     { role: 'system', content: systemPrompt },
                     { role: 'user', content: userMessage }
                 ];
                 
+                console.log('📡 Trying OpenRouter...');
+                response = await axios.post(
+                    apiConfig.url,
+                    {
+                        model: apiConfig.model,
+                        messages: messages,
+                        temperature: 0.7,
+                        max_tokens: 500
+                    },
+                    {
+                        headers: headers,
+                        timeout: TIMEOUT
+                    }
+                );
+                
+                generatedText = response.data.choices?.[0]?.message?.content || '';
+                
+                if (generatedText) {
+                    console.log('✅ OpenRouter success');
+                } else {
+                    throw new Error('Empty response from OpenRouter');
+                }
+            } catch (openRouterError) {
+                lastError = openRouterError;
+                console.warn('⚠️ OpenRouter failed, trying DeepSeek fallback...');
+                
+                // Fallback: Try DeepSeek
                 try {
+                    apiConfig = this.getApiConfig(true); // DeepSeek
+                    const headers = this.getHeaders(apiConfig);
+                    
+                    const messages = [
+                        { role: 'system', content: systemPrompt },
+                        { role: 'user', content: userMessage }
+                    ];
+                    
+                    console.log('📡 Trying DeepSeek fallback...');
                     response = await axios.post(
                         apiConfig.url,
                         {
@@ -217,40 +243,21 @@ class OllamaService {
                     
                     generatedText = response.data.choices?.[0]?.message?.content || '';
                     
-                    if (!generatedText) {
-                        console.error('❌ Empty response from OpenRouter:', JSON.stringify(response.data));
-                        throw new Error('Réponse vide de OpenRouter. Vérifiez la clé API et le modèle.');
+                    if (generatedText) {
+                        console.log('✅ DeepSeek fallback success');
+                    } else {
+                        throw new Error('Empty response from DeepSeek');
                     }
-                } catch (openRouterError) {
-                    console.error('❌ OpenRouter API Error:', openRouterError.message);
-                    if (openRouterError.response) {
-                        console.error('❌ Status:', openRouterError.response.status);
-                        console.error('❌ Data:', JSON.stringify(openRouterError.response.data));
-                    }
-                    throw openRouterError;
+                } catch (deepSeekError) {
+                    // Both failed
+                    console.error('❌ Both OpenRouter and DeepSeek failed');
+                    throw new Error(`OpenRouter: ${openRouterError.message}. DeepSeek: ${deepSeekError.message}`);
                 }
-            } else {
-                // Native Ollama format
-                console.log('📡 Using native Ollama format');
-                response = await axios.post(
-                    apiConfig.url,
-                    {
-                        model: apiConfig.model,
-                        prompt: fullPrompt,
-                        stream: false,
-                        options: {
-                            temperature: 0.7,
-                            top_p: 0.9,
-                            top_k: 40
-                        }
-                    },
-                    {
-                        headers: headers,
-                        timeout: TIMEOUT
-                    }
-                );
-                
-                generatedText = response.data.response || '';
+            }
+            
+            // If we get here but no generatedText, something is wrong
+            if (!generatedText) {
+                throw new Error('No response from any provider');
             }
             
             console.log('✅ Ollama (Qwen 2) response received, length:', generatedText.length);
@@ -272,24 +279,9 @@ class OllamaService {
                 console.error('❌ Response data:', JSON.stringify(error.response.data).substring(0, 500));
             }
             
-            // NO FALLBACK - Return error message instead
-            let errorMessage = error.response?.data?.error?.message || error.message || 'Erreur inconnue';
-            
-            // More specific error messages
-            if (error.response?.status === 401) {
-                errorMessage = 'Clé API invalide. Vérifiez OLLAMA_API_KEY dans Vercel.';
-            } else if (error.response?.status === 404) {
-                errorMessage = 'Modèle non trouvé. Vérifiez OLLAMA_MODEL (essayez: qwen/qwen-2.5-7b-instruct).';
-            } else if (error.response?.status === 429) {
-                errorMessage = 'Limite de taux dépassée. Attendez quelques instants.';
-            } else if (error.code === 'ECONNREFUSED') {
-                errorMessage = 'Impossible de se connecter à l\'API. Vérifiez OLLAMA_API_URL.';
-            }
-            
-            const actualProvider = apiConfig?.provider || 'ollama';
-            const actualModel = apiConfig?.model || OLLAMA_MODEL;
-            
-            throw new Error(`Erreur lors de l'appel à ${OLLAMA_API_URL.includes('openrouter') ? 'OpenRouter' : 'Ollama'} (${actualModel}): ${errorMessage}. Vérifiez vos variables d'environnement dans Vercel.`);
+            // Both providers failed
+            const errorMessage = error.message || 'Erreur inconnue';
+            throw new Error(`Tous les services AI ont échoué: ${errorMessage}`);
         }
     }
 
