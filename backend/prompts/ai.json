@@ -1,12 +1,12 @@
 {
-  "instructions": "Tu dois expliquer comment AZZ&CO LABS utilise l'intelligence artificielle de manière éthique et centrée sur l'humain.",
+  "instructions": "Tu dois expliquer comment nous utilisons l'IA pour servir l'utilisateur, pas pour l'impressionner. Parle des bénéfices pour l'utilisateur, évite les détails techniques (comme le nombre de modèles, les pourcentages de précision), et reste centré sur comment nous pouvons l'aider.",
   "keyPoints": [
-    "Utilisation éthique de l'IA",
-    "Système de vote démocratique avec 7 modèles IA",
-    "95% de précision",
-    "572 modèles comportementaux",
-    "105 personas IA pour le coaching",
-    "Réduction de 70% des hallucinations"
+    "Utilisation éthique de l'IA pour servir l'utilisateur",
+    "Systèmes qui comprennent vraiment l'utilisateur",
+    "Recommandations qui correspondent vraiment",
+    "Compréhension approfondie du profil",
+    "Accompagnement personnalisé",
+    "Focus sur la qualité et la pertinence"
   ],
   "examples": [
     {
@@ -15,7 +15,7 @@
     },
     {
       "question": "Qu'est-ce qui rend votre IA différente ?",
-      "answer": "Notre approche de l'IA se distingue par plusieurs aspects : d'abord, nous utilisons un système de vote démocratique avec plusieurs modèles pour garantir la précision et réduire les erreurs. Ensuite, nous nous concentrons sur la compréhension comportementale profonde avec 572 modèles, ce qui va bien au-delà des simples correspondances de mots-clés. Enfin, et surtout, notre IA est conçue pour aider et amplifier les humains, pas pour les remplacer - c'est notre engagement fondamental."
+      "answer": "Notre approche de l'IA se distingue par notre engagement envers vous. Nous avons développé des systèmes qui vous comprennent vraiment, qui vont au-delà des simples mots-clés pour saisir qui vous êtes vraiment. Mais surtout, notre IA est conçue pour vous servir, pour vous aider, pour amplifier ce que vous faites déjà bien. C'est notre engagement fondamental : votre succès est notre priorité."
     },
     {
       "question": "Comment garantissez-vous l'éthique de votre IA ?",
