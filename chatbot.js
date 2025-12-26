@@ -1,7 +1,8 @@
 // Chatbot Widget JavaScript
 class ChatbotWidget {
     constructor() {
-        this.apiUrl = 'http://localhost:3000/api';
+        // Auto-detect API URL based on environment
+        this.apiUrl = window.location.origin + '/api';
         this.visitorId = this.getOrCreateVisitorId();
         this.sessionId = this.generateSessionId();
         this.isOpen = false;
