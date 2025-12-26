@@ -148,30 +148,10 @@ async function createTables() {
     for (const indexQuery of indexes) {
         try {
             await pool.query(indexQuery);
+            console.log('✅ Index created/verified');
         } catch (error) {
             console.warn('⚠️  Warning creating index:', error.message);
         }
-    }
-    ];
-
-    for (const query of queries) {
-        try {
-            await pool.query(query);
-            console.log('✅ Table created/verified');
-        } catch (error) {
-            console.error('❌ Error creating table:', error.message);
-        }
-    }
-    
-    // Create indexes for notes table
-    try {
-        await pool.query(`
-            CREATE INDEX IF NOT EXISTS idx_notes_visitor_id ON notes(visitor_id);
-            CREATE INDEX IF NOT EXISTS idx_notes_created_at ON notes(created_at);
-        `);
-        console.log('✅ Notes indexes created');
-    } catch (error) {
-        console.warn('⚠️  Warning creating notes indexes:', error.message);
     }
 }
 
