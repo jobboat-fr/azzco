@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "index.html",
+      "src": "*.html",
       "use": "@vercel/static"
     }
   ],
@@ -16,8 +16,38 @@
       "dest": "backend/server.js"
     },
     {
-      "src": "/(.*)",
+      "src": "/(.*\\.html)",
       "dest": "/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/mission",
+      "destination": "/mission.html"
+    },
+    {
+      "source": "/jobboat",
+      "destination": "/jobboat.html"
+    },
+    {
+      "source": "/invest",
+      "destination": "/invest.html"
+    },
+    {
+      "source": "/outwings",
+      "destination": "/outwings.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
     }
   ],
   "env": {
