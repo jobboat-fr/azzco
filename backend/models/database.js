@@ -1,18 +1,28 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
+const { initPostgresDatabase, getPostgresDatabase, isUsingPostgres } = require('./postgresDatabase');
 
 const DB_PATH = process.env.DB_PATH || path.join(__dirname, '../data/visitors.db');
 const DB_DIR = path.dirname(DB_PATH);
 
-// Ensure data directory exists
+// Ensure data directory exists (only for SQLite)
 if (!fs.existsSync(DB_DIR)) {
     fs.mkdirSync(DB_DIR, { recursive: true });
 }
 
 let db = null;
+let usePostgres = false;
 
-function initDatabase() {
+async function initDatabase() {
+    // Try PostgreSQL first (for production)
+    const postgresDb = await initPostgresDatabase();
+    if (postgresDb) {
+        usePostgres = true;
+        return Promise.resolve();
+    }
+
+    // Fallback to SQLite (for local development)
     return new Promise((resolve, reject) => {
         db = new sqlite3.Database(DB_PATH, (err) => {
             if (err) {
@@ -21,6 +31,7 @@ function initDatabase() {
             }
             
             console.log('📊 Connected to SQLite database');
+            usePostgres = false;
             
             // Create tables
             db.serialize(() => {
@@ -129,10 +140,22 @@ function initDatabase() {
 }
 
 function getDatabase() {
+    if (usePostgres) {
+        const pgDb = getPostgresDatabase();
+        if (!pgDb) {
+            throw new Error('PostgreSQL database not initialized. Call initDatabase() first.');
+        }
+        return pgDb;
+    }
+    
     if (!db) {
-        throw new Error('Database not initialized. Call initDatabase() first.');
+        throw new Error('SQLite database not initialized. Call initDatabase() first.');
     }
     return db;
+}
+
+function isPostgres() {
+    return usePostgres;
 }
 
 function closeDatabase() {
@@ -155,5 +178,6 @@ function closeDatabase() {
 module.exports = {
     initDatabase,
     getDatabase,
-    closeDatabase
+    closeDatabase,
+    isPostgres
 };

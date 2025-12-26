@@ -70,11 +70,11 @@ Le fichier `vercel.json` est déjà configuré pour :
 
 1. **Clé Ollama** : Assurez-vous d'avoir une vraie clé API Ollama (pas la clé Vercel) dans les variables d'environnement Vercel.
 
-2. **Base de données** : SQLite ne fonctionne pas bien sur Vercel (système de fichiers éphémère). Considérez d'utiliser :
-   - Vercel Postgres
-   - Supabase
-   - PlanetScale
-   - Ou une autre base de données cloud
+2. **Base de données** : ⚠️ **CRITIQUE** - SQLite ne fonctionne PAS sur Vercel (système de fichiers éphémère). 
+   - Les données seront **perdues** à chaque déploiement
+   - **Solution** : Migrer vers PostgreSQL (Vercel Postgres recommandé)
+   - Voir `DEPLOYMENT_DATA_ENV.md` pour un guide complet
+   - Le code supporte automatiquement PostgreSQL en production et SQLite en local
 
 3. **Ollama Cloud** : Si vous utilisez Ollama en local, vous devrez :
    - Soit utiliser Ollama Cloud
