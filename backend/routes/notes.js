@@ -11,10 +11,11 @@ router.get('/', async (req, res) => {
     try {
         const visitorId = req.query.visitorId || null;
         const notes = await notesService.getAllNotes(visitorId);
-        res.json({ success: true, notes });
+        res.json({ success: true, notes: notes || [] });
     } catch (error) {
         console.error('Get notes error:', error);
-        res.status(500).json({ error: 'Erreur lors de la récupération des notes' });
+        // Always return valid JSON
+        res.json({ success: false, notes: [], error: 'Erreur lors de la récupération des notes' });
     }
 });
 
@@ -37,7 +38,8 @@ router.get('/:id', async (req, res) => {
         res.json({ success: true, note });
     } catch (error) {
         console.error('Get note error:', error);
-        res.status(500).json({ error: 'Erreur lors de la récupération de la note' });
+        // Always return valid JSON
+        res.json({ success: false, note: null, error: 'Erreur lors de la récupération de la note' });
     }
 });
 
@@ -50,7 +52,7 @@ router.post('/', async (req, res) => {
         const { title, content, visitorId } = req.body;
 
         if (!title || title.trim() === '') {
-            return res.status(400).json({ error: 'Le titre est requis' });
+            return res.json({ success: false, error: 'Le titre est requis' });
         }
 
         const note = await notesService.createNote({
@@ -59,10 +61,11 @@ router.post('/', async (req, res) => {
             visitorId: visitorId || null
         });
 
-        res.status(201).json({ success: true, note });
+        res.json({ success: true, note });
     } catch (error) {
         console.error('Create note error:', error);
-        res.status(500).json({ error: 'Erreur lors de la création de la note' });
+        // Always return valid JSON
+        res.json({ success: false, note: null, error: 'Erreur lors de la création de la note' });
     }
 });
 
@@ -74,13 +77,13 @@ router.put('/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         if (isNaN(id)) {
-            return res.status(400).json({ error: 'ID invalide' });
+            return res.json({ success: false, error: 'ID invalide' });
         }
 
         const { title, content } = req.body;
         
         if (!title && !content) {
-            return res.status(400).json({ error: 'Au moins un champ (title ou content) doit être fourni' });
+            return res.json({ success: false, error: 'Au moins un champ (title ou content) doit être fourni' });
         }
 
         const note = await notesService.updateNote(id, {
@@ -89,13 +92,14 @@ router.put('/:id', async (req, res) => {
         });
 
         if (!note) {
-            return res.status(404).json({ error: 'Note non trouvée' });
+            return res.json({ success: false, note: null, error: 'Note non trouvée' });
         }
 
         res.json({ success: true, note });
     } catch (error) {
         console.error('Update note error:', error);
-        res.status(500).json({ error: 'Erreur lors de la mise à jour de la note' });
+        // Always return valid JSON
+        res.json({ success: false, note: null, error: 'Erreur lors de la mise à jour de la note' });
     }
 });
 
@@ -107,18 +111,19 @@ router.delete('/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         if (isNaN(id)) {
-            return res.status(400).json({ error: 'ID invalide' });
+            return res.json({ success: false, error: 'ID invalide' });
         }
 
         const deleted = await notesService.deleteNote(id);
         if (!deleted) {
-            return res.status(404).json({ error: 'Note non trouvée' });
+            return res.json({ success: false, error: 'Note non trouvée' });
         }
 
         res.json({ success: true, message: 'Note supprimée avec succès' });
     } catch (error) {
         console.error('Delete note error:', error);
-        res.status(500).json({ error: 'Erreur lors de la suppression de la note' });
+        // Always return valid JSON
+        res.json({ success: false, error: 'Erreur lors de la suppression de la note' });
     }
 });
 
