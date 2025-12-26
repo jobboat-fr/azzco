@@ -33,25 +33,35 @@ router.post('/message', async (req, res) => {
 
         const responseTime = Date.now() - startTime;
 
-        // Log interaction
-        await logChatInteraction({
-            visitorId: finalVisitorId,
-            sessionId: finalSessionId,
-            message: message,
-            response: result.response,
-            persona: result.persona,
-            contextKeywords: result.contextKeywords.join(','),
-            responseTime: responseTime
-        });
-
-        // Log visitor if new
-        if (!visitorId) {
-            await logVisitor({
+        // Log interaction (non-blocking)
+        try {
+            await logChatInteraction({
                 visitorId: finalVisitorId,
-                ipAddress: req.ip || req.connection.remoteAddress,
-                userAgent: req.get('user-agent'),
-                referrer: req.get('referer')
+                sessionId: finalSessionId,
+                message: message,
+                response: result.response,
+                persona: result.persona,
+                contextKeywords: result.contextKeywords.join(','),
+                responseTime: responseTime
             });
+        } catch (logError) {
+            console.warn('Chat interaction logging failed:', logError.message);
+            // Continue anyway
+        }
+
+        // Log visitor if new (non-blocking)
+        if (!visitorId) {
+            try {
+                await logVisitor({
+                    visitorId: finalVisitorId,
+                    ipAddress: req.ip || req.connection.remoteAddress,
+                    userAgent: req.get('user-agent'),
+                    referrer: req.get('referer')
+                });
+            } catch (visitorError) {
+                console.warn('Visitor logging failed:', visitorError.message);
+                // Continue anyway
+            }
         }
 
         res.json({

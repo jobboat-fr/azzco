@@ -19,10 +19,23 @@ router.post('/visitor', async (req, res) => {
             ...req.body
         };
 
-        // Enrich with geolocation data
-        const enrichedData = await geolocationService.enrichVisitorData(visitorData, req);
+        // Enrich with geolocation data (non-blocking)
+        let enrichedData = visitorData;
+        try {
+            enrichedData = await geolocationService.enrichVisitorData(visitorData, req);
+        } catch (geoError) {
+            console.warn('Geolocation enrichment failed:', geoError.message);
+            // Continue with basic visitor data
+        }
 
-        await logVisitor(enrichedData);
+        // Log visitor (non-blocking)
+        try {
+            await logVisitor(enrichedData);
+        } catch (logError) {
+            console.warn('Visitor logging failed:', logError.message);
+            // Continue anyway
+        }
+
         res.json({ 
             success: true, 
             visitorId: enrichedData.visitorId,
@@ -31,7 +44,12 @@ router.post('/visitor', async (req, res) => {
         });
     } catch (error) {
         console.error('Analytics visitor error:', error);
-        res.status(500).json({ error: 'Erreur lors de l\'enregistrement du visiteur' });
+        // Always return success to avoid breaking frontend
+        res.json({ 
+            success: true, 
+            visitorId: req.body.visitorId || uuidv4(),
+            warning: 'Some analytics features may be unavailable'
+        });
     }
 });
 
