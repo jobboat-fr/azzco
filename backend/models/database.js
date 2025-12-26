@@ -6,15 +6,41 @@ const { initPostgresDatabase, getPostgresDatabase, isUsingPostgres } = require('
 const DB_PATH = process.env.DB_PATH || path.join(__dirname, '../data/visitors.db');
 const DB_DIR = path.dirname(DB_PATH);
 
-// Ensure data directory exists (only for SQLite)
-if (!fs.existsSync(DB_DIR)) {
-    fs.mkdirSync(DB_DIR, { recursive: true });
+// Detect if we're on Vercel (read-only filesystem)
+const IS_VERCEL = !!process.env.VERCEL;
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+
+// Only create data directory for SQLite if NOT on Vercel
+// On Vercel, we MUST use PostgreSQL (Supabase)
+if (!IS_VERCEL && !IS_PRODUCTION) {
+    // Only create directory for local development
+    try {
+        if (!fs.existsSync(DB_DIR)) {
+            fs.mkdirSync(DB_DIR, { recursive: true });
+        }
+    } catch (err) {
+        console.warn('⚠️  Could not create data directory (this is OK on Vercel):', err.message);
+    }
 }
 
 let db = null;
 let usePostgres = false;
 
 async function initDatabase() {
+    // On Vercel, ONLY use PostgreSQL (filesystem is read-only)
+    if (IS_VERCEL) {
+        console.log('🔵 Vercel detected - using PostgreSQL only');
+        const postgresInitialized = await initPostgresDatabase();
+        if (postgresInitialized) {
+            usePostgres = true;
+            return Promise.resolve();
+        } else {
+            console.warn('⚠️  PostgreSQL not available on Vercel - database features will be disabled');
+            // Don't fail - continue without database
+            return Promise.resolve();
+        }
+    }
+
     // Try PostgreSQL first (for production)
     const postgresInitialized = await initPostgresDatabase();
     if (postgresInitialized) {
@@ -22,8 +48,18 @@ async function initDatabase() {
         return Promise.resolve();
     }
 
-    // Fallback to SQLite (for local development)
+    // Fallback to SQLite (for local development only)
+    // On Vercel, we never reach here
     return new Promise((resolve, reject) => {
+        // Ensure directory exists before creating database (local dev only)
+        try {
+            if (!fs.existsSync(DB_DIR)) {
+                fs.mkdirSync(DB_DIR, { recursive: true });
+            }
+        } catch (err) {
+            console.warn('⚠️  Could not create data directory:', err.message);
+            // Continue anyway - database might still work
+        }
         db = new sqlite3.Database(DB_PATH, (err) => {
             if (err) {
                 reject(err);
