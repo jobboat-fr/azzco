@@ -131,6 +131,21 @@ body {
     align-items: center;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    transition: transform var(--transition-base);
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
 .logo h2 {
     font-weight: 700;
     font-size: 1.25rem;
@@ -1190,6 +1205,14 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
+}
+
+.footer-logo {
+    height: 32px;
+    width: auto;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    filter: brightness(0) invert(1);
 }
 
 .footer-section h3,

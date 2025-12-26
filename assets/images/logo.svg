@@ -1,0 +1,176 @@
+<svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Grayscale gradient for depth -->
+    <linearGradient id="bwGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#cccccc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#999999;stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- White background -->
+  <rect width="500" height="600" fill="#ffffff"/>
+  
+  <!-- Coral Cell Neural Network Structure -->
+  <g transform="translate(250, 220)">
+    
+    <!-- Branch 1 - Top -->
+    <path d="M 0,-10 Q 5,-40 0,-70 Q -5,-90 -15,-100" 
+          stroke="#000000" 
+          stroke-width="14" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.9"/>
+    <path d="M 0,-70 Q 10,-85 25,-95" 
+          stroke="#000000" 
+          stroke-width="10" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.85"/>
+    
+    <!-- Branch 2 - Top Right -->
+    <path d="M 10,-5 Q 35,-25 55,-45 Q 70,-55 80,-70" 
+          stroke="#000000" 
+          stroke-width="14" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.9"/>
+    <path d="M 55,-45 Q 70,-40 85,-45" 
+          stroke="#000000" 
+          stroke-width="9" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.8"/>
+    
+    <!-- Branch 3 - Right -->
+    <path d="M 10,5 Q 40,10 70,5 Q 90,0 105,-5" 
+          stroke="#000000" 
+          stroke-width="14" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.9"/>
+    <path d="M 70,5 Q 85,15 95,25" 
+          stroke="#000000" 
+          stroke-width="10" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.85"/>
+    
+    <!-- Branch 4 - Bottom Right -->
+    <path d="M 5,10 Q 30,35 50,60 Q 60,75 65,90" 
+          stroke="#000000" 
+          stroke-width="14" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.9"/>
+    <path d="M 50,60 Q 65,65 80,65" 
+          stroke="#000000" 
+          stroke-width="9" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.8"/>
+    
+    <!-- Branch 5 - Bottom -->
+    <path d="M -5,10 Q -10,40 -5,70 Q 0,90 5,105" 
+          stroke="#000000" 
+          stroke-width="14" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.9"/>
+    <path d="M -5,70 Q -20,80 -35,85" 
+          stroke="#000000" 
+          stroke-width="10" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.85"/>
+    
+    <!-- Branch 6 - Bottom Left -->
+    <path d="M -10,5 Q -35,25 -55,50 Q -70,65 -80,80" 
+          stroke="#000000" 
+          stroke-width="14" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.9"/>
+    <path d="M -55,50 Q -70,50 -85,45" 
+          stroke="#000000" 
+          stroke-width="9" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.8"/>
+    
+    <!-- Branch 7 - Left -->
+    <path d="M -10,-5 Q -40,-10 -70,-5 Q -90,0 -105,5" 
+          stroke="#000000" 
+          stroke-width="14" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.9"/>
+    <path d="M -70,-5 Q -85,-20 -90,-35" 
+          stroke="#000000" 
+          stroke-width="10" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.85"/>
+    
+    <!-- Branch 8 - Top Left -->
+    <path d="M -10,-10 Q -30,-30 -45,-55 Q -55,-70 -60,-85" 
+          stroke="#000000" 
+          stroke-width="14" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.9"/>
+    <path d="M -45,-55 Q -60,-55 -75,-50" 
+          stroke="#000000" 
+          stroke-width="9" 
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.8"/>
+    
+    <!-- Central core -->
+    <circle cx="0" cy="0" r="18" fill="#000000" opacity="0.95"/>
+    <circle cx="0" cy="0" r="12" fill="#333333" opacity="0.7"/>
+  </g>
+  
+  <!-- Registered trademark symbol -->
+  <g transform="translate(365, 310)">
+    <circle cx="0" cy="0" r="12" fill="none" stroke="#000000" stroke-width="1.5" opacity="0.6"/>
+    <text x="0" y="0" 
+          text-anchor="middle" 
+          dominant-baseline="central"
+          font-family="Inter, sans-serif" 
+          font-size="14" 
+          font-weight="600"
+          fill="#000000"
+          opacity="0.6">®</text>
+  </g>
+  
+  <!-- Company name - OpenAI style -->
+  <g transform="translate(250, 450)">
+    <text text-anchor="middle" 
+          font-family="Inter, SF Pro Display, -apple-system, sans-serif" 
+          font-size="38" 
+          font-weight="600"
+          fill="#000000"
+          letter-spacing="1">AZZ&amp;CO LABS</text>
+  </g>
+  
+  <!-- Tagline -->
+  <g transform="translate(250, 485)">
+    <text text-anchor="middle" 
+          font-family="Inter, SF Pro Display, -apple-system, sans-serif" 
+          font-size="13" 
+          font-weight="400"
+          fill="#666666"
+          letter-spacing="2"
+          opacity="0.8">INFINITE THINKING</text>
+  </g>
+  
+</svg>
