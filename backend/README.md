@@ -20,7 +20,7 @@ cp .env.example .env
 # Ollama API Configuration
 OLLAMA_API_URL=http://localhost:11434
 OLLAMA_MODEL=llama2
-OLLAMA_API_KEY=votre_cle_api_ici
+OLLAMA_API_KEY=votre_cle_api_ollama_ici
 OLLAMA_TIMEOUT=30000
 
 # Server Configuration
@@ -35,7 +35,9 @@ RATE_LIMIT_WINDOW_MS=900000
 RATE_LIMIT_MAX_REQUESTS=100
 ```
 
-**Note importante :** La clé API Ollama (`OLLAMA_API_KEY`) est requise pour authentifier les requêtes vers l'API Ollama. Cette clé est automatiquement incluse dans les headers `Authorization` et `X-API-Key` de toutes les requêtes API.
+**Note importante :** 
+- La clé API Ollama (`OLLAMA_API_KEY`) est requise pour authentifier les requêtes vers l'API Ollama. Cette clé est automatiquement incluse dans les headers `Authorization` et `X-API-Key` de toutes les requêtes API.
+- **Ne confondez pas avec la clé Vercel** : La clé Vercel est utilisée pour le déploiement, pas pour l'API Ollama. Voir `DEPLOYMENT_VERCEL.md` pour plus d'informations sur le déploiement.
 
 ## 📦 Prérequis
 
