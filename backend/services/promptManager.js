@@ -15,16 +15,39 @@ class PromptManager {
      * Load all prompt files
      */
     loadPrompts() {
-        const promptsDir = path.join(__dirname, '../prompts');
-        const promptFiles = fs.readdirSync(promptsDir).filter(file => file.endsWith('.json'));
-        
-        promptFiles.forEach(file => {
-            if (file !== 'persona-keywords.json' && file !== 'persona-profiles.json') {
-                const category = file.replace('.json', '');
-                const filePath = path.join(promptsDir, file);
-                this.basePrompts[category] = require(filePath);
+        try {
+            const promptsDir = path.join(__dirname, '../prompts');
+            
+            // Check if directory exists
+            if (!fs.existsSync(promptsDir)) {
+                console.error('❌ Prompts directory not found:', promptsDir);
+                return;
             }
-        });
+            
+            const promptFiles = fs.readdirSync(promptsDir).filter(file => file.endsWith('.json'));
+            
+            if (promptFiles.length === 0) {
+                console.warn('⚠️  No prompt files found in:', promptsDir);
+                return;
+            }
+            
+            promptFiles.forEach(file => {
+                if (file !== 'persona-keywords.json' && file !== 'persona-profiles.json') {
+                    try {
+                        const category = file.replace('.json', '');
+                        const filePath = path.join(promptsDir, file);
+                        this.basePrompts[category] = require(filePath);
+                        console.log(`✅ Loaded prompt: ${category}`);
+                    } catch (err) {
+                        console.error(`❌ Failed to load prompt ${file}:`, err.message);
+                    }
+                }
+            });
+            
+            console.log(`✅ Loaded ${Object.keys(this.basePrompts).length} prompt categories`);
+        } catch (error) {
+            console.error('❌ Error loading prompts:', error);
+        }
     }
 
     /**

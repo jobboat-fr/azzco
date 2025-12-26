@@ -47,17 +47,36 @@ class OllamaService {
      */
     async generateResponse(userMessage, interactionHistory = [], visitorId = null) {
         try {
+            console.log('🤖 Generating response for:', userMessage.substring(0, 50));
+            
             // Detect persona
             const personaDetection = personaDetector.detectPersona(userMessage, interactionHistory);
             const persona = personaDetection.persona;
+            console.log('👤 Detected persona:', persona);
             
             // Extract context keywords
             const contextKeywords = personaDetector.extractContextKeywords(userMessage);
+            console.log('🔑 Context keywords:', contextKeywords);
             
             // Get prompt
             const prompt = promptManager.getPrompt(contextKeywords, persona, userMessage);
+            console.log('📝 Prompt length:', prompt.length);
+            
+            // Check if Ollama is configured
+            if (!OLLAMA_API_URL || OLLAMA_API_URL === 'http://localhost:11434') {
+                console.warn('⚠️  Ollama not configured, using fallback');
+                return {
+                    response: this.getFallbackResponse(userMessage),
+                    persona: persona,
+                    confidence: personaDetection.confidence,
+                    contextKeywords: contextKeywords,
+                    model: 'fallback',
+                    error: 'Ollama not configured'
+                };
+            }
             
             // Call Ollama API
+            console.log('📡 Calling Ollama API:', OLLAMA_API_URL);
             const response = await axios.post(
                 `${OLLAMA_API_URL}/api/generate`,
                 {
@@ -77,6 +96,7 @@ class OllamaService {
             );
 
             const generatedText = response.data.response || '';
+            console.log('✅ Ollama response received, length:', generatedText.length);
             
             // Clean and format response
             const cleanedResponse = this.cleanResponse(generatedText);
@@ -89,7 +109,11 @@ class OllamaService {
                 model: OLLAMA_MODEL
             };
         } catch (error) {
-            console.error('Ollama API Error:', error.message);
+            console.error('❌ Ollama API Error:', error.message);
+            if (error.response) {
+                console.error('❌ Response status:', error.response.status);
+                console.error('❌ Response data:', JSON.stringify(error.response.data).substring(0, 200));
+            }
             
             // Fallback response
             return {

@@ -105,7 +105,18 @@ class ChatbotWidget {
                 })
             });
 
-            const data = await response.json();
+            // Check content type before parsing
+            const contentType = response.headers.get('content-type');
+            let data;
+            
+            if (contentType && contentType.includes('application/json')) {
+                data = await response.json();
+            } else {
+                // If not JSON, read as text to see what we got
+                const text = await response.text();
+                console.error('Non-JSON response:', text.substring(0, 200));
+                throw new Error('Le serveur a retourné une réponse invalide');
+            }
 
             if (response.ok) {
                 // Add bot response to UI
