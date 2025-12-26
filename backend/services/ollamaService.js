@@ -124,7 +124,7 @@ class OllamaService {
         try {
             console.log('🤖 Generating response for:', userMessage.substring(0, 50));
             
-            // Get API configuration
+            // Get API configuration FIRST
             apiConfig = this.getApiConfig();
             console.log('📡 Using provider:', apiConfig.provider);
             console.log('📡 Using model:', apiConfig.model);
@@ -156,8 +156,7 @@ class OllamaService {
                 fullPrompt = `${fullPrompt}\n\nHISTORIQUE:\n${historyText}`;
             }
             
-            // Get API config (OpenRouter for production, Ollama for local)
-            apiConfig = this.getApiConfig();
+            // Get headers (apiConfig already set above)
             const headers = this.getHeaders(apiConfig);
             
             let response = null;
