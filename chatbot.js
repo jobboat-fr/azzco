@@ -79,7 +79,7 @@ class ChatbotWidget {
         
         // Show welcome message if this is the first time opening
         if (!this.hasShownWelcome) {
-            this.addMessage("Hi! My name is Nicky's Pizza. How can I help you today?", 'bot');
+            this.addMessage("Bonjour ! Je m'appelle Nicky's Pizza. Comment puis-je vous aider aujourd'hui ?", 'bot');
             this.hasShownWelcome = true;
         }
     }
