@@ -20,6 +20,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+// Vercel sits behind proxies and sets X-Forwarded-For.
+// Required for express-rate-limit to correctly identify clients.
+app.set('trust proxy', 1);
 app.use(helmet());
 app.use(cors({
     origin: process.env.FRONTEND_URL || '*',
