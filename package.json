@@ -1,0 +1,17 @@
+{
+  "name": "azzco-website",
+  "version": "1.0.0",
+  "description": "AZZ&CO LABS Official Website",
+  "private": true,
+  "scripts": {
+    "build": "echo 'No build step required for static site'",
+    "start": "cd backend && node server.js"
+  },
+  "keywords": [
+    "azzco",
+    "website",
+    "static"
+  ],
+  "author": "AZZ&CO LABS",
+  "license": "ISC"
+}

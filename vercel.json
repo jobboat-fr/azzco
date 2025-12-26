@@ -4,16 +4,16 @@
     {
       "src": "backend/server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
       "dest": "backend/server.js"
-    },
-    {
-      "src": "/(.*\\.html)",
-      "dest": "/$1"
     },
     {
       "src": "/mission",
@@ -34,6 +34,14 @@
     {
       "src": "/contact",
       "dest": "/contact.html"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/(.*\\.(html|css|js|svg|png|jpg|jpeg|gif|ico|woff|woff2|ttf|eot))",
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",

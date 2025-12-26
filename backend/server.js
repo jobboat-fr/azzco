@@ -41,18 +41,13 @@ app.use('/api/chatbot', chatbotRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/notes', notesRoutes);
 
-// Initialize database
+// Initialize database (async, but don't block server startup)
+// On Vercel, this will run when the function is invoked
 initDatabase().then(() => {
     console.log('✅ Database initialized');
-    
-    // Start server
-    app.listen(PORT, () => {
-        console.log(`🚀 Server running on port ${PORT}`);
-        console.log(`📡 Ollama API: ${process.env.OLLAMA_API_URL || 'http://localhost:11434'}`);
-    });
 }).catch(err => {
     console.error('❌ Database initialization failed:', err);
-    process.exit(1);
+    // Don't exit on Vercel - let it continue and handle errors gracefully
 });
 
 // Error handling
@@ -64,4 +59,19 @@ app.use((err, req, res, next) => {
     });
 });
 
+// For Vercel serverless functions, export the app directly
+// Vercel automatically detects module.exports and uses it as the handler
 module.exports = app;
+
+// For local development, start the server
+if (!process.env.VERCEL && require.main === module) {
+    initDatabase().then(() => {
+        app.listen(PORT, () => {
+            console.log(`🚀 Server running on port ${PORT}`);
+            console.log(`📡 Ollama API: ${process.env.OLLAMA_API_URL || 'http://localhost:11434'}`);
+        });
+    }).catch(err => {
+        console.error('❌ Database initialization failed:', err);
+        process.exit(1);
+    });
+}
