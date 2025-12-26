@@ -155,7 +155,11 @@ router.get('/stats', async (req, res) => {
         });
     } catch (error) {
         console.error('Analytics stats error:', error);
-        res.status(500).json({ error: 'Erreur lors de la récupération des statistiques' });
+        res.json({ 
+            visitors: {},
+            chat: {},
+            error: 'Erreur lors de la récupération des statistiques'
+        });
     }
 });
 

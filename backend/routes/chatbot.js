@@ -121,7 +121,12 @@ router.get('/health', async (req, res) => {
             model: process.env.OLLAMA_MODEL || 'llama2'
         });
     } catch (error) {
-        res.status(500).json({ error: 'Erreur de vérification de santé' });
+        res.json({ 
+            status: 'unavailable',
+            error: 'Erreur de vérification de santé',
+            ollama: { available: false },
+            model: process.env.OLLAMA_MODEL || 'llama2'
+        });
     }
 });
 
@@ -153,11 +158,11 @@ router.get('/history/:sessionId', async (req, res) => {
             res.json({ history });
         }).catch(error => {
             console.error('Error fetching history:', error);
-            res.status(500).json({ error: 'Erreur lors de la récupération de l\'historique' });
+            res.json({ history: [], error: 'Erreur lors de la récupération de l\'historique' });
         });
     } catch (error) {
         console.error('History error:', error);
-        res.status(500).json({ error: 'Erreur serveur' });
+        res.json({ history: [], error: 'Erreur serveur' });
     }
 });
 

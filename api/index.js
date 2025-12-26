@@ -42,37 +42,64 @@ app.get('/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// Routes
-app.use('/api/chatbot', chatbotRoutes);
-app.use('/api/analytics', analyticsRoutes);
-app.use('/api/notes', notesRoutes);
+// Wrap all routes in error handler to prevent 500s
+const wrapAsync = (fn) => {
+    return (req, res, next) => {
+        Promise.resolve(fn(req, res, next)).catch((err) => {
+            console.error('Route error caught:', err);
+            if (!res.headersSent) {
+                res.json({
+                    success: false,
+                    error: 'Une erreur est survenue',
+                    message: process.env.NODE_ENV === 'development' ? err.message : undefined
+                });
+            }
+        });
+    };
+};
 
-// Error handling
+// Routes with error wrapping
+app.use('/api/chatbot', wrapAsync(chatbotRoutes));
+app.use('/api/analytics', wrapAsync(analyticsRoutes));
+app.use('/api/notes', wrapAsync(notesRoutes));
+
+// Error handling - Always return valid JSON, never 500
 app.use((err, req, res, next) => {
     console.error('Error:', err);
-    res.status(500).json({ 
-        error: 'Une erreur interne est survenue',
-        message: process.env.NODE_ENV === 'development' ? err.message : undefined
-    });
+    if (!res.headersSent) {
+        res.json({ 
+            success: false,
+            error: 'Une erreur interne est survenue',
+            message: process.env.NODE_ENV === 'development' ? err.message : undefined
+        });
+    }
 });
 
 // For Vercel serverless functions, export the app directly
 // Vercel automatically detects module.exports and uses it as the handler
 // Initialize database lazily on first request (for Vercel)
 if (process.env.VERCEL) {
-    // On Vercel, initialize database on first request
+    // On Vercel, initialize database on first request (non-blocking)
     let dbInitialized = false;
+    let dbInitInProgress = false;
     app.use(async (req, res, next) => {
-        if (!dbInitialized) {
-            try {
-                await initDatabase();
-                dbInitialized = true;
-                console.log('✅ Database initialized (Vercel)');
-            } catch (err) {
-                console.error('❌ Database initialization failed:', err);
-                // Continue anyway - database operations will fail gracefully
-            }
+        // Don't block requests if DB init fails
+        if (!dbInitialized && !dbInitInProgress) {
+            dbInitInProgress = true;
+            initDatabase()
+                .then(() => {
+                    dbInitialized = true;
+                    console.log('✅ Database initialized (Vercel)');
+                })
+                .catch(err => {
+                    console.error('❌ Database initialization failed:', err);
+                    // Continue anyway - database operations will fail gracefully
+                })
+                .finally(() => {
+                    dbInitInProgress = false;
+                });
         }
+        // Always continue to next middleware, don't wait for DB
         next();
     });
     
