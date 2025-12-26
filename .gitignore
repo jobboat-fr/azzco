@@ -40,3 +40,8 @@ coverage/
 tmp/
 temp/
 *.tmp
+
+# Documentation files (keep local, exclude from GitHub)
+*.md
+!README.md
+backend/README*.md

@@ -1,89 +1,77 @@
 # AZZ&CO LABS
 
-**Innovation Technologique & Intelligence Artificielle**
+**Nous sommes là pour vous servir**
 
-> *Transformer la façon dont les gens travaillent, se connectent et vivent grâce à l'intelligence artificielle éthique et centrée sur l'humain.*
+> *Votre succès est notre priorité. Nous mettons toute notre expertise à votre disposition pour vous aider à réussir, à trouver votre voie, et à construire la carrière que vous méritez.*
 
 ---
 
-## 🏢 À Propos d'AZZ&CO LABS
+## 🏢 Qui Sommes-Nous ?
 
-**AZZ&CO LABS** est une entreprise d'innovation technologique et d'intelligence artificielle basée à **Paris, France**. Fondée avec une vision claire : utiliser l'intelligence artificielle pour **aider les gens à travailler et gagner leur vie**, pas pour les remplacer dans une perspective de gain capitaliste.
+**AZZ&CO LABS** est une entreprise basée à **Paris, France**, qui met toute son expertise à votre service. Nous développons des solutions qui vous aident à réussir, à trouver votre voie, et à construire la carrière que vous méritez.
 
 ### Notre Mission
 
-Notre mission est de créer des solutions technologiques avancées qui **amplifient les capacités humaines** plutôt que de les remplacer. Nous croyons fermement que l'IA doit être un outil d'émancipation qui :
+Notre mission est simple : **vous servir**. Nous créons des outils qui vous facilitent la vie, qui vous ouvrent de nouvelles possibilités, et qui vous accompagnent dans votre croissance professionnelle.
 
-- ✅ Facilite l'apprentissage et le développement de compétences
-- ✅ Ouvre de nouvelles voies vers l'emploi et l'entrepreneuriat
-- ✅ Crée des opportunités économiques durables
-- ✅ Transforme les défis en opportunités de croissance
+- ✅ Nous vous aidons à développer vos compétences
+- ✅ Nous vous ouvrons de nouvelles voies vers l'emploi
+- ✅ Nous créons des opportunités pour vous
+- ✅ Nous transformons vos défis en opportunités
 
 ### Notre Philosophie
 
-**L'humain au centre de l'innovation technologique.**
+**Vous êtes au centre de tout ce que nous faisons.**
 
-Nous rejetons l'utilisation de l'IA comme simple moyen de réduire les coûts en remplaçant les travailleurs. Au lieu de cela, nous développons des systèmes qui :
-
-- 🔄 Amplifient les capacités humaines
-- 📚 Facilitent l'apprentissage continu
-- 🤝 Créent des synergies entre technologie et humain
-- 🌱 Favorisent une croissance mutuelle et durable
+Nous développons des outils qui vous servent vraiment, qui vous facilitent la vie, et qui vous ouvrent de nouvelles possibilités. Votre croissance est la nôtre, et nous grandissons ensemble.
 
 ### Notre Vision
 
-Nous voyons un avenir où **la technologie et l'humain travaillent en synergie** pour créer une valeur durable. Un futur où chaque individu peut accéder à des outils puissants pour améliorer sa situation économique et personnelle, où l'IA est un partenaire dans la croissance professionnelle, pas une menace pour l'emploi.
+Nous voyons un avenir où **vous avez accès aux meilleurs outils**, où vos talents sont reconnus et valorisés, et où chaque opportunité vous est accessible. Votre succès est notre récompense.
 
 ---
 
 ## 🚀 Nos Produits
 
-### JobBoat - Plateforme Révolutionnaire de Recherche d'Emploi
+### JobBoat - Une Expérience Pensée Pour Vous
 
-**JobBoat** est notre plateforme principale qui transforme la recherche d'emploi en une expérience engageante et efficace. Nous combinons :
+**JobBoat** est une plateforme que nous construisons spécialement pour vous. Elle réunit le meilleur des expériences que vous connaissez pour créer quelque chose d'unique qui s'adapte à vos besoins.
 
-- 🎯 **L'algorithme personnalisé de TikTok** pour un feed addictif
-- 💼 **Le réseautage professionnel de LinkedIn** pour construire des connexions
-- 👆 **L'interface intuitive de swipe de Tinder** pour découvrir des opportunités
-- 🎁 **Le financement de projets de carrière** style Kickstarter
-- 🌐 **Un écosystème Web3 complet** avec tokens BOAT
+**Ce que nous vous offrons :**
+- Un contenu qui vous ressemble et vous inspire
+- Un réseau professionnel qui vous ouvre des portes
+- Une découverte d'emplois simple et intuitive
+- Un soutien pour vos projets de carrière
+- Des outils modernes pour votre développement
+- Une compréhension approfondie de votre profil
+- Des recommandations qui vous correspondent vraiment
 
-**Fonctionnalités clés :**
-- Feed social personnalisé (style TikTok/LinkedIn)
-- Shorts vidéo pour le développement de carrière
-- Swipe d'emplois intuitif (style Tinder)
-- Candidature automatique intelligente
-- Jupiter Room : Coaching d'entretien avec 105 personas IA
-- 572 modèles comportementaux pour un matching ultra-précis
-- Système de vote démocratique IA (7 modèles, 95% de précision)
+**Statut :** Nous préparons tout avec soin pour mieux vous servir
 
-**Statut :** En phase de préparation légale et administrative
+### OutWings - Quelque Chose de Spécial Pour Vous
 
-### OutWings - La Prochaine Génération des Sorties de Groupes
+**OutWings** est un projet que nous préparons avec attention pour transformer vos sorties de groupes. Nous travaillons avec soin pour vous offrir une expérience qui dépasse vos attentes.
 
-**OutWings** est notre projet confidentiel en développement - une application de nouvelle génération conçue pour révolutionner la façon dont les groupes organisent et vivent leurs sorties sociales.
-
-**Statut :** En développement actif (projet confidentiel)
+**Statut :** En préparation - Nous vous tiendrons informé dès que ce sera prêt pour vous
 
 ---
 
-## 💻 Site Web Officiel
+## 💻 Notre Site Web
 
-Ce repository contient le **site web officiel** d'AZZ&CO LABS, une plateforme moderne et interactive qui présente :
+Ce repository contient notre **site web officiel**, une plateforme moderne et interactive que nous avons créée pour vous :
 
-- 🎨 **Design moderne et responsive** - S'adapte à tous les écrans
-- 🤖 **Chatbot intelligent** - Assistant IA alimenté par Ollama
-- 📊 **Système d'analytics** - Suivi des visiteurs et interactions
-- 🎭 **Détection de persona** - 8 types de personas pour des réponses adaptées
-- 📝 **Système de prompts avancé** - 7 catégories de prompts contextuels
+- 🎨 **Design moderne et responsive** - S'adapte à tous vos appareils
+- 🤖 **Assistant dédié** - Nous sommes là pour répondre à toutes vos questions
+- 📊 **Nous vous comprenons** - Nous adaptons notre approche à vos besoins
+- 🎭 **Réponses personnalisées** - Chaque interaction est pensée pour vous
 
-### Caractéristiques Techniques
+### Comment Nous Vous Servons
 
-- **Frontend :** HTML5, CSS3, JavaScript vanilla
-- **Backend :** Node.js, Express.js
-- **Base de données :** SQLite (visiteurs, analytics, chat logs)
-- **IA :** Ollama (intégration locale)
-- **Design :** Glassmorphism, gradients modernes, animations fluides
+- **Frontend :** Une expérience fluide et moderne
+- **Backend :** Des outils qui fonctionnent pour vous
+- **Base de données :** Vos données sont sécurisées et protégées
+- **IA :** Des systèmes qui vous comprennent vraiment
+- **Design :** Une expérience visuelle agréable et professionnelle
 
 ---
 
@@ -91,33 +79,16 @@ Ce repository contient le **site web officiel** d'AZZ&CO LABS, une plateforme mo
 
 ```
 azzco-website/
-├── index.html              # Site web principal
-├── styles.css              # Styles avec widget chatbot
-├── script.js               # Scripts du site (navigation, animations)
-├── chatbot.js              # Widget chatbot interactif
+├── index.html              # Notre site web principal
+├── styles.css              # Design moderne et responsive
+├── script.js               # Expérience interactive
+├── chatbot.js              # Votre assistant dédié
 ├── backend/
-│   ├── server.js           # Serveur Express
-│   ├── package.json        # Dépendances Node.js
-│   ├── routes/             # Routes API
-│   │   ├── chatbot.js      # API chatbot
-│   │   └── analytics.js    # API analytics
-│   ├── services/           # Services métier
-│   │   ├── ollamaService.js      # Intégration Ollama
-│   │   ├── personaDetector.js    # Détection de persona
-│   │   ├── promptManager.js      # Gestion des prompts
-│   │   └── analyticsService.js   # Service analytics
-│   ├── models/             # Modèles de données
-│   │   └── database.js     # Base de données SQLite
-│   └── prompts/            # Fichiers de prompts
-│       ├── persona-profiles.json    # 8 personas définies
-│       ├── persona-keywords.json    # Mots-clés par persona
-│       ├── jobboat.json             # Prompts JobBoat
-│       ├── outwings.json            # Prompts OutWings
-│       ├── contact.json             # Prompts contact
-│       ├── mission.json             # Prompts mission
-│       ├── ai.json                  # Prompts IA
-│       ├── technology.json          # Prompts technologie
-│       └── general.json             # Prompts généraux
+│   ├── server.js           # Serveur pour vous servir
+│   ├── routes/             # Points d'accès pour vous
+│   ├── services/           # Services qui vous aident
+│   ├── models/             # Organisation de vos données
+│   └── prompts/            # Réponses personnalisées pour vous
 └── README.md               # Ce fichier
 ```
 
@@ -125,13 +96,7 @@ azzco-website/
 
 ## 🚀 Démarrage Rapide
 
-### Prérequis
-
-- Node.js 16+
-- Ollama installé et configuré
-- Git
-
-### Installation
+### Pour Commencer
 
 1. **Cloner le repository**
    ```bash
@@ -139,7 +104,7 @@ azzco-website/
    cd AZZ-CO-LABS-
    ```
 
-2. **Installer les dépendances backend**
+2. **Installer les dépendances**
    ```bash
    cd backend
    npm install
@@ -147,104 +112,83 @@ azzco-website/
 
 3. **Configurer l'environnement**
    ```bash
-   cp .env.example .env
-   # Éditez .env avec vos configurations
+   # Créez un fichier .env avec vos configurations
    ```
 
-4. **Installer et configurer Ollama**
-   ```bash
-   # Téléchargez depuis https://ollama.ai
-   ollama pull llama2
-   ```
-
-5. **Démarrer le backend**
+4. **Démarrer le serveur**
    ```bash
    npm start
    # Le serveur démarre sur http://localhost:3000
    ```
 
-6. **Ouvrir le site web**
+5. **Ouvrir le site web**
    - Ouvrez `index.html` dans votre navigateur
-   - Ou servez avec un serveur local :
-     ```bash
-     python -m http.server 8000
-     # Puis ouvrez http://localhost:8000
-     ```
+   - Ou utilisez un serveur local pour une meilleure expérience
 
 ---
 
-## 📊 Fonctionnalités du Site
+## 📊 Comment Nous Vous Servons
 
-### Sections Principales
+### Sections de Notre Site
 
-1. **Accueil** - Présentation de l'entreprise avec hero section animée
-2. **Mission** - Philosophie, engagement et vision de l'entreprise
-3. **JobBoat** - Présentation complète avec démos web et mobile
-4. **OutWings** - Page d'entrée confidentielle
-5. **Contact** - Formulaire de contact et informations
+1. **Accueil** - Découvrez comment nous pouvons vous aider
+2. **Mission** - Comprenez notre engagement envers vous
+3. **JobBoat** - Découvrez ce que nous préparons pour vous
+4. **OutWings** - Un projet spécial en préparation
+5. **Contact** - Nous sommes là pour vous écouter
 
-### Chatbot Intelligent
+### Votre Assistant Dédié
 
-Le site intègre un **chatbot IA** alimenté par Ollama qui :
+Notre **assistant IA** est là pour vous servir :
 
-- 🎭 Détecte automatiquement la persona de l'utilisateur (8 types)
-- 🔍 Extrait les mots-clés contextuels
-- 📝 Génère des réponses adaptées selon le contexte
-- 💾 Enregistre toutes les interactions pour amélioration continue
+- 🎭 Nous adaptons nos réponses à vos besoins
+- 🔍 Nous comprenons ce que vous cherchez
+- 📝 Nous vous donnons des réponses qui vous aident vraiment
+- 💾 Nous apprenons de chaque interaction pour mieux vous servir
 
-**Personas supportées :**
-- Professional (par défaut)
-- Investor
-- Job Seeker
-- Tech Enthusiast
-- Curious Visitor
-- Partner
-- Media
-- Student
+### Nous Vous Comprenons
 
-### Système d'Analytics
-
-Le site collecte automatiquement :
-- 👥 Visiteurs uniques et sessions
-- 📄 Pages vues et temps passé
-- 💬 Interactions avec le chatbot
-- 📊 Événements personnalisés
-- 📈 Statistiques de performance
+Nous collectons des informations pour mieux vous servir :
+- 👥 Pour comprendre vos besoins
+- 📄 Pour améliorer votre expérience
+- 💬 Pour répondre à vos questions
+- 📊 Pour vous offrir le meilleur service possible
 
 ---
 
 ## 🎨 Design
 
-- **Couleurs :** Dégradés violets/bleus modernes
-- **Typographie :** Inter (Google Fonts)
-- **Style :** Glassmorphism, gradients, ombres douces
-- **Animations :** Scroll reveal, parallax, hover effects
-- **Responsive :** Desktop, tablette, mobile
+- **Couleurs :** Dégradés modernes et professionnels
+- **Typographie :** Lisible et élégante
+- **Style :** Moderne, fluide, agréable
+- **Animations :** Douces et professionnelles
+- **Responsive :** Fonctionne sur tous vos appareils
 
 ---
 
 ## 📧 Contact
 
-**AZZ&CO LABS**  
-📍 Paris, France  
-📧 Email: azerrached3@gmail.com  
-📞 Téléphone: +33 6 02 56 02 29  
-💼 LinkedIn: [Azer Rached](https://www.linkedin.com/in/azer-rached-239258377/)  
-🔗 Liens: [Linktree](https://linktr.ee/AZER_rached)
+**Nous serions ravis d'échanger avec vous**
+
+📍 **Paris, France**  
+📧 **Email:** azerrached3@gmail.com  
+📞 **Téléphone:** +33 6 02 56 02 29  
+💼 **LinkedIn:** [Azer Rached](https://www.linkedin.com/in/azer-rached-239258377/)  
+🔗 **Liens:** [Linktree](https://linktr.ee/AZER_rached)
 
 ---
 
-## 📄 Statut Actuel
+## 📄 Où Nous En Sommes
 
-**Phase :** Préparation légale et administrative
+**Nous préparons tout avec soin pour mieux vous servir**
 
-Nous travaillons activement sur les aspects juridiques, réglementaires et de conformité pour garantir que nos produits respectent toutes les normes avant leur lancement. C'est une étape importante qui nous permettra de lancer avec confiance et conformité totale.
+Nous travaillons activement sur les aspects légaux et administratifs pour garantir que nos produits respectent toutes les normes. C'est important pour nous car nous voulons vous offrir la meilleure expérience possible, en toute confiance et conformité.
 
 ---
 
-## 🤝 Contribution
+## 🤝 Nous Écouter
 
-Ce projet est actuellement en développement privé. Pour toute question, suggestion ou demande de partenariat, n'hésitez pas à nous contacter.
+Ce projet est actuellement en développement. Pour toute question, suggestion ou demande de partenariat, nous serions honorés d'échanger avec vous. Votre avis compte, et nous sommes à votre écoute.
 
 ---
 
@@ -254,5 +198,5 @@ Ce projet est actuellement en développement privé. Pour toute question, sugges
 
 ---
 
-**Construit avec ❤️ par AZZ&CO LABS**  
-*L'IA au service de l'humain*
+**Construit avec dévouement par AZZ&CO LABS**  
+*Votre succès est notre priorité*
