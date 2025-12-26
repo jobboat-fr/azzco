@@ -35,6 +35,10 @@
     /* Background Colors */
     --bg-primary: #ffffff;
     --bg-secondary: #fafafa;
+    --bg-tertiary: #f5f5f5;
+    --bg-grey-light: #f8f8f8;
+    --bg-grey-medium: #e8e8e8;
+    --bg-grey-dark: #d0d0d0;
     --bg-dark: #000000;
     --bg-dark-soft: #0a0a0a;
     --bg-ice: #f0f8fa;
@@ -88,10 +92,10 @@ html {
 body {
     font-family: var(--font-primary);
     color: var(--text-primary);
-    line-height: 1.7;
+    line-height: 1.8;
     overflow-x: hidden;
     background: var(--bg-primary);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 300;
 }
 
@@ -123,7 +127,7 @@ body {
 }
 
 .logo-img {
-    height: 36px;
+    height: 60px;
     width: auto;
     transition: var(--transition-base);
 }
@@ -254,12 +258,12 @@ body {
 }
 
 .hero-description {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     font-weight: 300;
     color: var(--text-secondary);
     max-width: 700px;
     margin: 0 auto 3rem;
-    line-height: 1.8;
+    line-height: 1.9;
 }
 
 .hero-buttons {
@@ -332,6 +336,30 @@ body {
 .section {
     padding: 6rem 0;
     position: relative;
+}
+
+/* Background variations with grey shades */
+.section.bg-grey-light {
+    background: var(--bg-grey-light);
+}
+
+.section.bg-grey-medium {
+    background: var(--bg-grey-medium);
+}
+
+.section.bg-pattern {
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            var(--bg-primary),
+            var(--bg-primary) 10px,
+            var(--bg-grey-light) 10px,
+            var(--bg-grey-light) 20px
+        );
+}
+
+.section.bg-gradient-grey {
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-grey-light) 50%, var(--bg-primary) 100%);
 }
 
 .section-header {
@@ -411,10 +439,10 @@ body {
 }
 
 .card-text {
-    font-size: 1rem;
+    font-size: 1.125rem;
     font-weight: 300;
     color: var(--text-secondary);
-    line-height: 1.8;
+    line-height: 1.9;
 }
 
 /* Investment Cards */
@@ -494,11 +522,11 @@ body {
 }
 
 .footer-logo {
-    height: 40px;
+    height: 80px;
     width: auto;
     margin-bottom: 1.5rem;
     filter: brightness(0) invert(1);
-    opacity: 0.9;
+    opacity: 1;
 }
 
 .footer-content {
