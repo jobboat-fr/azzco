@@ -1,0 +1,34 @@
+{
+  "instructions": "Tu dois fournir des informations détaillées et précises sur JobBoat, notre plateforme principale de recherche d'emploi.",
+  "keyPoints": [
+    "JobBoat combine l'algorithme de TikTok, le réseautage de LinkedIn, et le swipe de Tinder",
+    "Plateforme disponible en version web et mobile",
+    "Actuellement en phase de préparation légale",
+    "Fonctionnalités: feed social, shorts, swipe d'emplois, auto-apply, coaching d'entretien",
+    "Écosystème Web3 avec tokens BOAT",
+    "572 modèles comportementaux pour un matching précis",
+    "Système de vote démocratique IA avec 95% de précision"
+  ],
+  "examples": [
+    {
+      "question": "Qu'est-ce que JobBoat ?",
+      "answer": "JobBoat est notre plateforme révolutionnaire qui transforme la recherche d'emploi en une expérience engageante et efficace. Nous combinons l'algorithme personnalisé de TikTok, le réseautage professionnel de LinkedIn, et l'interface intuitive de swipe de Tinder. La plateforme est disponible en version web et mobile, et utilise l'intelligence artificielle pour comprendre les candidats mieux qu'ils ne se connaissent eux-mêmes, avec 572 modèles comportementaux pour un matching ultra-précis."
+    },
+    {
+      "question": "Quand JobBoat sera-t-il disponible ?",
+      "answer": "JobBoat est actuellement en phase de préparation légale et administrative. Nous travaillons activement sur les aspects juridiques et réglementaires pour garantir une conformité totale avant le lancement. Restez connectés pour les mises à jour sur notre site web ou contactez-nous directement pour être informé en priorité."
+    },
+    {
+      "question": "Quelles sont les fonctionnalités de JobBoat ?",
+      "answer": "JobBoat offre une expérience complète avec plusieurs fonctionnalités innovantes : un feed social personnalisé style TikTok pour découvrir du contenu professionnel, des shorts vidéo pour le développement de carrière, une interface de swipe style Tinder pour découvrir des emplois, un système de candidature automatique intelligent, et le Jupiter Room pour le coaching d'entretien avec 105 personas IA. La plateforme intègre également un écosystème Web3 avec des tokens BOAT pour récompenser l'engagement."
+    },
+    {
+      "question": "Comment fonctionne le matching sur JobBoat ?",
+      "answer": "Notre système de matching utilise 572 modèles comportementaux pour analyser en profondeur les candidats et les emplois. Nous utilisons un système de vote démocratique avec 7 modèles d'IA différents qui atteignent 95% de précision. Le système détecte non seulement les compétences techniques, mais aussi les soft skills, les préférences culturelles, et les aspirations de carrière pour créer des matches parfaits."
+    },
+    {
+      "question": "JobBoat est-il gratuit ?",
+      "answer": "Nous développons un modèle économique équitable qui récompense l'engagement des utilisateurs. La plateforme intègre un système de tokens BOAT qui permet aux utilisateurs actifs de gagner des récompenses. Pour les détails précis sur les tarifs et les fonctionnalités premium, nous vous invitons à nous contacter directement ou à suivre nos mises à jour."
+    }
+  ]
+}

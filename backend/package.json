@@ -1,0 +1,27 @@
+{
+  "name": "azzco-website-backend",
+  "version": "1.0.0",
+  "description": "Backend API for AZZ&CO LABS website with Ollama chatbot",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["azzco", "chatbot", "ollama", "api"],
+  "author": "AZZ&CO LABS",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.2",
+    "sqlite3": "^5.1.6",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

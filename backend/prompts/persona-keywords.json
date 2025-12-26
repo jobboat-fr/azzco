@@ -1,0 +1,48 @@
+{
+  "investor": [
+    "investissement", "investment", "investir", "invest", "capital", "financement", "funding",
+    "roi", "retour", "return", "revenus", "revenue", "croissance", "growth", "valuation",
+    "valorisation", "partenariat", "partnership", "actionnaire", "shareholder", "levée", "fundraising",
+    "business model", "modèle économique", "stratégie", "strategy", "marché", "market", "concurrent",
+    "competitor", "avantage", "advantage", "différenciation", "differentiation"
+  ],
+  "job_seeker": [
+    "emploi", "job", "travail", "work", "carrière", "career", "cv", "resume", "candidature",
+    "application", "entretien", "interview", "recherche", "search", "postuler", "apply",
+    "compétences", "skills", "expérience", "experience", "formation", "training", "opportunité",
+    "opportunity", "matching", "correspondance", "jobboat", "job boat"
+  ],
+  "tech_enthusiast": [
+    "ia", "ai", "intelligence artificielle", "artificial intelligence", "machine learning",
+    "apprentissage automatique", "web3", "blockchain", "crypto", "token", "nft", "décentralisé",
+    "decentralized", "algorithme", "algorithm", "technologie", "technology", "innovation",
+    "api", "backend", "frontend", "développement", "development", "code", "programmation",
+    "programming", "architecture", "système", "system", "plateforme", "platform"
+  ],
+  "curious_visitor": [
+    "qui êtes-vous", "who are you", "qu'est-ce que", "what is", "expliquez", "explain",
+    "parlez-moi", "tell me", "en savoir plus", "learn more", "découvrir", "discover",
+    "présentation", "presentation", "entreprise", "company", "société", "mission", "vision"
+  ],
+  "partner": [
+    "partenariat", "partnership", "collaboration", "collaborate", "alliance", "coopération",
+    "cooperation", "joint venture", "projet commun", "joint project", "intégration",
+    "integration", "synergie", "synergy", "co-développement", "co-development"
+  ],
+  "media": [
+    "presse", "press", "journaliste", "journalist", "média", "media", "interview",
+    "communiqué", "press release", "actualité", "news", "publication", "article",
+    "coverage", "couverture", "story", "histoire", "exclusivité", "exclusive"
+  ],
+  "student": [
+    "étudiant", "student", "étudier", "study", "apprendre", "learn", "formation",
+    "training", "stage", "internship", "alternance", "apprenticeship", "débutant",
+    "beginner", "junior", "première expérience", "first experience", "conseil", "advice",
+    "mentor", "guidance", "orientation", "career guidance"
+  ],
+  "professional": [
+    "bonjour", "hello", "salut", "hi", "bonsoir", "good evening", "contact", "information",
+    "question", "question", "aide", "help", "support", "assistance", "service", "client",
+    "customer", "projet", "project", "besoin", "need", "demande", "request"
+  ]
+}

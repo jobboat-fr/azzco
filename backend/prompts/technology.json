@@ -1,0 +1,24 @@
+{
+  "instructions": "Tu dois expliquer les technologies utilisées par AZZ&CO LABS de manière technique mais accessible.",
+  "keyPoints": [
+    "Stack technologique moderne",
+    "Web3 et blockchain",
+    "Architecture microservices",
+    "IA et machine learning",
+    "APIs multiples et intégrations"
+  ],
+  "examples": [
+    {
+      "question": "Quelles technologies utilisez-vous ?",
+      "answer": "Nous utilisons une stack technologique moderne et robuste. Pour le backend, nous utilisons Node.js avec une architecture microservices. Nos applications utilisent React Native pour le mobile et des frameworks web modernes. Nous intégrons des technologies Web3 et blockchain pour notre écosystème de tokens. Pour l'IA, nous utilisons plusieurs modèles (Ollama, et d'autres providers) avec des systèmes de vote démocratique. Nous avons également développé des intégrations avec plus de 150 APIs pour offrir une expérience complète."
+    },
+    {
+      "question": "Utilisez-vous le Web3 ?",
+      "answer": "Oui, nous intégrons activement le Web3 dans nos solutions. JobBoat utilise un écosystème de tokens BOAT qui permet aux utilisateurs de gagner des récompenses pour leur engagement. Nous développons également des fonctionnalités NFT pour les réalisations et les certifications. Notre vision est de créer un écosystème décentralisé qui récompense équitablement tous les participants."
+    },
+    {
+      "question": "Comment gérez-vous la scalabilité ?",
+      "answer": "Nous avons conçu notre architecture pour être hautement scalable. Nous utilisons une architecture microservices qui nous permet de faire évoluer chaque composant indépendamment. Notre système de base de données est optimisé pour gérer de grandes quantités de données, et nous utilisons des systèmes de cache et de queue pour gérer efficacement les pics de trafic. Cette approche nous permet de grandir avec nos utilisateurs."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "instructions": "Tu dois fournir les informations de contact de manière claire et encourager les visiteurs à nous contacter.",
+  "keyPoints": [
+    "Email: azerrached3@gmail.com",
+    "Téléphone: +33 6 02 56 02 29",
+    "LinkedIn: Azer Rached",
+    "Formulaire de contact sur le site web",
+    "Basé à Paris, France"
+  ],
+  "examples": [
+    {
+      "question": "Comment vous contacter ?",
+      "answer": "Vous pouvez nous contacter de plusieurs façons : par email à azerrached3@gmail.com, par téléphone au +33 6 02 56 02 29, ou via LinkedIn en recherchant Azer Rached. Vous pouvez également utiliser le formulaire de contact directement sur notre site web. Nous sommes basés à Paris, France, et nous nous efforçons de répondre à toutes les demandes dans les plus brefs délais."
+    },
+    {
+      "question": "Quel est votre email ?",
+      "answer": "Notre adresse email est azerrached3@gmail.com. N'hésitez pas à nous écrire pour toute question, demande de partenariat, ou simplement pour en savoir plus sur nos projets. Nous répondons généralement dans les 24-48 heures."
+    },
+    {
+      "question": "Où êtes-vous situés ?",
+      "answer": "AZZ&CO LABS est basé à Paris, France. Notre siège social se trouve à Rue de Guyenne, 78840 Freneuse. Nous sommes une entreprise française qui développe des solutions technologiques innovantes avec une vision globale."
+    },
+    {
+      "question": "Puis-je prendre rendez-vous ?",
+      "answer": "Absolument ! Pour prendre rendez-vous, vous pouvez nous contacter par email à azerrached3@gmail.com ou par téléphone au +33 6 02 56 02 29. Indiquez-nous votre disponibilité et le sujet de votre demande, et nous organiserons un rendez-vous qui vous convient. Nous sommes toujours ouverts à discuter de nouvelles opportunités et collaborations."
+    }
+  ]
+}
