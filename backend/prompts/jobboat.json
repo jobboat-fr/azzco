@@ -1,5 +1,5 @@
 {
-  "instructions": "Tu dois fournir des informations détaillées et précises sur JobBoat, notre plateforme principale de recherche d'emploi.",
+  "instructions": "Tu dois fournir des informations détaillées et précises sur JobBoat, notre plateforme principale de recherche d'emploi. Réponds de manière professionnelle, informative et engageante.",
   "keyPoints": [
     "JobBoat combine l'algorithme de TikTok, le réseautage de LinkedIn, et le swipe de Tinder",
     "Plateforme disponible en version web et mobile",
@@ -29,6 +29,622 @@
     {
       "question": "JobBoat est-il gratuit ?",
       "answer": "Nous développons un modèle économique équitable qui récompense l'engagement des utilisateurs. La plateforme intègre un système de tokens BOAT qui permet aux utilisateurs actifs de gagner des récompenses. Pour les détails précis sur les tarifs et les fonctionnalités premium, nous vous invitons à nous contacter directement ou à suivre nos mises à jour."
+    },
+    {
+      "question": "Comment puis-je m'inscrire sur JobBoat ?",
+      "answer": "JobBoat est actuellement en phase de préparation légale, donc les inscriptions ne sont pas encore ouvertes. Cependant, vous pouvez nous contacter pour être ajouté à notre liste d'attente et être informé en priorité dès que les inscriptions seront disponibles. Nous vous enverrons toutes les informations nécessaires pour créer votre compte dès le lancement."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il sur mobile ?",
+      "answer": "Oui, absolument ! JobBoat est disponible à la fois en version web et mobile. L'application mobile offre toutes les fonctionnalités principales : feed social, shorts vidéo, swipe d'emplois, et même le système de candidature automatique. L'expérience mobile est optimisée pour une utilisation intuitive et engageante, permettant de rechercher des emplois où que vous soyez."
+    },
+    {
+      "question": "Qu'est-ce que le Jupiter Room ?",
+      "answer": "Le Jupiter Room est notre fonctionnalité de coaching d'entretien avancé. Il utilise 105 personas IA différentes, chacune spécialisée dans un secteur, un rôle ou un niveau de seniorité spécifique. Le système intègre 14 systèmes différents qui analysent vos réponses en temps réel, détectent vos patterns comportementaux, et vous donnent des feedbacks personnalisés pour améliorer vos performances lors des entretiens réels."
+    },
+    {
+      "question": "Comment fonctionne l'auto-apply sur JobBoat ?",
+      "answer": "Notre système de candidature automatique utilise 7 solutions parallèles pour maximiser vos chances. Il peut utiliser les APIs ATS (Applicant Tracking Systems), envoyer des emails personnalisés, utiliser Selenium pour les sites qui n'ont pas d'API, et même utiliser la vision par IA pour remplir les formulaires complexes. Le système adapte automatiquement votre CV et votre lettre de motivation à chaque offre, en utilisant notre système de vote démocratique IA pour garantir la qualité."
+    },
+    {
+      "question": "Qu'est-ce que le token BOAT ?",
+      "answer": "Le token BOAT est notre token Web3 qui récompense l'engagement des utilisateurs sur la plateforme. Vous pouvez gagner des tokens en utilisant la plateforme, en créant du contenu, en aidant d'autres utilisateurs, ou en complétant votre profil. Ces tokens peuvent être utilisés pour débloquer des fonctionnalités premium, accéder à des services exclusifs, ou même être échangés dans notre écosystème. C'est notre façon de créer une économie équitable qui récompense la participation active."
+    },
+    {
+      "question": "JobBoat est-il disponible en France ?",
+      "answer": "Oui, JobBoat est développé en France et sera disponible en priorité pour le marché français. Nous nous concentrons d'abord sur les offres d'emploi françaises et les entreprises françaises, mais notre vision est globale. La plateforme supporte plusieurs langues et sera progressivement étendue à d'autres marchés internationaux."
+    },
+    {
+      "question": "Comment JobBoat protège-t-il mes données ?",
+      "answer": "La protection des données est une priorité absolue pour nous. Nous respectons strictement le RGPD et toutes les réglementations en vigueur. Vos données sont cryptées, stockées de manière sécurisée, et vous avez un contrôle total sur ce qui est partagé. Nous ne vendons jamais vos données à des tiers. Notre système de matching utilise vos données de manière anonymisée et sécurisée uniquement pour améliorer vos résultats de recherche."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour changer de carrière ?",
+      "answer": "Absolument ! JobBoat est particulièrement efficace pour les changements de carrière. Notre système de 572 modèles comportementaux peut identifier vos compétences transférables, même si elles ne sont pas directement liées à votre expérience actuelle. Le Jupiter Room peut vous aider à vous préparer pour des entretiens dans un nouveau domaine, et notre système de matching trouve des opportunités que vous n'auriez peut-être pas considérées autrement."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les freelances ?",
+      "answer": "Oui, JobBoat supporte tous les types d'emplois, y compris les opportunités de freelance, les missions, les contrats à durée déterminée, et les postes permanents. Notre système de matching peut identifier les meilleures opportunités selon votre profil, que vous cherchiez un emploi traditionnel ou des missions freelance. La plateforme vous permet de filtrer et de rechercher spécifiquement ce type d'opportunités."
+    },
+    {
+      "question": "Comment JobBoat se compare-t-il à LinkedIn ?",
+      "answer": "JobBoat combine le meilleur de LinkedIn et bien plus encore. Comme LinkedIn, nous offrons du réseautage professionnel, mais nous ajoutons un algorithme personnalisé style TikTok qui rend la découverte de contenu plus engageante, un système de swipe intuitif pour les emplois, et surtout, notre système de candidature automatique qui vous fait gagner un temps précieux. De plus, notre système de matching est beaucoup plus sophistiqué avec 572 modèles comportementaux contre les simples correspondances de mots-clés."
+    },
+    {
+      "question": "Qu'est-ce que le feed social sur JobBoat ?",
+      "answer": "Le feed social de JobBoat est un flux personnalisé qui combine contenu professionnel, offres d'emploi, shorts vidéo éducatifs, et posts de la communauté. L'algorithme apprend de vos interactions pour vous montrer le contenu le plus pertinent. C'est comme TikTok mais pour votre carrière - addictif, personnalisé, et toujours utile. Vous pouvez liker, commenter, partager, et même créer votre propre contenu pour construire votre présence professionnelle."
+    },
+    {
+      "question": "Comment fonctionnent les shorts sur JobBoat ?",
+      "answer": "Les shorts sont des vidéos courtes et verticales, style TikTok, mais axées sur le développement de carrière. Vous pouvez regarder des conseils de carrière, des témoignages, des tutoriels, ou même des vidéos de recruteurs expliquant ce qu'ils cherchent. L'algorithme personnalise votre feed de shorts selon vos intérêts et votre secteur. C'est une façon engageante d'apprendre et de se développer professionnellement."
+    },
+    {
+      "question": "Puis-je créer du contenu sur JobBoat ?",
+      "answer": "Oui ! JobBoat encourage la création de contenu. Vous pouvez créer des posts, des shorts vidéo, partager vos expériences, donner des conseils, ou même faire du live streaming pour partager votre expertise. Les créateurs actifs peuvent gagner des tokens BOAT et construire leur réputation professionnelle. C'est une excellente façon de se faire remarquer par les recruteurs et de construire votre réseau."
+    },
+    {
+      "question": "JobBoat a-t-il une version premium ?",
+      "answer": "Nous développons un modèle économique qui combine gratuit et premium. La version de base sera gratuite avec accès aux fonctionnalités principales. La version premium offrira des avantages supplémentaires comme plus de candidatures automatiques, accès prioritaire au Jupiter Room, statistiques avancées, et bien plus. Les détails exacts seront communiqués au lancement, mais nous nous engageons à garder l'essentiel accessible gratuitement."
+    },
+    {
+      "question": "Comment JobBoat trouve-t-il des emplois qui me correspondent ?",
+      "answer": "Notre système utilise 572 modèles comportementaux qui analysent bien plus que votre CV. Il comprend vos préférences de travail, votre style de communication, vos valeurs, vos aspirations de carrière, et même vos patterns comportementaux. Le système de vote démocratique avec 7 modèles IA garantit une précision de 95%. Résultat : vous recevez des matches qui correspondent vraiment à qui vous êtes, pas seulement à ce que vous avez fait."
+    },
+    {
+      "question": "Puis-je importer mon CV LinkedIn sur JobBoat ?",
+      "answer": "Oui, JobBoat supporte l'import depuis LinkedIn et d'autres plateformes. Notre système de parsing de CV utilise 9 stratégies différentes avec un système de vote démocratique pour extraire toutes les informations de votre CV, peu importe le format. Vous pouvez également importer depuis un fichier PDF, Word, ou même simplement copier-coller votre CV et notre IA l'analysera."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les étudiants ?",
+      "answer": "Absolument ! JobBoat est parfait pour les étudiants qui cherchent leur premier emploi, un stage, ou une alternance. Notre système peut identifier vos compétences même sans expérience professionnelle formelle, en analysant vos projets, vos études, et vos activités. Le Jupiter Room peut vous aider à vous préparer pour vos premiers entretiens, et notre communauté peut vous donner des conseils précieux."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à améliorer mon CV ?",
+      "answer": "JobBoat analyse votre CV avec notre système de parsing avancé et vous donne des suggestions d'amélioration basées sur les offres d'emploi qui vous intéressent. Le système peut identifier les mots-clés manquants, suggérer des reformulations, et même vous aider à mettre en valeur vos compétences de manière plus efficace. C'est comme avoir un conseiller en carrière IA disponible 24/7."
+    },
+    {
+      "question": "JobBoat peut-il m'aider à négocier mon salaire ?",
+      "answer": "JobBoat peut vous fournir des informations sur les salaires moyens pour votre poste et votre région, ce qui est essentiel pour une négociation réussie. Notre système analyse les données du marché et vous donne des insights précieux. Cependant, la négociation elle-même reste entre vous et l'employeur - nous vous donnons juste les outils pour être bien préparé."
+    },
+    {
+      "question": "Comment fonctionne le système de recommandations sur JobBoat ?",
+      "answer": "Notre système de recommandations utilise l'apprentissage automatique pour comprendre vos préférences. Il analyse vos interactions (quels emplois vous likez, quels contenus vous regardez, quels profils vous consultez) et utilise ces données pour améliorer continuellement vos recommandations. Plus vous utilisez la plateforme, plus elle devient précise dans ses suggestions."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des emplois à l'étranger ?",
+      "answer": "Bien que JobBoat se concentre d'abord sur le marché français, notre vision est globale. La plateforme supporte la recherche d'emplois internationaux et peut vous aider à trouver des opportunités à l'étranger. Notre système peut même vous aider à adapter votre CV et votre approche selon les standards du pays cible."
+    },
+    {
+      "question": "JobBoat a-t-il une fonctionnalité de messagerie ?",
+      "answer": "Oui, JobBoat inclut un système de messagerie qui vous permet de communiquer avec les recruteurs, les autres utilisateurs, et même de recevoir des notifications sur vos candidatures. La messagerie est intégrée à la plateforme pour une expérience fluide, et vous pouvez gérer toutes vos communications depuis un seul endroit."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il la confidentialité de ma recherche d'emploi ?",
+      "answer": "Nous comprenons que vous ne voulez peut-être pas que votre employeur actuel sache que vous cherchez. JobBoat offre des options de confidentialité strictes. Vous pouvez masquer votre profil aux entreprises spécifiques, activer un mode 'recherche discrète', et contrôler exactement qui peut voir votre activité. Votre vie privée est notre priorité."
+    },
+    {
+      "question": "Puis-je suivre mes candidatures sur JobBoat ?",
+      "answer": "Absolument ! JobBoat offre un tableau de bord complet où vous pouvez suivre toutes vos candidatures en un coup d'œil. Vous voyez le statut de chaque candidature, les réponses reçues, les entretiens planifiés, et même des statistiques sur vos performances. C'est votre mission control pour votre recherche d'emploi."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les cadres supérieurs ?",
+      "answer": "Oui, JobBoat fonctionne pour tous les niveaux, y compris les cadres supérieurs et les dirigeants. Notre système de 105 personas IA inclut des spécialistes pour les rôles de direction, et notre matching est adapté pour les postes de haut niveau. La plateforme comprend les spécificités de la recherche d'emploi pour les cadres supérieurs."
+    },
+    {
+      "question": "Comment JobBoat se différencie-t-il d'Indeed ?",
+      "answer": "Contrairement à Indeed qui est essentiellement un agrégateur d'offres, JobBoat est une plateforme complète qui combine recherche d'emploi, réseautage, développement de carrière, et candidature automatique. Notre système de matching est beaucoup plus sophistiqué, notre interface est plus moderne et engageante, et nous offrons des outils comme le Jupiter Room que vous ne trouverez nulle part ailleurs."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat sur plusieurs appareils ?",
+      "answer": "Oui, votre compte JobBoat est synchronisé sur tous vos appareils. Vous pouvez commencer une recherche sur votre ordinateur, continuer sur votre téléphone, et tout reste synchronisé en temps réel. Votre profil, vos candidatures, et vos préférences sont accessibles partout."
+    },
+    {
+      "question": "JobBoat a-t-il des notifications push ?",
+      "answer": "Oui, JobBoat envoie des notifications intelligentes pour vous tenir informé des nouvelles opportunités, des réponses à vos candidatures, des messages, et des contenus pertinents. Vous pouvez personnaliser quelles notifications vous recevez pour ne pas être submergé, mais rester informé des choses importantes."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à me préparer aux entretiens ?",
+      "answer": "Le Jupiter Room est notre outil de préparation aux entretiens le plus avancé. Avec 105 personas IA spécialisées, vous pouvez vous entraîner avec des simulateurs d'entretiens réalistes. Le système analyse vos réponses, détecte vos points faibles, et vous donne des feedbacks personnalisés pour améliorer vos performances. C'est comme avoir un coach d'entretien disponible 24/7."
+    },
+    {
+      "question": "Puis-je filtrer les emplois par salaire sur JobBoat ?",
+      "answer": "Oui, JobBoat offre des filtres avancés incluant le salaire, le type de contrat, la localisation, le secteur, le niveau d'expérience, et bien plus. Vous pouvez combiner plusieurs filtres pour trouver exactement ce que vous cherchez. Notre système peut même vous suggérer des opportunités avec des salaires similaires si vous ne trouvez pas exactement ce que vous voulez."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois à distance ?",
+      "answer": "Absolument ! JobBoat supporte tous les types d'emplois, y compris le télétravail, le travail hybride, et les emplois 100% à distance. Vous pouvez filtrer spécifiquement pour ces opportunités, et notre système de matching comprend vos préférences de travail à distance."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les langues multiples ?",
+      "answer": "JobBoat supporte plusieurs langues dès le départ. Vous pouvez utiliser la plateforme en français, anglais, et d'autres langues. Notre système de matching comprend les CVs dans différentes langues, et peut même vous aider à traduire et adapter votre profil selon le marché cible."
+    },
+    {
+      "question": "Puis-je sauvegarder des emplois pour plus tard sur JobBoat ?",
+      "answer": "Oui, vous pouvez sauvegarder des emplois, créer des collections personnalisées, et même partager des offres avec vos contacts. JobBoat vous permet d'organiser vos recherches comme vous le souhaitez, avec des dossiers, des tags, et des notes personnelles sur chaque opportunité."
+    },
+    {
+      "question": "JobBoat a-t-il une API pour les développeurs ?",
+      "answer": "Nous développons une API pour permettre aux développeurs et aux entreprises d'intégrer JobBoat dans leurs propres systèmes. L'API permettra d'accéder aux fonctionnalités de matching, de recherche, et même d'intégrer le Jupiter Room dans d'autres applications. Restez connectés pour plus d'informations sur l'API."
+    },
+    {
+      "question": "Comment JobBoat détecte-t-il les offres d'emploi frauduleuses ?",
+      "answer": "La sécurité est une priorité. Notre système utilise l'IA pour détecter les offres suspectes, vérifie la légitimité des entreprises, et permet aux utilisateurs de signaler les problèmes. Nous avons une équipe qui modère activement les offres pour garantir un environnement sûr et fiable."
+    },
+    {
+      "question": "Puis-je voir qui a consulté mon profil sur JobBoat ?",
+      "answer": "Oui, JobBoat vous montre qui a consulté votre profil, ce qui est particulièrement utile pour comprendre l'intérêt des recruteurs. Vous pouvez voir quelles entreprises vous ont consulté, quand, et même recevoir des alertes quand un recruteur intéressant consulte votre profil."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les startups ?",
+      "answer": "Absolument ! JobBoat est excellent pour les startups qui cherchent à recruter. Notre système comprend les spécificités des startups (culture, équité, croissance rapide) et peut matcher les candidats qui sont adaptés à cet environnement. De plus, notre modèle économique est conçu pour être accessible aux startups."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à construire mon réseau professionnel ?",
+      "answer": "JobBoat combine le meilleur du réseautage LinkedIn avec une approche plus moderne. Vous pouvez suivre des personnes dans votre secteur, rejoindre des groupes, participer à des discussions, et même organiser des événements de networking. Notre algorithme vous suggère des personnes pertinentes à suivre basées sur vos intérêts et votre secteur."
+    },
+    {
+      "question": "Puis-je exporter mes données de JobBoat ?",
+      "answer": "Oui, conformément au RGPD, vous pouvez exporter toutes vos données à tout moment. JobBoat vous permet de télécharger votre profil, vos candidatures, vos messages, et toutes vos données en format standard. Vous avez un contrôle total sur vos données."
+    },
+    {
+      "question": "JobBoat a-t-il des statistiques sur ma recherche d'emploi ?",
+      "answer": "Oui, JobBoat offre des statistiques détaillées sur votre recherche d'emploi : nombre de candidatures envoyées, taux de réponse, secteurs les plus actifs, évolution de votre profil, et bien plus. Ces insights vous aident à comprendre ce qui fonctionne et à optimiser votre stratégie de recherche."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les recommandations d'anciens collègues ?",
+      "answer": "JobBoat permet aux utilisateurs de demander et de donner des recommandations. Vous pouvez demander à d'anciens collègues, managers, ou clients de vous recommander, et ces recommandations apparaissent sur votre profil. C'est un excellent moyen de renforcer votre crédibilité auprès des recruteurs."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des mentors ?",
+      "answer": "Oui, JobBoat facilite la recherche de mentors dans votre secteur. Vous pouvez rechercher des professionnels expérimentés qui sont ouverts au mentorat, et notre système peut vous suggérer des mentors potentiels basés sur vos objectifs de carrière et votre secteur."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les secteurs techniques ?",
+      "answer": "Absolument ! JobBoat est particulièrement efficace pour les secteurs techniques. Notre système comprend les compétences techniques spécifiques, les langages de programmation, les frameworks, et peut matcher avec précision les développeurs aux bonnes opportunités. Le Jupiter Room inclut des personas spécialisées pour les entretiens techniques."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à améliorer mon profil ?",
+      "answer": "JobBoat analyse votre profil et vous donne des suggestions d'amélioration basées sur les profils les plus performants dans votre secteur. Le système peut identifier les éléments manquants, suggérer des compétences à ajouter, et même vous aider à rédiger une bio plus efficace. C'est un conseiller en carrière IA qui améliore continuellement votre profil."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des stages ?",
+      "answer": "Oui, JobBoat supporte tous les types d'opportunités, y compris les stages, les alternances, et les programmes de formation. Notre système peut identifier les meilleures opportunités pour les étudiants et jeunes professionnels, et le Jupiter Room peut vous aider à vous préparer pour les entretiens de stage."
+    },
+    {
+      "question": "JobBoat a-t-il une fonctionnalité de recherche vocale ?",
+      "answer": "Nous développons des fonctionnalités d'accessibilité incluant la recherche vocale. L'objectif est de rendre JobBoat accessible à tous, peu importe leurs préférences d'interaction. Restez connectés pour ces fonctionnalités qui seront ajoutées progressivement."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les candidatures spontanées ?",
+      "answer": "JobBoat facilite les candidatures spontanées. Vous pouvez rechercher des entreprises qui vous intéressent, voir leurs profils, et envoyer des candidatures spontanées directement depuis la plateforme. Notre système peut même vous suggérer des entreprises qui pourraient vous intéresser basées sur votre profil."
+    },
+    {
+      "question": "Puis-je partager des offres d'emploi sur les réseaux sociaux depuis JobBoat ?",
+      "answer": "Oui, vous pouvez partager des offres d'emploi, des contenus, et même votre profil sur les réseaux sociaux directement depuis JobBoat. C'est une excellente façon d'aider vos contacts à trouver des opportunités et de construire votre réseau."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur public ?",
+      "answer": "Oui, JobBoat supporte tous les secteurs, y compris le secteur public. Notre système comprend les spécificités des emplois publics, les concours, et peut vous aider à trouver des opportunités dans l'administration, les collectivités, et autres organismes publics."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à comprendre le marché de l'emploi ?",
+      "answer": "JobBoat offre des insights sur le marché de l'emploi : quels secteurs recrutent, quelles compétences sont en demande, quels sont les salaires moyens, et quelles sont les tendances. Ces informations vous aident à prendre des décisions éclairées sur votre carrière et à identifier les opportunités de développement."
+    },
+    {
+      "question": "Puis-je créer plusieurs profils sur JobBoat ?",
+      "answer": "JobBoat permet un seul compte par personne, mais vous pouvez créer plusieurs versions de votre CV ciblées pour différents types d'emplois. Par exemple, vous pouvez avoir un CV pour les postes techniques et un autre pour les postes de management. Le système utilisera la version appropriée selon l'offre."
+    },
+    {
+      "question": "JobBoat a-t-il des webinaires ou événements ?",
+      "answer": "Oui, JobBoat organise régulièrement des webinaires, des événements de networking, et des sessions de coaching. Ces événements couvrent des sujets comme la préparation aux entretiens, le développement de carrière, les tendances du marché, et bien plus. C'est une excellente façon d'apprendre et de rencontrer d'autres professionnels."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les tests de compétences ?",
+      "answer": "JobBoat peut intégrer des tests de compétences directement dans la plateforme. Les recruteurs peuvent proposer des tests, et vous pouvez les compléter pour démontrer vos compétences. Ces résultats peuvent améliorer votre visibilité et vos chances d'être sélectionné."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités de formation ?",
+      "answer": "Oui, JobBoat ne se limite pas aux emplois. La plateforme peut également vous aider à trouver des opportunités de formation, des certifications, des cours en ligne, et d'autres ressources pour développer vos compétences. C'est une approche complète du développement de carrière."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les artistes et créatifs ?",
+      "answer": "Absolument ! JobBoat comprend que les carrières créatives ont des spécificités. Notre système peut matcher les artistes, designers, et autres créatifs avec des opportunités qui valorisent leur portfolio et leur créativité, pas seulement leur CV traditionnel."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à négocier les conditions de travail ?",
+      "answer": "JobBoat vous fournit des informations sur les standards du marché pour les conditions de travail, les avantages, et les pratiques courantes dans votre secteur. Ces insights vous aident à avoir des négociations éclairées et à savoir ce qui est raisonnable à demander."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour suivre mes objectifs de carrière ?",
+      "answer": "Oui, JobBoat vous permet de définir et suivre vos objectifs de carrière. Le système peut vous suggérer des étapes concrètes pour atteindre vos objectifs, vous alerter sur les opportunités pertinentes, et même vous connecter avec des personnes qui ont suivi un parcours similaire."
+    },
+    {
+      "question": "JobBoat a-t-il une fonctionnalité de calendrier pour les entretiens ?",
+      "answer": "Oui, JobBoat intègre un calendrier qui synchronise tous vos entretiens, rappels, et deadlines. Vous pouvez voir tous vos rendez-vous en un coup d'œil, recevoir des rappels, et même permettre à JobBoat de suggérer des créneaux pour les entretiens avec les recruteurs."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les références professionnelles ?",
+      "answer": "JobBoat permet de gérer vos références professionnelles directement sur la plateforme. Vous pouvez ajouter des contacts de référence, et les recruteurs peuvent les contacter directement depuis JobBoat. Le système peut même vérifier et valider les références pour renforcer votre crédibilité."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des co-fondateurs ?",
+      "answer": "JobBoat peut faciliter la recherche de co-fondateurs ou de partenaires pour des projets. Vous pouvez créer un profil spécifique pour votre recherche, et notre système peut matcher avec des personnes qui ont des compétences complémentaires et des objectifs alignés."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois saisonniers ?",
+      "answer": "Oui, JobBoat supporte tous les types d'emplois, y compris les emplois saisonniers, temporaires, et à durée déterminée. Vous pouvez filtrer spécifiquement pour ces opportunités, et notre système comprend les besoins spécifiques de ce type de travail."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à comprendre les offres d'emploi ?",
+      "answer": "JobBoat utilise l'IA pour analyser les offres d'emploi et vous donner un résumé clair des points clés : responsabilités principales, compétences requises, avantages, et même un score de correspondance avec votre profil. Cela vous fait gagner du temps et vous aide à identifier rapidement les opportunités pertinentes."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités de bénévolat ?",
+      "answer": "Oui, JobBoat supporte également les opportunités de bénévolat et d'engagement citoyen. Si vous cherchez à donner de votre temps pour une cause qui vous tient à cœur, JobBoat peut vous aider à trouver les bonnes opportunités."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour les personnes en situation de handicap ?",
+      "answer": "L'accessibilité est une priorité pour JobBoat. Nous développons des fonctionnalités spécifiques pour les personnes en situation de handicap, incluant des options d'accessibilité, des filtres pour les employeurs inclusifs, et un support adapté. Notre mission est de rendre la recherche d'emploi accessible à tous."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les langues de programmation dans le matching ?",
+      "answer": "Pour les postes techniques, JobBoat comprend en profondeur les langages de programmation, les frameworks, les outils, et les écosystèmes. Le système peut matcher non seulement sur les langages que vous connaissez, mais aussi sur votre capacité à apprendre de nouveaux langages basée sur vos patterns d'apprentissage."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur non-lucratif ?",
+      "answer": "Absolument ! JobBoat supporte tous les secteurs, y compris le secteur non-lucratif et associatif. Notre système comprend les spécificités de ce secteur et peut vous aider à trouver des opportunités qui correspondent à vos valeurs et à votre désir de faire une différence."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les consultants indépendants ?",
+      "answer": "Oui, JobBoat est excellent pour les consultants indépendants qui cherchent de nouveaux clients ou projets. La plateforme peut vous aider à trouver des opportunités de consulting, à construire votre réseau, et même à gérer vos relations clients."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à préparer ma transition de carrière ?",
+      "answer": "JobBoat est particulièrement efficace pour les transitions de carrière. Le système peut identifier vos compétences transférables, vous suggérer des formations pour combler les gaps, vous connecter avec des personnes qui ont fait des transitions similaires, et vous aider à construire un plan de transition étape par étape."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités à l'international depuis la France ?",
+      "answer": "Oui, JobBoat peut vous aider à trouver des opportunités internationales. Le système comprend les exigences de visa, les différences culturelles, et peut même vous aider à adapter votre approche selon le pays cible. C'est particulièrement utile pour les Français qui cherchent à travailler à l'étranger."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités de gamification ?",
+      "answer": "Oui, JobBoat intègre des éléments de gamification pour rendre la recherche d'emploi plus engageante. Vous pouvez gagner des badges, débloquer des achievements, monter de niveau, et même participer à des défis. Tout cela est récompensé avec des tokens BOAT pour créer une expérience motivante."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les différences culturelles dans le recrutement ?",
+      "answer": "JobBoat comprend que le recrutement varie selon les cultures et les pays. Le système peut vous aider à adapter votre CV, votre approche, et même votre style de communication selon les standards culturels du marché cible. C'est particulièrement utile pour les candidatures internationales."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la santé ?",
+      "answer": "Oui, JobBoat supporte tous les secteurs, y compris la santé. Notre système comprend les spécificités de ce secteur, les certifications requises, et peut matcher les professionnels de la santé avec les bonnes opportunités, que ce soit dans les hôpitaux, les cliniques, ou la recherche."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans l'éducation ?",
+      "answer": "Absolument ! JobBoat supporte le secteur de l'éducation à tous les niveaux. Que vous cherchiez un poste d'enseignant, de chercheur, d'administrateur, ou dans l'éducation supérieure, JobBoat peut vous aider à trouver les bonnes opportunités."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à gérer le stress de la recherche d'emploi ?",
+      "answer": "JobBoat comprend que la recherche d'emploi peut être stressante. La plateforme offre des ressources pour gérer le stress, des conseils de bien-être, et même des fonctionnalités pour suivre votre santé mentale pendant votre recherche. Notre communauté peut également offrir du support et des encouragements."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la finance ?",
+      "answer": "Oui, JobBoat supporte le secteur financier dans toute sa diversité : banques, assurances, fintech, gestion d'actifs, et plus. Notre système comprend les réglementations spécifiques, les certifications requises, et peut matcher avec précision les professionnels de la finance."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour les recruteurs ?",
+      "answer": "Oui, JobBoat offre également des fonctionnalités pour les recruteurs et les entreprises. Les recruteurs peuvent publier des offres, rechercher des candidats, utiliser notre système de matching avancé, et même accéder à des outils d'analyse pour optimiser leur recrutement."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les compétences soft vs techniques ?",
+      "answer": "JobBoat comprend que les compétences soft sont aussi importantes que les techniques. Notre système de 572 modèles comportementaux analyse les deux types de compétences. Le matching prend en compte votre capacité à communiquer, à travailler en équipe, à résoudre des problèmes, en plus de vos compétences techniques."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur du marketing ?",
+      "answer": "Oui, JobBoat supporte tous les secteurs marketing : digital, traditionnel, communication, publicité, et plus. Notre système comprend les spécificités de chaque domaine marketing et peut matcher avec précision les marketeurs aux bonnes opportunités."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur de l'immobilier ?",
+      "answer": "Absolument ! JobBoat supporte le secteur immobilier : agents immobiliers, promoteurs, gestionnaires de biens, et plus. Le système comprend les certifications requises et peut vous aider à trouver des opportunités dans ce secteur dynamique."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à comprendre si une entreprise me convient ?",
+      "answer": "JobBoat analyse les entreprises et vous donne des insights sur leur culture, leurs valeurs, leurs pratiques, et même leur réputation. Le système peut comparer différentes entreprises et vous aider à comprendre laquelle correspond le mieux à vos valeurs et à vos objectifs de carrière."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur du e-commerce ?",
+      "answer": "Oui, JobBoat supporte le secteur du e-commerce dans toute sa diversité. Que vous cherchiez un poste dans une marketplace, une boutique en ligne, ou dans la logistique e-commerce, JobBoat peut vous aider à trouver les bonnes opportunités."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour les personnes qui reprennent le travail après une pause ?",
+      "answer": "Oui, JobBoat comprend les défis de la reprise de carrière après une pause. Le système peut vous aider à mettre en valeur vos compétences, à identifier les opportunités adaptées, et même à vous connecter avec des personnes qui ont vécu des situations similaires. C'est un support complet pour votre retour au travail."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les compétences acquises en autodidacte ?",
+      "answer": "JobBoat reconnaît et valorise les compétences acquises en autodidacte. Le système peut évaluer vos projets personnels, vos contributions open source, vos certifications en ligne, et d'autres preuves de vos compétences, même sans expérience professionnelle formelle dans ce domaine."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la mode ?",
+      "answer": "Oui, JobBoat supporte le secteur de la mode et du luxe. Notre système comprend les spécificités de ce secteur créatif et peut vous aider à trouver des opportunités dans le design, le marketing mode, la production, ou d'autres domaines liés à la mode."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur de l'hôtellerie ?",
+      "answer": "Absolument ! JobBoat supporte le secteur de l'hôtellerie et de la restauration. Que vous cherchiez un poste dans un hôtel, un restaurant, un événementiel, ou dans la gestion hôtelière, JobBoat peut vous aider à trouver les bonnes opportunités."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à négocier un package de rémunération complet ?",
+      "answer": "JobBoat vous aide à comprendre tous les aspects d'un package de rémunération : salaire de base, bonus, actions, avantages, et plus. Le système peut comparer différentes offres et vous aider à évaluer la valeur totale d'un package, pas seulement le salaire."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de l'énergie ?",
+      "answer": "Oui, JobBoat supporte le secteur de l'énergie, y compris les énergies renouvelables, le pétrole et gaz, et l'efficacité énergétique. Notre système comprend les spécificités techniques et réglementaires de ce secteur."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour suivre les tendances de carrière ?",
+      "answer": "Oui, JobBoat analyse les tendances de carrière et vous alerte sur les secteurs en croissance, les compétences émergentes, et les opportunités futures. Ces insights vous aident à anticiper les changements et à vous positionner pour les opportunités de demain."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les candidatures pour les grandes entreprises vs startups ?",
+      "answer": "JobBoat comprend les différences entre les grandes entreprises et les startups. Le système adapte votre approche selon le type d'entreprise : processus plus structurés pour les grandes entreprises, approche plus directe pour les startups. Le matching prend en compte vos préférences pour l'un ou l'autre."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur du sport ?",
+      "answer": "Oui, JobBoat supporte le secteur du sport dans toute sa diversité : clubs, fédérations, médias sportifs, marketing sportif, et plus. Notre système comprend les spécificités de ce secteur passionnant."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur de la logistique ?",
+      "answer": "Absolument ! JobBoat supporte le secteur de la logistique et de la supply chain. Que vous cherchiez un poste dans le transport, l'entreposage, la planification, ou l'optimisation logistique, JobBoat peut vous aider."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à comprendre les avantages sociaux en France ?",
+      "answer": "JobBoat peut vous expliquer les avantages sociaux standards en France, ce qui est légalement requis, et ce qui est considéré comme compétitif. Ces informations vous aident à évaluer les offres et à négocier des avantages appropriés."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la construction ?",
+      "answer": "Oui, JobBoat supporte le secteur de la construction et du BTP. Notre système comprend les certifications requises, les spécificités de sécurité, et peut vous aider à trouver des opportunités dans la construction, l'architecture, l'ingénierie, ou la gestion de projet."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour les personnes qui cherchent un deuxième emploi ?",
+      "answer": "Oui, JobBoat comprend les besoins spécifiques des personnes qui cherchent un deuxième emploi ou un complément de revenus. Le système peut filtrer les opportunités compatibles avec votre emploi principal et vous aider à trouver des options flexibles."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les différences entre CDI, CDD, et autres types de contrats ?",
+      "answer": "JobBoat vous aide à comprendre les différents types de contrats en France (CDI, CDD, stage, alternance, freelance) et leurs implications. Le système peut filtrer selon vos préférences et vous aider à évaluer quelle option est la meilleure pour votre situation."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la recherche ?",
+      "answer": "Oui, JobBoat supporte le secteur de la recherche académique et industrielle. Notre système comprend les spécificités de la recherche, les publications, les financements, et peut vous aider à trouver des opportunités dans les universités, les laboratoires, ou les départements R&D."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur de l'agriculture ?",
+      "answer": "Absolument ! JobBoat supporte le secteur agricole et agroalimentaire. Que vous cherchiez un poste dans l'agriculture traditionnelle, l'agritech, la transformation alimentaire, ou la distribution, JobBoat peut vous aider."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à préparer les questions à poser en entretien ?",
+      "answer": "JobBoat peut générer des questions pertinentes à poser lors des entretiens basées sur l'entreprise, le poste, et votre profil. Le système vous aide à préparer des questions qui démontrent votre intérêt et votre préparation, tout en vous donnant les informations dont vous avez besoin pour prendre une décision."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur des médias ?",
+      "answer": "Oui, JobBoat supporte le secteur des médias : presse, télévision, radio, digital, et plus. Notre système comprend les spécificités créatives de ce secteur et peut vous aider à trouver des opportunités dans le journalisme, la production, ou le contenu."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour les personnes qui cherchent à travailler à temps partiel ?",
+      "answer": "Oui, JobBoat supporte la recherche d'emplois à temps partiel. Vous pouvez filtrer spécifiquement pour ces opportunités, et le système comprend vos besoins de flexibilité. C'est idéal pour les étudiants, les parents, ou ceux qui cherchent un meilleur équilibre vie pro/vie perso."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les opportunités dans différentes régions de France ?",
+      "answer": "JobBoat comprend les spécificités régionales en France. Le système peut vous aider à comprendre les différences de marché, de salaires, et de coût de la vie selon les régions. Cela vous aide à prendre des décisions éclairées sur où chercher et où accepter des opportunités."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur du tourisme ?",
+      "answer": "Oui, JobBoat supporte le secteur du tourisme et de l'hospitalité. Que vous cherchiez un poste dans une agence de voyage, un office de tourisme, un hôtel, ou dans le tourisme d'aventure, JobBoat peut vous aider."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur de la sécurité ?",
+      "answer": "Absolument ! JobBoat supporte le secteur de la sécurité, y compris la cybersécurité, la sécurité physique, et la sécurité des systèmes. Notre système comprend les certifications requises et peut vous aider à trouver des opportunités dans ce secteur en croissance."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à gérer plusieurs candidatures simultanément ?",
+      "answer": "JobBoat offre des outils pour gérer efficacement plusieurs candidatures. Vous pouvez organiser vos candidatures par statut, par priorité, par entreprise, et suivre l'avancement de chacune. Le système peut même vous alerter sur les prochaines étapes pour chaque candidature."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de l'automobile ?",
+      "answer": "Oui, JobBoat supporte le secteur automobile dans toute sa diversité : constructeurs, équipementiers, après-vente, et même les nouvelles mobilités. Notre système comprend les évolutions du secteur vers l'électrique et l'autonome."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour les personnes qui cherchent à changer de secteur ?",
+      "answer": "Oui, JobBoat est particulièrement efficace pour les changements de secteur. Le système identifie vos compétences transférables, vous suggère des formations pour combler les gaps, et vous connecte avec des personnes qui ont fait des transitions similaires. C'est un support complet pour votre changement de secteur."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les opportunités dans le secteur de la pharmacie ?",
+      "answer": "JobBoat supporte le secteur pharmaceutique et de la santé. Le système comprend les réglementations strictes, les certifications requises, et peut vous aider à trouver des opportunités dans la recherche pharmaceutique, la production, ou la commercialisation."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de l'aéronautique ?",
+      "answer": "Oui, JobBoat supporte le secteur aéronautique et spatial. Notre système comprend les spécificités techniques et de sécurité de ce secteur, et peut vous aider à trouver des opportunités dans la conception, la production, ou la maintenance aéronautique."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur de la défense ?",
+      "answer": "Absolument ! JobBoat supporte le secteur de la défense et de la sécurité nationale. Le système comprend les exigences de sécurité, les certifications, et peut vous aider à trouver des opportunités dans ce secteur stratégique."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à comprendre les évolutions de carrière possibles ?",
+      "answer": "JobBoat analyse les parcours de carrière et vous montre les évolutions possibles depuis votre poste actuel. Le système peut vous suggérer des postes vers lesquels évoluer, les compétences à développer, et même vous connecter avec des personnes qui ont suivi des parcours similaires."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur du luxe ?",
+      "answer": "Oui, JobBoat supporte le secteur du luxe, un secteur important en France. Notre système comprend les spécificités de ce secteur, l'importance du service client, et peut vous aider à trouver des opportunités dans les maisons de luxe, la joaillerie, ou l'hôtellerie de luxe."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour suivre mes compétences au fil du temps ?",
+      "answer": "Oui, JobBoat suit l'évolution de vos compétences et vous montre comment vous progressez. Le système peut identifier les compétences que vous développez, vous suggérer des certifications, et même vous montrer comment vos compétences évoluent par rapport au marché."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les opportunités dans le secteur de l'assurance ?",
+      "answer": "JobBoat supporte le secteur de l'assurance dans toute sa diversité. Le système comprend les différents types d'assurance, les réglementations, et peut vous aider à trouver des opportunités dans la vente, la gestion, ou l'analyse de risques."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la banque ?",
+      "answer": "Oui, JobBoat supporte le secteur bancaire. Notre système comprend les différents rôles dans les banques, les réglementations financières, et peut vous aider à trouver des opportunités dans la banque de détail, la banque d'investissement, ou la fintech."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur de la chimie ?",
+      "answer": "Absolument ! JobBoat supporte le secteur chimique et pharmaceutique. Le système comprend les spécificités techniques, les réglementations de sécurité, et peut vous aider à trouver des opportunités dans la recherche, la production, ou la commercialisation."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à préparer ma réponse à 'Pourquoi voulez-vous quitter votre poste actuel ?'",
+      "answer": "JobBoat peut vous aider à préparer des réponses professionnelles et positives à cette question délicate. Le système vous guide pour mettre en avant vos motivations positives (nouveaux défis, croissance, alignement avec vos valeurs) plutôt que de critiquer votre employeur actuel."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de l'édition ?",
+      "answer": "Oui, JobBoat supporte le secteur de l'édition et de la publication. Que vous cherchiez un poste dans l'édition traditionnelle, numérique, ou dans la publication de contenu, JobBoat peut vous aider à trouver les bonnes opportunités."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour les personnes qui cherchent à travailler dans le secteur public ?",
+      "answer": "Oui, JobBoat supporte spécifiquement le secteur public. Le système comprend les concours, les processus de recrutement spécifiques, et peut vous aider à trouver des opportunités dans l'administration, les collectivités, ou les organismes publics."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les opportunités dans le secteur de la distribution ?",
+      "answer": "JobBoat supporte le secteur de la distribution et de la grande distribution. Le système comprend les différents rôles, de la vente à la logistique, et peut vous aider à trouver des opportunités dans ce secteur dynamique."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de l'environnement ?",
+      "answer": "Oui, JobBoat supporte le secteur de l'environnement et du développement durable. Notre système comprend l'importance croissante de ce secteur et peut vous aider à trouver des opportunités dans les énergies renouvelables, le recyclage, ou la protection de l'environnement."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur de la formation professionnelle ?",
+      "answer": "Absolument ! JobBoat supporte le secteur de la formation professionnelle. Que vous cherchiez à devenir formateur, à travailler dans un organisme de formation, ou à développer des programmes de formation, JobBoat peut vous aider."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à comprendre les différences entre les types d'entreprises ?",
+      "answer": "JobBoat vous aide à comprendre les différences entre startups, PME, ETI, et grandes entreprises. Le système explique les avantages et inconvénients de chaque type, les cultures différentes, et vous aide à identifier quel type d'entreprise correspond le mieux à vos préférences."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la gestion de patrimoine ?",
+      "answer": "Oui, JobBoat supporte le secteur de la gestion de patrimoine et du conseil financier. Notre système comprend les certifications requises et peut vous aider à trouver des opportunités dans ce secteur spécialisé."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour les personnes qui cherchent à travailler dans le secteur de l'humanitaire ?",
+      "answer": "Oui, JobBoat supporte le secteur humanitaire et associatif. Le système comprend les spécificités de ce secteur et peut vous aider à trouver des opportunités pour faire une différence, que ce soit en France ou à l'international."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les opportunités dans le secteur de l'informatique ?",
+      "answer": "JobBoat est particulièrement fort dans le secteur informatique. Le système comprend en profondeur les technologies, les langages, les frameworks, et peut matcher avec une précision exceptionnelle les développeurs, DevOps, et autres professionnels IT aux bonnes opportunités."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de l'ingénierie ?",
+      "answer": "Oui, JobBoat supporte tous les domaines de l'ingénierie : mécanique, électrique, civile, logicielle, et plus. Notre système comprend les spécificités techniques de chaque domaine et peut vous aider à trouver les bonnes opportunités."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur de l'international ?",
+      "answer": "Absolument ! JobBoat supporte les opportunités internationales. Le système comprend les exigences de visa, les différences culturelles, et peut vous aider à trouver des opportunités à l'étranger, que ce soit pour une mission courte ou une expatriation longue durée."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à préparer les tests psychotechniques ?",
+      "answer": "JobBoat peut vous aider à vous préparer aux tests psychotechniques souvent utilisés dans le recrutement. Le système peut vous proposer des exercices de préparation, vous expliquer ce qui est testé, et vous donner des conseils pour performer au mieux."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la justice ?",
+      "answer": "Oui, JobBoat supporte le secteur de la justice et du droit. Que vous cherchiez un poste dans un cabinet d'avocats, une institution judiciaire, ou dans le conseil juridique, JobBoat peut vous aider."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour les personnes qui cherchent à travailler dans le secteur de la logistique internationale ?",
+      "answer": "Oui, JobBoat supporte la logistique internationale. Le système comprend les spécificités du commerce international, les réglementations douanières, et peut vous aider à trouver des opportunités dans ce secteur complexe et en croissance."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les opportunités dans le secteur de la maintenance ?",
+      "answer": "JobBoat supporte le secteur de la maintenance dans tous les domaines : industrielle, informatique, immobilière, et plus. Le système comprend les certifications requises et peut vous aider à trouver des opportunités dans ce secteur essentiel."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la musique ?",
+      "answer": "Oui, JobBoat supporte le secteur de la musique et de l'industrie musicale. Que vous cherchiez un poste dans la production, la promotion, la distribution, ou la gestion d'artistes, JobBoat peut vous aider."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur de la nutrition ?",
+      "answer": "Absolument ! JobBoat supporte le secteur de la nutrition et de la diététique. Le système comprend les certifications requises et peut vous aider à trouver des opportunités dans les hôpitaux, les cliniques, ou en pratique privée."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à comprendre les avantages en nature ?",
+      "answer": "JobBoat vous explique les avantages en nature (tickets restaurant, transport, etc.) et leur valeur réelle. Le système peut vous aider à évaluer un package complet incluant ces avantages et à comprendre leur impact sur votre revenu net."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de l'optique ?",
+      "answer": "Oui, JobBoat supporte le secteur de l'optique et de l'ophtalmologie. Le système comprend les certifications requises et peut vous aider à trouver des opportunités dans les magasins d'optique, les cliniques, ou la recherche."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour les personnes qui cherchent à travailler dans le secteur de la pharmacie d'officine ?",
+      "answer": "Oui, JobBoat supporte spécifiquement la pharmacie d'officine. Le système comprend les exigences de diplôme, les réglementations, et peut vous aider à trouver des opportunités dans les pharmacies, que ce soit comme pharmacien titulaire ou adjoint."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les opportunités dans le secteur de la propreté ?",
+      "answer": "JobBoat supporte le secteur de la propreté et des services aux entreprises. Le système comprend les différents types de services et peut vous aider à trouver des opportunités dans ce secteur essentiel."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la psychologie ?",
+      "answer": "Oui, JobBoat supporte le secteur de la psychologie. Le système comprend les différents domaines (clinique, du travail, scolaire) et peut vous aider à trouver des opportunités dans les hôpitaux, les entreprises, ou en pratique privée."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur de la qualité ?",
+      "answer": "Absolument ! JobBoat supporte le secteur de la qualité et de la conformité. Que vous cherchiez un poste dans le contrôle qualité, l'audit, ou la certification, JobBoat peut vous aider."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à préparer les questions sur mes faiblesses en entretien ?",
+      "answer": "JobBoat peut vous aider à préparer une réponse professionnelle à 'Quelle est votre plus grande faiblesse ?'. Le système vous guide pour transformer une faiblesse en opportunité de croissance, en montrant votre capacité à apprendre et à vous améliorer."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la recherche et développement ?",
+      "answer": "Oui, JobBoat supporte le secteur R&D dans tous les domaines. Le système comprend les spécificités de la recherche, les financements, et peut vous aider à trouver des opportunités dans les laboratoires, les centres de recherche, ou les départements R&D des entreprises."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour les personnes qui cherchent à travailler dans le secteur de la restauration ?",
+      "answer": "Oui, JobBoat supporte le secteur de la restauration dans toute sa diversité. Que vous cherchiez un poste en cuisine, en salle, en gestion, ou dans la restauration collective, JobBoat peut vous aider."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les opportunités dans le secteur de la robotique ?",
+      "answer": "JobBoat supporte le secteur de la robotique et de l'automatisation. Le système comprend les technologies émergentes et peut vous aider à trouver des opportunités dans ce secteur en pleine croissance."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la sécurité informatique ?",
+      "answer": "Oui, JobBoat est particulièrement fort dans la cybersécurité. Le système comprend les différentes spécialités (pentesting, SOC, compliance) et peut vous aider à trouver des opportunités dans ce secteur critique et en forte demande."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur de la supply chain ?",
+      "answer": "Absolument ! JobBoat supporte la supply chain dans toute sa complexité. Le système comprend la planification, la logistique, l'approvisionnement, et peut vous aider à trouver des opportunités dans ce secteur stratégique."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à comprendre les différences de salaires selon les régions ?",
+      "answer": "JobBoat analyse les différences de salaires selon les régions françaises et vous aide à comprendre comment ajuster vos attentes. Le système prend en compte le coût de la vie, les spécificités régionales, et vous donne des insights pour négocier équitablement."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la télécommunication ?",
+      "answer": "Oui, JobBoat supporte le secteur des télécommunications. Le système comprend les technologies (5G, fibre, etc.) et peut vous aider à trouver des opportunités chez les opérateurs, les équipementiers, ou dans les services."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour les personnes qui cherchent à travailler dans le secteur de la traduction ?",
+      "answer": "Oui, JobBoat supporte le secteur de la traduction et de l'interprétation. Le système comprend les différentes spécialités linguistiques et peut vous aider à trouver des opportunités dans la traduction technique, littéraire, ou l'interprétation."
+    },
+    {
+      "question": "Comment JobBoat gère-t-il les opportunités dans le secteur de l'urbanisme ?",
+      "answer": "JobBoat supporte le secteur de l'urbanisme et de l'aménagement du territoire. Le système comprend les spécificités de ce secteur et peut vous aider à trouver des opportunités dans les collectivités, les bureaux d'études, ou les agences d'urbanisme."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur de la vente ?",
+      "answer": "Oui, JobBoat supporte tous les types de vente : B2B, B2C, vente en magasin, vente à distance, et plus. Le système comprend les différentes techniques de vente et peut vous aider à trouver des opportunités adaptées à votre profil commercial."
+    },
+    {
+      "question": "JobBoat fonctionne-t-il pour les emplois dans le secteur de la vidéo ?",
+      "answer": "Absolument ! JobBoat supporte le secteur de la vidéo et de l'audiovisuel. Que vous cherchiez un poste dans la production, le montage, la réalisation, ou la post-production, JobBoat peut vous aider."
+    },
+    {
+      "question": "Comment JobBoat m'aide-t-il à préparer les questions sur mes objectifs de carrière ?",
+      "answer": "JobBoat peut vous aider à formuler vos objectifs de carrière de manière claire et alignée avec le poste. Le système vous guide pour montrer comment vos objectifs personnels s'alignent avec les objectifs de l'entreprise, créant une vision gagnant-gagnant."
+    },
+    {
+      "question": "Puis-je utiliser JobBoat pour trouver des opportunités dans le secteur du web design ?",
+      "answer": "Oui, JobBoat supporte le secteur du web design et de l'UI/UX. Le système comprend les différents outils et méthodologies et peut vous aider à trouver des opportunités dans les agences, les startups, ou en freelance."
+    },
+    {
+      "question": "JobBoat a-t-il des fonctionnalités pour les personnes qui cherchent à travailler dans le secteur de la zoologie ?",
+      "answer": "Oui, JobBoat supporte le secteur de la zoologie et de la biologie animale. Le système comprend les différents domaines et peut vous aider à trouver des opportunités dans les zoos, les parcs naturels, la recherche, ou la conservation."
     }
   ]
 }
