@@ -63,51 +63,108 @@ class OllamaService {
             console.log('📝 Prompt length:', prompt.length);
             
             // Check if Ollama is configured
-            if (!OLLAMA_API_URL || OLLAMA_API_URL === 'http://localhost:11434') {
-                console.warn('⚠️  Ollama not configured, using fallback');
+            // Allow localhost if API key is provided (for cloud services like Groq)
+            const isLocalhost = OLLAMA_API_URL === 'http://localhost:11434' || OLLAMA_API_URL.includes('localhost');
+            const hasApiKey = !!OLLAMA_API_KEY;
+            
+            if (!OLLAMA_API_URL || (isLocalhost && !hasApiKey)) {
+                console.warn('⚠️  Ollama not configured properly:', {
+                    url: OLLAMA_API_URL,
+                    hasKey: hasApiKey,
+                    usingFallback: true
+                });
                 return {
                     response: this.getFallbackResponse(userMessage),
                     persona: persona,
                     confidence: personaDetection.confidence,
                     contextKeywords: contextKeywords,
                     model: 'fallback',
-                    error: 'Ollama not configured'
+                    error: 'Ollama not configured - Please set OLLAMA_API_URL and OLLAMA_API_KEY in Vercel environment variables'
                 };
             }
             
-            // Call Ollama API
-            console.log('📡 Calling Ollama API:', OLLAMA_API_URL);
-            const response = await axios.post(
-                `${OLLAMA_API_URL}/api/generate`,
-                {
-                    model: OLLAMA_MODEL,
-                    prompt: prompt,
-                    stream: false,
-                    options: {
-                        temperature: 0.7,
-                        top_p: 0.9,
-                        top_k: 40
-                    }
-                },
-                {
-                    headers: this.getHeaders(),
-                    timeout: TIMEOUT
-                }
-            );
-
-            const generatedText = response.data.response || '';
-            console.log('✅ Ollama response received, length:', generatedText.length);
+            // Call Ollama API (or compatible API like Groq)
+            console.log('📡 Calling Ollama/LLM API:', OLLAMA_API_URL);
+            console.log('📡 Using model:', OLLAMA_MODEL);
+            console.log('📡 Has API key:', !!OLLAMA_API_KEY);
             
-            // Clean and format response
-            const cleanedResponse = this.cleanResponse(generatedText);
-
-            return {
-                response: cleanedResponse,
-                persona: persona,
-                confidence: personaDetection.confidence,
-                contextKeywords: contextKeywords,
-                model: OLLAMA_MODEL
-            };
+            // Determine if this is a Groq/OpenAI-compatible API or native Ollama
+            const isGroqOrOpenAI = OLLAMA_API_URL.includes('groq.com') || 
+                                   OLLAMA_API_URL.includes('openai.com') ||
+                                   OLLAMA_API_URL.includes('openrouter.ai') ||
+                                   OLLAMA_API_URL.includes('/v1');
+            
+            let response;
+            if (isGroqOrOpenAI) {
+                // Use OpenAI-compatible format for Groq/OpenAI/OpenRouter
+                console.log('📡 Using OpenAI-compatible API format');
+                const apiUrl = OLLAMA_API_URL.endsWith('/v1') 
+                    ? `${OLLAMA_API_URL}/chat/completions`
+                    : `${OLLAMA_API_URL}/chat/completions`;
+                
+                response = await axios.post(
+                    apiUrl,
+                    {
+                        model: OLLAMA_MODEL,
+                        messages: [
+                            { role: 'system', content: prompt.split('MESSAGE UTILISATEUR:')[0] || prompt },
+                            { role: 'user', content: userMessage }
+                        ],
+                        temperature: 0.7,
+                        max_tokens: 500
+                    },
+                    {
+                        headers: this.getHeaders(),
+                        timeout: TIMEOUT
+                    }
+                );
+                
+                const generatedText = response.data.choices?.[0]?.message?.content || '';
+                console.log('✅ API response received, length:', generatedText.length);
+                
+                const cleanedResponse = this.cleanResponse(generatedText);
+                
+                return {
+                    response: cleanedResponse,
+                    persona: persona,
+                    confidence: personaDetection.confidence,
+                    contextKeywords: contextKeywords,
+                    model: OLLAMA_MODEL
+                };
+            } else {
+                // Use native Ollama format
+                console.log('📡 Using native Ollama API format');
+                response = await axios.post(
+                    `${OLLAMA_API_URL}/api/generate`,
+                    {
+                        model: OLLAMA_MODEL,
+                        prompt: prompt,
+                        stream: false,
+                        options: {
+                            temperature: 0.7,
+                            top_p: 0.9,
+                            top_k: 40
+                        }
+                    },
+                    {
+                        headers: this.getHeaders(),
+                        timeout: TIMEOUT
+                    }
+                );
+                
+                const generatedText = response.data.response || '';
+                console.log('✅ Ollama response received, length:', generatedText.length);
+                
+                const cleanedResponse = this.cleanResponse(generatedText);
+                
+                return {
+                    response: cleanedResponse,
+                    persona: persona,
+                    confidence: personaDetection.confidence,
+                    contextKeywords: contextKeywords,
+                    model: OLLAMA_MODEL
+                };
+            }
         } catch (error) {
             console.error('❌ Ollama API Error:', error.message);
             if (error.response) {
