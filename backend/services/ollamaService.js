@@ -2,9 +2,29 @@ const axios = require('axios');
 const promptManager = require('./promptManager');
 const personaDetector = require('./personaDetector');
 
-const OLLAMA_API_URL = process.env.OLLAMA_API_URL || 'http://localhost:11434';
-const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'llama2';
-const OLLAMA_API_KEY = process.env.OLLAMA_API_KEY || '';
+// AI Provider Configuration - Support for multiple free providers
+const AI_PROVIDER = process.env.AI_PROVIDER || 'groq'; // groq, openrouter, deepseek, huggingface
+
+// Groq (Free, Fast, Recommended)
+const GROQ_API_KEY = process.env.GROQ_API_KEY || process.env.OLLAMA_API_KEY || '';
+const GROQ_API_URL = 'https://api.groq.com/openai/v1';
+const GROQ_MODEL = process.env.GROQ_MODEL || 'llama-3.1-70b-versatile';
+
+// OpenRouter (Free tier available)
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '';
+const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1';
+const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || 'meta-llama/llama-3.1-8b-instruct:free';
+
+// DeepSeek (Free tier available)
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY || '';
+const DEEPSEEK_API_URL = 'https://api.deepseek.com/v1';
+const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL || 'deepseek-chat';
+
+// HuggingFace (Free tier available)
+const HF_API_KEY = process.env.HF_API_KEY || process.env.HUGGINGFACE_API_KEY || '';
+const HF_API_URL = 'https://api-inference.huggingface.co/models';
+const HF_MODEL = process.env.HF_MODEL || 'mistralai/Mistral-7B-Instruct-v0.2';
+
 const TIMEOUT = parseInt(process.env.OLLAMA_TIMEOUT) || 30000;
 
 /**
@@ -12,42 +32,128 @@ const TIMEOUT = parseInt(process.env.OLLAMA_TIMEOUT) || 30000;
  */
 class OllamaService {
     /**
-     * Get headers for Ollama API requests
+     * Get API configuration based on provider
      */
-    getHeaders() {
+    getApiConfig() {
+        switch (AI_PROVIDER.toLowerCase()) {
+            case 'groq':
+                if (!GROQ_API_KEY) {
+                    throw new Error('GROQ_API_KEY not configured. Please set it in Vercel environment variables.');
+                }
+                return {
+                    url: `${GROQ_API_URL}/chat/completions`,
+                    model: GROQ_MODEL,
+                    apiKey: GROQ_API_KEY,
+                    provider: 'groq'
+                };
+            
+            case 'openrouter':
+                if (!OPENROUTER_API_KEY) {
+                    throw new Error('OPENROUTER_API_KEY not configured. Please set it in Vercel environment variables.');
+                }
+                return {
+                    url: `${OPENROUTER_API_URL}/chat/completions`,
+                    model: OPENROUTER_MODEL,
+                    apiKey: OPENROUTER_API_KEY,
+                    provider: 'openrouter',
+                    headers: {
+                        'HTTP-Referer': process.env.FRONTEND_URL || 'https://azzcolabs.business',
+                        'X-Title': 'AZZ&CO LABS Chatbot'
+                    }
+                };
+            
+            case 'deepseek':
+                if (!DEEPSEEK_API_KEY) {
+                    throw new Error('DEEPSEEK_API_KEY not configured. Please set it in Vercel environment variables.');
+                }
+                return {
+                    url: `${DEEPSEEK_API_URL}/chat/completions`,
+                    model: DEEPSEEK_MODEL,
+                    apiKey: DEEPSEEK_API_KEY,
+                    provider: 'deepseek'
+                };
+            
+            case 'huggingface':
+            case 'hf':
+                if (!HF_API_KEY) {
+                    throw new Error('HF_API_KEY or HUGGINGFACE_API_KEY not configured. Please set it in Vercel environment variables.');
+                }
+                return {
+                    url: `${HF_API_URL}/${HF_MODEL}`,
+                    model: HF_MODEL,
+                    apiKey: HF_API_KEY,
+                    provider: 'huggingface'
+                };
+            
+            default:
+                throw new Error(`Unknown AI provider: ${AI_PROVIDER}. Supported providers: groq, openrouter, deepseek, huggingface`);
+        }
+    }
+
+    /**
+     * Get headers for API requests
+     */
+    getHeaders(apiConfig) {
         const headers = {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiConfig.apiKey}`
         };
         
-        if (OLLAMA_API_KEY) {
-            headers['Authorization'] = `Bearer ${OLLAMA_API_KEY}`;
-            headers['X-API-Key'] = OLLAMA_API_KEY;
+        // Add provider-specific headers
+        if (apiConfig.headers) {
+            Object.assign(headers, apiConfig.headers);
         }
         
         return headers;
     }
 
     /**
-     * Check if Ollama is available
+     * Check if AI provider is available
      */
     async checkHealth() {
         try {
-            const response = await axios.get(`${OLLAMA_API_URL}/api/tags`, {
-                headers: this.getHeaders(),
-                timeout: 5000
-            });
-            return { available: true, models: response.data.models || [] };
+            const apiConfig = this.getApiConfig();
+            const headers = this.getHeaders(apiConfig);
+            
+            // Test with a simple request
+            const testResponse = await axios.post(
+                apiConfig.url,
+                {
+                    model: apiConfig.model,
+                    messages: [{ role: 'user', content: 'test' }],
+                    max_tokens: 5
+                },
+                {
+                    headers: headers,
+                    timeout: 5000
+                }
+            );
+            
+            return { 
+                available: true, 
+                provider: apiConfig.provider,
+                model: apiConfig.model 
+            };
         } catch (error) {
-            return { available: false, error: error.message };
+            return { 
+                available: false, 
+                provider: AI_PROVIDER,
+                error: error.message 
+            };
         }
     }
 
     /**
-     * Generate response using Ollama
+     * Generate response using AI provider (Groq, OpenRouter, DeepSeek, etc.)
      */
     async generateResponse(userMessage, interactionHistory = [], visitorId = null) {
         try {
             console.log('🤖 Generating response for:', userMessage.substring(0, 50));
+            
+            // Get API configuration
+            const apiConfig = this.getApiConfig();
+            console.log('📡 Using provider:', apiConfig.provider);
+            console.log('📡 Using model:', apiConfig.model);
             
             // Detect persona
             const personaDetection = personaDetector.detectPersona(userMessage, interactionHistory);
@@ -62,59 +168,72 @@ class OllamaService {
             const prompt = promptManager.getPrompt(contextKeywords, persona, userMessage);
             console.log('📝 Prompt length:', prompt.length);
             
-            // Check if Ollama is configured
-            // Allow localhost if API key is provided (for cloud services like Groq)
-            const isLocalhost = OLLAMA_API_URL === 'http://localhost:11434' || OLLAMA_API_URL.includes('localhost');
-            const hasApiKey = !!OLLAMA_API_KEY;
+            // Prepare system and user messages
+            const systemPrompt = prompt.split('MESSAGE UTILISATEUR:')[0] || prompt;
+            const messages = [
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: userMessage }
+            ];
             
-            if (!OLLAMA_API_URL || (isLocalhost && !hasApiKey)) {
-                console.warn('⚠️  Ollama not configured properly:', {
-                    url: OLLAMA_API_URL,
-                    hasKey: hasApiKey,
-                    usingFallback: true
+            // Add interaction history if available
+            if (interactionHistory && interactionHistory.length > 0) {
+                interactionHistory.slice(-5).forEach(msg => {
+                    messages.push({
+                        role: msg.role || 'user',
+                        content: msg.content || msg.message
+                    });
                 });
+            }
+            
+            // Call AI API
+            const headers = this.getHeaders(apiConfig);
+            let response;
+            
+            if (apiConfig.provider === 'huggingface') {
+                // HuggingFace uses a different format
+                response = await axios.post(
+                    apiConfig.url,
+                    {
+                        inputs: userMessage,
+                        parameters: {
+                            max_new_tokens: 500,
+                            temperature: 0.7,
+                            return_full_text: false
+                        }
+                    },
+                    {
+                        headers: headers,
+                        timeout: TIMEOUT
+                    }
+                );
+                
+                const generatedText = Array.isArray(response.data) 
+                    ? response.data[0]?.generated_text || ''
+                    : response.data.generated_text || '';
+                
+                console.log('✅ HuggingFace response received, length:', generatedText.length);
+                const cleanedResponse = this.cleanResponse(generatedText);
+                
                 return {
-                    response: this.getFallbackResponse(userMessage),
+                    response: cleanedResponse,
                     persona: persona,
                     confidence: personaDetection.confidence,
                     contextKeywords: contextKeywords,
-                    model: 'fallback',
-                    error: 'Ollama not configured - Please set OLLAMA_API_URL and OLLAMA_API_KEY in Vercel environment variables'
+                    model: apiConfig.model,
+                    provider: apiConfig.provider
                 };
-            }
-            
-            // Call Ollama API (or compatible API like Groq)
-            console.log('📡 Calling Ollama/LLM API:', OLLAMA_API_URL);
-            console.log('📡 Using model:', OLLAMA_MODEL);
-            console.log('📡 Has API key:', !!OLLAMA_API_KEY);
-            
-            // Determine if this is a Groq/OpenAI-compatible API or native Ollama
-            const isGroqOrOpenAI = OLLAMA_API_URL.includes('groq.com') || 
-                                   OLLAMA_API_URL.includes('openai.com') ||
-                                   OLLAMA_API_URL.includes('openrouter.ai') ||
-                                   OLLAMA_API_URL.includes('/v1');
-            
-            let response;
-            if (isGroqOrOpenAI) {
-                // Use OpenAI-compatible format for Groq/OpenAI/OpenRouter
-                console.log('📡 Using OpenAI-compatible API format');
-                const apiUrl = OLLAMA_API_URL.endsWith('/v1') 
-                    ? `${OLLAMA_API_URL}/chat/completions`
-                    : `${OLLAMA_API_URL}/chat/completions`;
-                
+            } else {
+                // OpenAI-compatible format (Groq, OpenRouter, DeepSeek)
                 response = await axios.post(
-                    apiUrl,
+                    apiConfig.url,
                     {
-                        model: OLLAMA_MODEL,
-                        messages: [
-                            { role: 'system', content: prompt.split('MESSAGE UTILISATEUR:')[0] || prompt },
-                            { role: 'user', content: userMessage }
-                        ],
+                        model: apiConfig.model,
+                        messages: messages,
                         temperature: 0.7,
                         max_tokens: 500
                     },
                     {
-                        headers: this.getHeaders(),
+                        headers: headers,
                         timeout: TIMEOUT
                     }
                 );
@@ -129,58 +248,20 @@ class OllamaService {
                     persona: persona,
                     confidence: personaDetection.confidence,
                     contextKeywords: contextKeywords,
-                    model: OLLAMA_MODEL
-                };
-            } else {
-                // Use native Ollama format
-                console.log('📡 Using native Ollama API format');
-                response = await axios.post(
-                    `${OLLAMA_API_URL}/api/generate`,
-                    {
-                        model: OLLAMA_MODEL,
-                        prompt: prompt,
-                        stream: false,
-                        options: {
-                            temperature: 0.7,
-                            top_p: 0.9,
-                            top_k: 40
-                        }
-                    },
-                    {
-                        headers: this.getHeaders(),
-                        timeout: TIMEOUT
-                    }
-                );
-                
-                const generatedText = response.data.response || '';
-                console.log('✅ Ollama response received, length:', generatedText.length);
-                
-                const cleanedResponse = this.cleanResponse(generatedText);
-                
-                return {
-                    response: cleanedResponse,
-                    persona: persona,
-                    confidence: personaDetection.confidence,
-                    contextKeywords: contextKeywords,
-                    model: OLLAMA_MODEL
+                    model: apiConfig.model,
+                    provider: apiConfig.provider
                 };
             }
         } catch (error) {
-            console.error('❌ Ollama API Error:', error.message);
+            console.error('❌ AI API Error:', error.message);
             if (error.response) {
                 console.error('❌ Response status:', error.response.status);
-                console.error('❌ Response data:', JSON.stringify(error.response.data).substring(0, 200));
+                console.error('❌ Response data:', JSON.stringify(error.response.data).substring(0, 500));
             }
             
-            // Fallback response
-            return {
-                response: this.getFallbackResponse(userMessage),
-                persona: 'professional',
-                confidence: 0,
-                contextKeywords: [],
-                model: 'fallback',
-                error: error.message
-            };
+            // NO FALLBACK - Return error message instead
+            const errorMessage = error.response?.data?.error?.message || error.message || 'Erreur inconnue';
+            throw new Error(`Erreur lors de l'appel à l'API ${AI_PROVIDER}: ${errorMessage}. Veuillez vérifier votre configuration API dans Vercel.`);
         }
     }
 
@@ -206,31 +287,6 @@ class OllamaService {
         return cleaned;
     }
 
-    /**
-     * Get fallback response when Ollama is unavailable
-     */
-    getFallbackResponse(userMessage) {
-        const messageLower = userMessage.toLowerCase();
-        
-        // Simple keyword-based responses
-        if (messageLower.includes('jobboat')) {
-            return "JobBoat est une plateforme que nous construisons spécialement pour vous. Elle réunit le meilleur des expériences que vous connaissez pour créer quelque chose d'unique qui s'adapte à vos besoins. Nous préparons tout avec soin pour vous offrir la meilleure expérience possible. Seriez-vous intéressé d'en savoir plus ?";
-        }
-        
-        if (messageLower.includes('outwings')) {
-            return "OutWings est un projet que nous préparons avec attention pour vous. Nous travaillons à créer quelque chose de spécial pour transformer vos sorties de groupes. Nous vous tiendrons informé dès que ce sera prêt. Souhaitez-vous être tenu au courant ?";
-        }
-        
-        if (messageLower.includes('contact') || messageLower.includes('email') || messageLower.includes('téléphone')) {
-            return "Nous serions ravis d'échanger avec vous. Vous pouvez nous contacter par email à azerrached3@gmail.com, par téléphone au +33 6 02 56 02 29, ou via LinkedIn. Notre formulaire de contact est également à votre disposition sur cette page.";
-        }
-        
-        if (messageLower.includes('mission') || messageLower.includes('philosophie')) {
-            return "Notre mission est simple : vous servir. Nous mettons toute notre expertise à votre disposition pour vous aider à réussir. Votre succès est notre priorité, et nous travaillons chaque jour pour vous offrir les meilleurs outils et accompagnement possibles.";
-        }
-        
-        return "Merci de m'avoir contacté ! Je suis là pour vous servir et répondre à toutes vos questions. Comment puis-je vous aider aujourd'hui ? N'hésitez pas à me poser vos questions ou à utiliser notre formulaire de contact si vous souhaitez échanger directement avec notre équipe.";
-    }
 }
 
 module.exports = new OllamaService();

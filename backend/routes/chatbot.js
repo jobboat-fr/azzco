@@ -33,25 +33,29 @@ router.post('/message', async (req, res) => {
         // Get interaction history (simplified - in production, fetch from DB)
         const interactionHistory = [];
 
-        // Generate response with error handling
-        let result;
-        try {
-            result = await ollamaService.generateResponse(
-                message,
-                interactionHistory,
-                finalVisitorId
-            );
-        } catch (ollamaError) {
-            console.error('Ollama service error:', ollamaError.message);
-            // Return fallback response
-            result = {
-                response: 'Je suis désolé, je rencontre actuellement des difficultés techniques. Pouvez-vous réessayer dans quelques instants ?',
-                persona: 'professional',
-                confidence: 0,
-                contextKeywords: [],
-                model: 'fallback'
-            };
-        }
+               // Generate response with error handling
+               let result;
+               try {
+                   result = await ollamaService.generateResponse(
+                       message,
+                       interactionHistory,
+                       finalVisitorId
+                   );
+               } catch (ollamaError) {
+                   console.error('AI service error:', ollamaError.message);
+                   // Return error message - NO FALLBACK
+                   return res.json({
+                       response: `Je suis désolé, je rencontre actuellement des difficultés techniques avec le service d'IA. ${ollamaError.message}. Veuillez réessayer dans quelques instants ou nous contacter directement.`,
+                       persona: 'professional',
+                       confidence: 0,
+                       contextKeywords: [],
+                       model: 'error',
+                       error: ollamaError.message,
+                       visitorId: finalVisitorId,
+                       sessionId: finalSessionId,
+                       responseTime: Date.now() - startTime
+                   });
+               }
 
         const responseTime = Date.now() - startTime;
 
