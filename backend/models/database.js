@@ -132,7 +132,35 @@ async function initDatabase() {
                         return;
                     }
                     console.log('✅ Events table created');
-                    resolve();
+                });
+                
+                // Notes table
+                db.run(`
+                    CREATE TABLE IF NOT EXISTS notes (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        title TEXT NOT NULL,
+                        content TEXT,
+                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                        visitor_id TEXT,
+                        FOREIGN KEY (visitor_id) REFERENCES visitors(visitor_id) ON DELETE SET NULL
+                    )
+                `, (err) => {
+                    if (err) {
+                        console.error('Error creating notes table:', err);
+                        reject(err);
+                        return;
+                    }
+                    console.log('✅ Notes table created');
+                    
+                    // Create indexes
+                    db.run(`CREATE INDEX IF NOT EXISTS idx_notes_visitor_id ON notes(visitor_id)`, (err) => {
+                        if (err) console.warn('Warning creating index:', err);
+                    });
+                    db.run(`CREATE INDEX IF NOT EXISTS idx_notes_created_at ON notes(created_at)`, (err) => {
+                        if (err) console.warn('Warning creating index:', err);
+                        resolve();
+                    });
                 });
             });
         });

@@ -7,6 +7,7 @@ require('dotenv').config();
 
 const chatbotRoutes = require('./routes/chatbot');
 const analyticsRoutes = require('./routes/analytics');
+const notesRoutes = require('./routes/notes');
 const { initDatabase } = require('./models/database');
 
 const app = express();
@@ -38,6 +39,7 @@ app.get('/health', (req, res) => {
 // Routes
 app.use('/api/chatbot', chatbotRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/notes', notesRoutes);
 
 // Initialize database
 initDatabase().then(() => {

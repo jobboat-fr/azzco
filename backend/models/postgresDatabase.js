@@ -113,6 +113,17 @@ async function createTables() {
             event_data TEXT,
             timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (visitor_id) REFERENCES visitors(visitor_id)
+        )`,
+        
+        // Notes table
+        `CREATE TABLE IF NOT EXISTS notes (
+            id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            title TEXT NOT NULL,
+            content TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            visitor_id TEXT,
+            FOREIGN KEY (visitor_id) REFERENCES visitors(visitor_id) ON DELETE SET NULL
         )`
     ];
 
@@ -123,6 +134,17 @@ async function createTables() {
         } catch (error) {
             console.error('❌ Error creating table:', error.message);
         }
+    }
+    
+    // Create indexes for notes table
+    try {
+        await pool.query(`
+            CREATE INDEX IF NOT EXISTS idx_notes_visitor_id ON notes(visitor_id);
+            CREATE INDEX IF NOT EXISTS idx_notes_created_at ON notes(created_at);
+        `);
+        console.log('✅ Notes indexes created');
+    } catch (error) {
+        console.warn('⚠️  Warning creating notes indexes:', error.message);
     }
 }
 
