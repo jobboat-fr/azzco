@@ -139,11 +139,14 @@ body {
 .logo-img {
     height: 40px;
     width: auto;
-    transition: transform var(--transition-base);
+    transition: transform var(--transition-base), opacity var(--transition-base);
+    opacity: 0.95;
+    filter: brightness(0) invert(1);
 }
 
 .logo-img:hover {
     transform: scale(1.05);
+    opacity: 1;
 }
 
 .logo h2 {
