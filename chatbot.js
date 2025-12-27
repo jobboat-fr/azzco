@@ -126,6 +126,9 @@ class ChatbotWidget {
             this.addMessage("Bonjour ! Je m'appelle Nicky's Pizza. Comment puis-je vous aider aujourd'hui ?", 'bot');
             this.hasShownWelcome = true;
         }
+        
+        // Adjust height after opening
+        setTimeout(() => this.adjustContainerHeight(), 100);
     }
 
     closeChatbot() {
@@ -204,8 +207,29 @@ class ChatbotWidget {
         messageDiv.appendChild(contentDiv);
         this.messagesContainer.appendChild(messageDiv);
         
+        // Expand container height based on content
+        this.adjustContainerHeight();
+        
         // Scroll to bottom
         this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+    }
+    
+    adjustContainerHeight() {
+        if (!this.container || !this.messagesContainer) return;
+        
+        // Calculate total content height
+        const headerHeight = this.container.querySelector('.chatbot-header')?.offsetHeight || 0;
+        const inputHeight = this.container.querySelector('.chatbot-input-container')?.offsetHeight || 0;
+        const messagesHeight = this.messagesContainer.scrollHeight;
+        
+        // Calculate desired height (content + padding)
+        const desiredHeight = headerHeight + messagesHeight + inputHeight;
+        const maxHeight = window.innerHeight - 120; // Leave space for toggle button
+        const minHeight = 200;
+        
+        // Set container height (clamped between min and max)
+        const finalHeight = Math.max(minHeight, Math.min(desiredHeight, maxHeight));
+        this.container.style.height = `${finalHeight}px`;
     }
 
     setTyping(isTyping) {
