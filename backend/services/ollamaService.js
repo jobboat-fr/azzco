@@ -14,7 +14,7 @@ const IS_PRODUCTION = process.env.NODE_ENV === 'production' || IS_VERCEL;
 
 // OpenRouter (Production)
 const OPENROUTER_URL = process.env.OLLAMA_API_URL || process.env.OPENROUTER_URL || 'https://openrouter.ai/api/v1';
-const OPENROUTER_MODEL = process.env.OLLAMA_MODEL || process.env.OPENROUTER_MODEL || 'qwen/qwen-2.5-7b-instruct';
+const OPENROUTER_MODEL = process.env.OLLAMA_MODEL || process.env.OPENROUTER_MODEL || 'qwen/qwen-2.5-7b-instruct:free';
 const OPENROUTER_API_KEY = process.env.OLLAMA_API_KEY || process.env.OPENROUTER_API_KEY || '7fa94d77037849b4a64baaa436a3c25c.Wu_-AuooKGwm-xlKD1VJMzE8';
 
 // Local Ollama (Development)
@@ -170,6 +170,10 @@ class OllamaService {
                 ];
                 
                 console.log('📡 Calling OpenRouter...');
+                console.log('📡 URL:', apiConfig.url);
+                console.log('📡 Model:', apiConfig.model);
+                console.log('📡 Headers:', JSON.stringify(headers).replace(/Bearer [^\"]+/, 'Bearer ***'));
+                
                 response = await axios.post(
                     apiConfig.url,
                     {
@@ -184,7 +188,14 @@ class OllamaService {
                     }
                 );
                 
+                console.log('📡 OpenRouter response status:', response.status);
+                console.log('📡 OpenRouter response data keys:', Object.keys(response.data || {}));
+                
                 generatedText = response.data.choices?.[0]?.message?.content || '';
+                
+                if (!generatedText && response.data) {
+                    console.error('❌ No generated text. Full response:', JSON.stringify(response.data).substring(0, 500));
+                }
             } else {
                 // Native Ollama format (local)
                 const fullPrompt = `${systemPrompt}\n\nMESSAGE UTILISATEUR: ${userMessage}`;
@@ -229,12 +240,31 @@ class OllamaService {
             };
         } catch (error) {
             console.error('❌ API Error:', error.message);
+            console.error('❌ Error code:', error.code);
+            console.error('❌ Error stack:', error.stack?.substring(0, 300));
+            
             if (error.response) {
                 console.error('❌ Response status:', error.response.status);
-                console.error('❌ Response data:', JSON.stringify(error.response.data).substring(0, 500));
+                console.error('❌ Response headers:', JSON.stringify(error.response.headers));
+                console.error('❌ Response data:', JSON.stringify(error.response.data));
+            } else if (error.request) {
+                console.error('❌ No response received. Request config:', JSON.stringify({
+                    url: error.config?.url,
+                    method: error.config?.method,
+                    headers: error.config?.headers ? Object.keys(error.config.headers) : 'none'
+                }));
             }
             
-            const errorMessage = error.response?.data?.error?.message || error.message || 'Erreur inconnue';
+            let errorMessage = 'Erreur inconnue';
+            
+            if (error.response?.data?.error) {
+                errorMessage = error.response.data.error.message || JSON.stringify(error.response.data.error);
+            } else if (error.response?.data) {
+                errorMessage = JSON.stringify(error.response.data).substring(0, 200);
+            } else if (error.message) {
+                errorMessage = error.message;
+            }
+            
             const provider = apiConfig?.provider || (IS_PRODUCTION ? 'openrouter' : 'ollama');
             throw new Error(`Erreur ${provider}: ${errorMessage}`);
         }
