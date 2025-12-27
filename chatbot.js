@@ -50,6 +50,11 @@ class ChatbotWidget {
         }
 
         console.log('✅ Chatbot elements found, initializing...');
+        
+        // CLEAR any existing static messages from HTML to prevent duplicates
+        if (this.messagesContainer) {
+            this.messagesContainer.innerHTML = '';
+        }
 
         // Event listeners
         this.toggle.addEventListener('click', (e) => {
