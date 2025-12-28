@@ -18,6 +18,7 @@ const staticFiles = [
     'invest.html',
     'outwings.html',
     'contact.html',
+    'careers.html',
     'faq.html',
     'privacy.html',
     'gdpr.html',

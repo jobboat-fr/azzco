@@ -35,6 +35,10 @@
     {
       "source": "/contact",
       "destination": "/contact.html"
+    },
+    {
+      "source": "/careers",
+      "destination": "/careers.html"
     }
   ]
 }
