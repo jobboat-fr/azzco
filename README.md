@@ -171,7 +171,7 @@ Nous collectons des informations pour mieux vous servir :
 **Nous serions ravis d'échanger avec vous**
 
 📍 **Paris, France**  
-📧 **Email:** azerrached3@gmail.com  
+📧 **Email:** rached.azer@azzcolabs.business  
 📞 **Téléphone:** +33 6 02 56 02 29  
 💼 **LinkedIn:** [Azer Rached](https://www.linkedin.com/in/azer-rached-239258377/)  
 🔗 **Liens:** [Linktree](https://linktr.ee/AZER_rached)
