@@ -70,10 +70,11 @@ app.use((err, req, res, next) => {
 // For Vercel serverless functions, export the app directly
 // Vercel automatically detects module.exports and uses it as the handler
 // Initialize database lazily on first request (for Vercel)
-if (process.env.VERCEL) {
+if (process.env.VERCEL || process.env.VERCEL_ENV || process.env.VERCEL_URL) {
     // On Vercel, initialize database on first request (non-blocking)
     let dbInitialized = false;
     let dbInitInProgress = false;
+    
     app.use(async (req, res, next) => {
         // Don't block requests if DB init fails
         if (!dbInitialized && !dbInitInProgress) {
@@ -84,8 +85,9 @@ if (process.env.VERCEL) {
                     console.log('✅ Database initialized (Vercel)');
                 })
                 .catch(err => {
-                    console.error('❌ Database initialization failed:', err);
+                    console.error('❌ Database initialization failed:', err.message);
                     // Continue anyway - database operations will fail gracefully
+                    dbInitialized = true; // Mark as initialized to prevent retry loops
                 })
                 .finally(() => {
                     dbInitInProgress = false;
@@ -97,15 +99,23 @@ if (process.env.VERCEL) {
     
     // Better error handling for Vercel - Always return valid JSON
     app.use((err, req, res, next) => {
-        console.error('Vercel Error:', err);
+        console.error('Vercel Error:', err.message || err);
         if (!res.headersSent) {
             res.json({ 
                 success: false,
                 error: 'Une erreur interne est survenue',
-                message: process.env.NODE_ENV === 'development' ? err.message : undefined,
-                stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+                message: process.env.NODE_ENV === 'development' ? err.message : undefined
             });
         }
+    });
+    
+    // Catch-all error handler for unhandled promise rejections
+    process.on('unhandledRejection', (reason, promise) => {
+        console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+    });
+    
+    process.on('uncaughtException', (error) => {
+        console.error('Uncaught Exception:', error);
     });
 }
 

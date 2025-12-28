@@ -199,11 +199,17 @@ class OllamaService {
             throw new Error('GOOGLE_AI_API_KEY or GEMINI_API_KEY not set in environment variables');
         }
         
+        // Validate input
+        if (!userMessage || typeof userMessage !== 'string' || !userMessage.trim()) {
+            throw new Error('Invalid user message');
+        }
+        
         try {
             console.log('🤖 Generating response with Google Gemini...');
+            console.log(`📝 Message length: ${userMessage.length}, History items: ${interactionHistory?.length || 0}`);
             
             // Detect persona and get prompt
-            const personaDetection = personaDetector.detectPersona(userMessage, interactionHistory);
+            const personaDetection = personaDetector.detectPersona(userMessage, interactionHistory || []);
             const contextKeywords = personaDetector.extractContextKeywords(userMessage);
             const prompt = promptManager.getPrompt(contextKeywords, personaDetection.persona, userMessage);
             const systemPrompt = prompt.split('MESSAGE UTILISATEUR:')[0] || prompt;
@@ -233,23 +239,32 @@ class OllamaService {
                 });
             }
             
-            // Add interaction history
-            if (interactionHistory && interactionHistory.length > 0) {
-                interactionHistory.slice(-5).forEach(msg => {
+            // Add interaction history (limit to last 5 to avoid token limits)
+            if (interactionHistory && Array.isArray(interactionHistory) && interactionHistory.length > 0) {
+                const historySlice = interactionHistory.slice(-5);
+                historySlice.forEach(msg => {
+                    if (!msg) return; // Skip null/undefined entries
                     const role = msg.role || 'user';
                     const content = msg.content || msg.message || '';
-                    contents.push({
-                        role: role === 'assistant' ? 'model' : 'user',
-                        parts: [{ text: content }]
-                    });
+                    if (content && content.trim()) {
+                        contents.push({
+                            role: role === 'assistant' ? 'model' : 'user',
+                            parts: [{ text: content.trim() }]
+                        });
+                    }
                 });
             }
             
             // Add current user message
             contents.push({
                 role: 'user',
-                parts: [{ text: userMessage }]
+                parts: [{ text: userMessage.trim() }]
             });
+            
+            // Safety check: ensure we have at least one message
+            if (contents.length === 0) {
+                throw new Error('No valid content to send to Gemini API');
+            }
             
             // Make API request
             const apiResponse = await axios.post(

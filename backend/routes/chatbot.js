@@ -15,6 +15,13 @@ async function getInteractionHistory(sessionId, limit = CHAT_HISTORY_LIMIT) {
 
     try {
         const db = getDatabase();
+        
+        // If database is not available (e.g., on Vercel without PostgreSQL), return empty history
+        if (!db) {
+            console.warn('⚠️  Database not available - returning empty history');
+            return [];
+        }
+        
         const maxLimit = Math.max(parseInt(limit, 10) || 1, 1);
         const query = `
             SELECT message, response, persona_detected, timestamp
