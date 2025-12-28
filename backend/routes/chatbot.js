@@ -5,6 +5,66 @@ const ollamaService = require('../services/ollamaService');
 const { getDatabase } = require('../models/database');
 const { logVisitor, logChatInteraction } = require('../services/analyticsService');
 
+const CHAT_HISTORY_LIMIT = parseInt(process.env.AI_CONTEXT_HISTORY_LIMIT || '6', 10);
+
+/**
+ * Fetch recent interaction history for a session
+ */
+async function getInteractionHistory(sessionId, limit = CHAT_HISTORY_LIMIT) {
+    if (!sessionId) return [];
+
+    try {
+        const db = getDatabase();
+        const maxLimit = Math.max(parseInt(limit, 10) || 1, 1);
+        const query = `
+            SELECT message, response, persona_detected, timestamp
+            FROM chat_logs
+            WHERE session_id = ?
+            ORDER BY timestamp DESC
+            LIMIT ${maxLimit}
+        `;
+
+        return await new Promise((resolve) => {
+            db.all(query, [sessionId], (err, rows) => {
+                if (err) {
+                    console.warn('Unable to fetch chat history:', err.message);
+                    resolve([]);
+                    return;
+                }
+
+                if (!rows || rows.length === 0) {
+                    resolve([]);
+                    return;
+                }
+
+                // Reverse to chronological order and format for the AI service
+                const formattedHistory = [];
+                rows.slice().reverse().forEach(row => {
+                    if (row.message) {
+                        formattedHistory.push({
+                            role: 'user',
+                            content: row.message,
+                            persona: row.persona_detected || 'professional'
+                        });
+                    }
+                    if (row.response) {
+                        formattedHistory.push({
+                            role: 'assistant',
+                            content: row.response,
+                            persona: row.persona_detected || 'professional'
+                        });
+                    }
+                });
+
+                resolve(formattedHistory);
+            });
+        });
+    } catch (error) {
+        console.warn('Chat history unavailable:', error.message);
+        return [];
+    }
+}
+
 /**
  * POST /api/chatbot/message
  * Send a message to the chatbot
@@ -30,8 +90,8 @@ router.post('/message', async (req, res) => {
         const finalVisitorId = visitorId || uuidv4();
         const finalSessionId = sessionId || uuidv4();
 
-        // Get interaction history (simplified - in production, fetch from DB)
-        const interactionHistory = [];
+        // Fetch recent interaction history to maintain context
+        const interactionHistory = await getInteractionHistory(finalSessionId);
 
                // Generate response with error handling
                let result;
