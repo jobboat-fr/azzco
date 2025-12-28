@@ -33,7 +33,8 @@ const staticFiles = [
 
 // Directories to copy
 const staticDirs = [
-    'assets'
+    'assets',
+    'zohoverify'
 ];
 
 function ensurePublicDir() {
