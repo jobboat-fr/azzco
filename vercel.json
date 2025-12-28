@@ -45,16 +45,6 @@
       "destination": "/zohoverify/verifyforzoho.html"
     }
   ],
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
-    },
-    {
-      "src": "/zohoverify/(.*)",
-      "dest": "/zohoverify/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/assets/(.*)",
