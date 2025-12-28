@@ -75,12 +75,31 @@ async function getInteractionHistory(sessionId, limit = CHAT_HISTORY_LIMIT) {
 /**
  * POST /api/chatbot/message
  * Send a message to the chatbot
+ * CRITICAL: This function MUST NEVER throw or crash - always return valid JSON
  */
 router.post('/message', async (req, res) => {
+    // Wrap everything in a try-catch to ensure we NEVER crash
+    let finalVisitorId, finalSessionId, startTime;
+    
     try {
+        // Validate request body exists
+        if (!req.body) {
+            return res.json({ 
+                response: 'Je suis désolé, votre requête semble invalide. Pouvez-vous réessayer ?',
+                persona: 'professional',
+                confidence: 0,
+                contextKeywords: [],
+                visitorId: uuidv4(),
+                sessionId: uuidv4(),
+                responseTime: 0,
+                model: 'fallback',
+                error: 'Invalid request body'
+            });
+        }
+
         const { message, visitorId, sessionId } = req.body;
 
-        if (!message || !message.trim()) {
+        if (!message || typeof message !== 'string' || !message.trim()) {
             return res.json({ 
                 response: 'Je suis désolé, votre message semble vide. Pouvez-vous réessayer ?',
                 persona: 'professional',
@@ -93,88 +112,115 @@ router.post('/message', async (req, res) => {
             });
         }
 
-        const startTime = Date.now();
-        const finalVisitorId = visitorId || uuidv4();
-        const finalSessionId = sessionId || uuidv4();
+        startTime = Date.now();
+        finalVisitorId = visitorId || uuidv4();
+        finalSessionId = sessionId || uuidv4();
 
-        // Fetch recent interaction history to maintain context
-        const interactionHistory = await getInteractionHistory(finalSessionId);
+        // Fetch recent interaction history to maintain context (with error handling)
+        let interactionHistory = [];
+        try {
+            interactionHistory = await getInteractionHistory(finalSessionId);
+            if (!Array.isArray(interactionHistory)) {
+                interactionHistory = [];
+            }
+        } catch (historyError) {
+            console.warn('History fetch failed, continuing without history:', historyError.message);
+            interactionHistory = [];
+        }
 
-               // Generate response with error handling
-               let result;
-               try {
-                   result = await ollamaService.generateResponse(
-                       message,
-                       interactionHistory,
-                       finalVisitorId
-                   );
-               } catch (ollamaError) {
-                   console.error('AI service error:', ollamaError.message);
-                   // Return error message - NO FALLBACK
-                   return res.json({
-                       response: `Je suis désolé, je rencontre actuellement des difficultés techniques avec le service d'IA. ${ollamaError.message}. Veuillez réessayer dans quelques instants ou nous contacter directement.`,
-                       persona: 'professional',
-                       confidence: 0,
-                       contextKeywords: [],
-                       model: 'error',
-                       error: ollamaError.message,
-                       visitorId: finalVisitorId,
-                       sessionId: finalSessionId,
-                       responseTime: Date.now() - startTime
-                   });
-               }
-
-        const responseTime = Date.now() - startTime;
-
-        // Log interaction (non-blocking, fire and forget)
-        logChatInteraction({
-            visitorId: finalVisitorId,
-            sessionId: finalSessionId,
-            message: message,
-            response: result.response,
-            persona: result.persona,
-            contextKeywords: result.contextKeywords.join(','),
-            responseTime: responseTime
-        }).catch(err => {
-            console.warn('Chat interaction logging failed:', err.message);
-        });
-
-        // Log visitor if new (non-blocking, fire and forget)
-        if (!visitorId) {
-            logVisitor({
+        // Generate response with comprehensive error handling
+        let result;
+        try {
+            result = await ollamaService.generateResponse(
+                message.trim(),
+                interactionHistory,
+                finalVisitorId
+            );
+            
+            // Validate result structure
+            if (!result || typeof result !== 'object') {
+                throw new Error('Invalid response structure from AI service');
+            }
+            
+            if (!result.response || typeof result.response !== 'string') {
+                throw new Error('Invalid response content from AI service');
+            }
+        } catch (ollamaError) {
+            console.error('AI service error:', ollamaError?.message || 'Unknown error');
+            // Return error message - always valid JSON
+            return res.json({
+                response: `Je suis désolé, je rencontre actuellement des difficultés techniques avec le service d'IA. Veuillez réessayer dans quelques instants ou nous contacter directement.`,
+                persona: 'professional',
+                confidence: 0,
+                contextKeywords: [],
+                model: 'error',
                 visitorId: finalVisitorId,
-                ipAddress: req.ip || req.connection.remoteAddress,
-                userAgent: req.get('user-agent'),
-                referrer: req.get('referer')
-            }).catch(err => {
-                console.warn('Visitor logging failed:', err.message);
+                sessionId: finalSessionId,
+                responseTime: Date.now() - (startTime || Date.now())
             });
         }
 
-        // Always return valid JSON
-        res.json({
-            response: result.response,
-            persona: result.persona,
-            confidence: result.confidence,
-            contextKeywords: result.contextKeywords,
+        const responseTime = Date.now() - startTime;
+
+        // Log interaction (non-blocking, fire and forget - errors are ignored)
+        try {
+            logChatInteraction({
+                visitorId: finalVisitorId,
+                sessionId: finalSessionId,
+                message: message,
+                response: result.response || '',
+                persona: result.persona || 'professional',
+                contextKeywords: (result.contextKeywords || []).join(','),
+                responseTime: responseTime
+            }).catch(() => {
+                // Silently ignore logging errors
+            });
+        } catch (logError) {
+            // Silently ignore logging errors
+        }
+
+        // Log visitor if new (non-blocking, fire and forget - errors are ignored)
+        if (!visitorId) {
+            try {
+                logVisitor({
+                    visitorId: finalVisitorId,
+                    ipAddress: req.ip || req.connection?.remoteAddress || 'unknown',
+                    userAgent: req.get('user-agent') || 'unknown',
+                    referrer: req.get('referer') || ''
+                }).catch(() => {
+                    // Silently ignore logging errors
+                });
+            } catch (visitorLogError) {
+                // Silently ignore logging errors
+            }
+        }
+
+        // Always return valid JSON with all required fields
+        return res.json({
+            response: result.response || 'Je suis désolé, je n\'ai pas pu générer de réponse.',
+            persona: result.persona || 'professional',
+            confidence: result.confidence || 0,
+            contextKeywords: Array.isArray(result.contextKeywords) ? result.contextKeywords : [],
             visitorId: finalVisitorId,
             sessionId: finalSessionId,
             responseTime: responseTime,
-            model: result.model
+            model: result.model || 'unknown'
         });
     } catch (error) {
-        console.error('Chatbot error:', error);
-        // Always return valid JSON, never 500
-        res.json({ 
-            response: 'Je suis désolé, une erreur est survenue. Pouvez-vous réessayer ?',
+        // Ultimate fallback - this should NEVER happen, but if it does, return valid JSON
+        console.error('CRITICAL: Unhandled error in chatbot route:', error?.message || 'Unknown error');
+        console.error('Error stack:', error?.stack);
+        
+        return res.json({ 
+            response: 'Je suis désolé, une erreur inattendue est survenue. Pouvez-vous réessayer ?',
             persona: 'professional',
             confidence: 0,
             contextKeywords: [],
-            visitorId: req.body.visitorId || uuidv4(),
-            sessionId: req.body.sessionId || uuidv4(),
-            responseTime: 0,
+            visitorId: finalVisitorId || uuidv4(),
+            sessionId: finalSessionId || uuidv4(),
+            responseTime: startTime ? Date.now() - startTime : 0,
             model: 'fallback',
-            error: 'Service temporarily unavailable'
+            error: 'Unexpected error'
         });
     }
 });

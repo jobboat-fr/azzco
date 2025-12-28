@@ -56,14 +56,34 @@ app.use('/api/analytics', analyticsRoutes);
 app.use('/api/notes', notesRoutes);
 
 // Error handling - Always return valid JSON, never 500
+// CRITICAL: This middleware MUST catch ALL errors
 app.use((err, req, res, next) => {
-    console.error('Error:', err);
-    if (!res.headersSent) {
+    console.error('Error middleware caught:', err?.message || 'Unknown error');
+    console.error('Error stack:', err?.stack);
+    
+    // If headers already sent, we can't send a response
+    if (res.headersSent) {
+        return next(err);
+    }
+    
+    // Always return valid JSON
+    try {
         res.json({ 
             success: false,
             error: 'Une erreur interne est survenue',
-            message: process.env.NODE_ENV === 'development' ? err.message : undefined
+            message: process.env.NODE_ENV === 'development' ? err?.message : undefined
         });
+    } catch (jsonError) {
+        // If even JSON response fails, try to send plain text
+        try {
+            res.status(200).send(JSON.stringify({ 
+                success: false,
+                error: 'Une erreur interne est survenue'
+            }));
+        } catch (finalError) {
+            // Last resort - do nothing, connection might be closed
+            console.error('CRITICAL: Could not send error response:', finalError);
+        }
     }
 });
 
@@ -98,14 +118,32 @@ if (process.env.VERCEL || process.env.VERCEL_ENV || process.env.VERCEL_URL) {
     });
     
     // Better error handling for Vercel - Always return valid JSON
+    // CRITICAL: This MUST catch all errors on Vercel
     app.use((err, req, res, next) => {
-        console.error('Vercel Error:', err.message || err);
-        if (!res.headersSent) {
+        console.error('Vercel Error caught:', err?.message || 'Unknown error');
+        console.error('Vercel Error stack:', err?.stack);
+        
+        if (res.headersSent) {
+            return next(err);
+        }
+        
+        try {
             res.json({ 
                 success: false,
                 error: 'Une erreur interne est survenue',
-                message: process.env.NODE_ENV === 'development' ? err.message : undefined
+                message: process.env.NODE_ENV === 'development' ? err?.message : undefined
             });
+        } catch (jsonError) {
+            console.error('CRITICAL: Could not send Vercel error response:', jsonError);
+            // Try one more time with plain JSON string
+            try {
+                res.status(200).send(JSON.stringify({ 
+                    success: false,
+                    error: 'Une erreur interne est survenue'
+                }));
+            } catch (finalError) {
+                console.error('CRITICAL: Complete failure to send error response');
+            }
         }
     });
     
