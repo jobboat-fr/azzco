@@ -1068,44 +1068,6 @@ html {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Career Images Styling */
-.career-image-card {
-    cursor: pointer;
-}
-
-.career-image-card img {
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-.career-image-card:hover img {
-    transform: scale(1.08);
-}
-
-.career-image-card:hover {
-    border-color: var(--color-gold-bright) !important;
-}
-
-/* Responsive grid for career images */
-@media (max-width: 1024px) {
-    .career-image-card[style*="grid-column: span 2"] {
-        grid-column: span 1 !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .career-image-card {
-        aspect-ratio: 16/9 !important;
-    }
-    
-    .career-image-card h3 {
-        font-size: 1.5rem !important;
-    }
-    
-    .career-image-card p {
-        font-size: 1rem !important;
-    }
-}
 
 /* AI Art Section - Artistic Styling */
 @media (max-width: 1024px) {
