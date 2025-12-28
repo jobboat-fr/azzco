@@ -4,20 +4,24 @@
  */
 
 // Formspree Configuration - Use window object to avoid redeclaration errors
-if (typeof window.FORMSPREE_CONFIG === 'undefined') {
-    window.FORMSPREE_CONFIG = {
-        projectId: '2901802241138621618',
-        deployKey: '4044d470f6b64579adc57322e34c626a',
-        // Form IDs - Update these with your actual Formspree form IDs
-        // Create forms at: https://formspree.io/forms
-        endpoints: {
-            contact: 'https://formspree.io/f/xpzgkqwn', // TODO: Replace with your contact form ID
-            newsletter: 'https://formspree.io/f/xpzgkqwn' // TODO: Replace with your newsletter form ID
-        }
-    };
-}
-// Create a local reference for easier access
-const FORMSPREE_CONFIG = window.FORMSPREE_CONFIG || {};
+(function() {
+    'use strict';
+    if (typeof window.FORMSPREE_CONFIG === 'undefined') {
+        window.FORMSPREE_CONFIG = {
+            projectId: '2901802241138621618',
+            deployKey: '4044d470f6b64579adc57322e34c626a',
+            // Form IDs - Update these with your actual Formspree form IDs
+            // Create forms at: https://formspree.io/forms
+            endpoints: {
+                contact: 'https://formspree.io/f/xpzgkqwn', // TODO: Replace with your contact form ID
+                newsletter: 'https://formspree.io/f/xpzgkqwn' // TODO: Replace with your newsletter form ID
+            }
+        };
+    }
+})();
+
+// Create a local reference for easier access (after initialization)
+const FORMSPREE_CONFIG = window.FORMSPREE_CONFIG;
 
 /**
  * Handle Contact Form Submission
