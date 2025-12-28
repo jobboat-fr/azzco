@@ -63,11 +63,27 @@ async function handleContactForm(event) {
             form.reset();
         } else {
             const data = await response.json().catch(() => ({}));
-            throw new Error(data.error || `Erreur ${response.status}: ${response.statusText}`);
+            let errorMessage = data.error || `Erreur ${response.status}: ${response.statusText}`;
+            
+            // Provide helpful message for 404 errors (form not found)
+            if (response.status === 404) {
+                errorMessage = 'Le formulaire Formspree n\'est pas configuré correctement. Veuillez contacter l\'administrateur ou utiliser l\'email: rached.azer@azzcolabs.business';
+            }
+            
+            throw new Error(errorMessage);
         }
     } catch (error) {
         console.error('Form submission error:', error);
-        showFormMessage(form, 'Désolé, une erreur est survenue lors de l\'envoi. Veuillez réessayer ou nous contacter directement.', 'error');
+        let userMessage = 'Désolé, une erreur est survenue lors de l\'envoi. ';
+        
+        // Provide specific guidance based on error
+        if (error.message.includes('404') || error.message.includes('form not found')) {
+            userMessage += 'Le formulaire n\'est pas configuré. Veuillez nous contacter directement à rached.azer@azzcolabs.business';
+        } else {
+            userMessage += 'Veuillez réessayer ou nous contacter directement à rached.azer@azzcolabs.business';
+        }
+        
+        showFormMessage(form, userMessage, 'error');
     } finally {
         if (submitButton) {
             submitButton.disabled = false;
