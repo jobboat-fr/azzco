@@ -1,20 +1,25 @@
-// Vercel Speed Insights Integration for Static HTML
-// This script loads Speed Insights when deployed on Vercel
+// Vercel Speed Insights - Official Implementation for HTML
+// This script initializes Speed Insights using the official Vercel method
+// Documentation: https://vercel.com/docs/speed-insights
+
 (function() {
-    // Only load on Vercel deployment
-    if (window.location.hostname.includes('vercel.app') || window.location.hostname.includes('vercel.com')) {
-        var script = document.createElement('script');
-        script.src = 'https://va.vercel-scripts.com/v1/script.debug.js';
-        script.defer = true;
-        script.setAttribute('data-skip-dnt', 'true');
-        script.onload = function() {
-            if (window.va) {
-                console.log('Vercel Speed Insights loaded successfully');
-            }
-        };
-        script.onerror = function() {
-            console.warn('Vercel Speed Insights failed to load');
-        };
-        document.head.appendChild(script);
-    }
+    // Initialize the Speed Insights queue
+    window.si = window.si || function () { 
+        (window.siq = window.siq || []).push(arguments); 
+    };
+    
+    // Load the official Vercel Speed Insights script
+    var script = document.createElement('script');
+    script.defer = true;
+    script.src = '/_vercel/speed-insights/script.js';
+    
+    script.onload = function() {
+        console.log('Vercel Speed Insights loaded successfully');
+    };
+    
+    script.onerror = function() {
+        console.warn('Vercel Speed Insights failed to load. Make sure Speed Insights is enabled in your Vercel project settings.');
+    };
+    
+    document.head.appendChild(script);
 })();

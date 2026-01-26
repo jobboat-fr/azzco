@@ -3,17 +3,25 @@
  * Handles form submissions for contact and newsletter forms
  */
 
-// Formspree Configuration
-const FORMSPREE_CONFIG = {
-    projectId: '2901802241138621618',
-    deployKey: '4044d470f6b64579adc57322e34c626a',
-    // Form IDs - Update these with your actual Formspree form IDs
-    // Create forms at: https://formspree.io/forms
-    endpoints: {
-        contact: 'https://formspree.io/f/xpzgkqwn', // TODO: Replace with your contact form ID
-        newsletter: 'https://formspree.io/f/xpzgkqwn' // TODO: Replace with your newsletter form ID
+// Formspree Configuration - Use window object to avoid redeclaration errors
+(function() {
+    'use strict';
+    if (typeof window.FORMSPREE_CONFIG === 'undefined') {
+        window.FORMSPREE_CONFIG = {
+            projectId: '2901802241138621618',
+            deployKey: '4044d470f6b64579adc57322e34c626a',
+            // Form IDs - Update these with your actual Formspree form IDs
+            // Create forms at: https://formspree.io/forms
+            endpoints: {
+                contact: 'https://formspree.io/f/xbdjyzov',
+                newsletter: 'https://formspree.io/f/xbdjyzov'
+            }
+        };
     }
-};
+})();
+
+// Create a local reference for easier access (after initialization)
+const FORMSPREE_CONFIG = window.FORMSPREE_CONFIG;
 
 /**
  * Handle Contact Form Submission
@@ -39,7 +47,7 @@ async function handleContactForm(event) {
     
     try {
         // Use the form's action URL if available, otherwise use config
-        const formAction = form.getAttribute('action') || FORMSPREE_CONFIG.endpoints.contact;
+        const formAction = form.getAttribute('action') || (FORMSPREE_CONFIG && FORMSPREE_CONFIG.endpoints.contact);
         
         const response = await fetch(formAction, {
             method: 'POST',
@@ -55,11 +63,27 @@ async function handleContactForm(event) {
             form.reset();
         } else {
             const data = await response.json().catch(() => ({}));
-            throw new Error(data.error || `Erreur ${response.status}: ${response.statusText}`);
+            let errorMessage = data.error || `Erreur ${response.status}: ${response.statusText}`;
+            
+            // Provide helpful message for 404 errors (form not found)
+            if (response.status === 404) {
+                errorMessage = 'Le formulaire Formspree n\'est pas configuré correctement. Veuillez contacter l\'administrateur ou utiliser l\'email: rached.azer@azzcolabs.business';
+            }
+            
+            throw new Error(errorMessage);
         }
     } catch (error) {
         console.error('Form submission error:', error);
-        showFormMessage(form, 'Désolé, une erreur est survenue lors de l\'envoi. Veuillez réessayer ou nous contacter directement.', 'error');
+        let userMessage = 'Désolé, une erreur est survenue lors de l\'envoi. ';
+        
+        // Provide specific guidance based on error
+        if (error.message.includes('404') || error.message.includes('form not found')) {
+            userMessage += 'Le formulaire n\'est pas configuré. Veuillez nous contacter directement à rached.azer@azzcolabs.business';
+        } else {
+            userMessage += 'Veuillez réessayer ou nous contacter directement à rached.azer@azzcolabs.business';
+        }
+        
+        showFormMessage(form, userMessage, 'error');
     } finally {
         if (submitButton) {
             submitButton.disabled = false;
@@ -96,7 +120,7 @@ async function handleNewsletterForm(event) {
         formData.append('_subject', 'Nouvelle inscription newsletter - AZZ&CO LABS');
         formData.append('_format', 'plain');
         
-        const response = await fetch(FORMSPREE_CONFIG.endpoints.newsletter, {
+        const response = await fetch((FORMSPREE_CONFIG && FORMSPREE_CONFIG.endpoints.newsletter) || '', {
             method: 'POST',
             body: formData,
             headers: {
