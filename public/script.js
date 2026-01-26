@@ -89,7 +89,7 @@ if (contactForm) {
         // Create mailto link
         const subject = encodeURIComponent(`Contact depuis AZZ&CO LABS - ${formData.name}`);
         const body = encodeURIComponent(`Nom: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-        const mailtoLink = `mailto:rached.azer@azzcolabs.business?subject=${subject}&body=${body}`;
+        const mailtoLink = `mailto:azerrached3@gmail.com?subject=${subject}&body=${body}`;
         
         // Open email client
         window.location.href = mailtoLink;

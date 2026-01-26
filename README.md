@@ -64,7 +64,6 @@ Ce repository contient notre **site web officiel**, une plateforme moderne et in
 - 🤖 **Assistant dédié** - Nous sommes là pour répondre à toutes vos questions
 - 📊 **Nous vous comprenons** - Nous adaptons notre approche à vos besoins
 - 🎭 **Réponses personnalisées** - Chaque interaction est pensée pour vous
-- ⚡ **Performance optimisée** - Suivi avec Vercel Speed Insights
 
 ### Comment Nous Vous Servons
 
@@ -73,7 +72,6 @@ Ce repository contient notre **site web officiel**, une plateforme moderne et in
 - **Base de données :** Vos données sont sécurisées et protégées
 - **IA :** Des systèmes qui vous comprennent vraiment
 - **Design :** Une expérience visuelle agréable et professionnelle
-- **Monitoring :** Vercel Speed Insights pour garantir une expérience rapide
 
 ---
 
@@ -85,7 +83,6 @@ azzco-website/
 ├── styles.css              # Design moderne et responsive
 ├── script.js               # Expérience interactive
 ├── chatbot.js              # Votre assistant dédié
-├── speed-insights.js       # Vercel Speed Insights integration
 ├── backend/
 │   ├── server.js           # Serveur pour vous servir
 │   ├── routes/             # Points d'accès pour vous
@@ -94,36 +91,6 @@ azzco-website/
 │   └── prompts/            # Réponses personnalisées pour vous
 └── README.md               # Ce fichier
 ```
-
----
-
-## ⚡ Vercel Speed Insights
-
-Notre site web utilise **Vercel Speed Insights** pour surveiller et optimiser les performances en temps réel. Cette intégration nous permet de garantir une expérience utilisateur rapide et fluide.
-
-### Configuration
-
-Speed Insights est configuré via le fichier `speed-insights.js` qui :
-- Initialise la file d'attente Speed Insights (`window.si`)
-- Charge automatiquement le script Vercel Speed Insights depuis `/_vercel/speed-insights/script.js`
-- Gère les erreurs de chargement avec des messages informatifs
-
-### Activation sur Vercel
-
-Pour activer Speed Insights sur votre projet Vercel :
-1. Allez dans votre [dashboard Vercel](https://vercel.com/dashboard)
-2. Sélectionnez votre projet
-3. Cliquez sur l'onglet **Speed Insights**
-4. Cliquez sur **Enable**
-
-Une fois activé et déployé, le script sera automatiquement disponible à `/_vercel/speed-insights/script.js`.
-
-### Vérification
-
-Après le déploiement, vérifiez que Speed Insights fonctionne en :
-- Inspectant la console du navigateur pour le message de succès
-- Vérifiant la présence du script `/_vercel/speed-insights/script.js` dans l'onglet Network
-- Consultant les données dans le dashboard Vercel après quelques jours de trafic
 
 ---
 
