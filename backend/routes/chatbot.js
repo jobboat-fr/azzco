@@ -159,17 +159,22 @@ router.post('/message', async (req, res) => {
             }
         } catch (ollamaError) {
             console.error('AI service error:', ollamaError?.message || 'Unknown error');
-            // Return error message - always valid JSON
-            return res.json({
-                response: `Je suis désolé, je rencontre actuellement des difficultés techniques avec le service d'IA. Veuillez réessayer dans quelques instants ou nous contacter directement.`,
-                persona: 'professional',
-                confidence: 0,
-                contextKeywords: [],
-                model: 'error',
-                visitorId: finalVisitorId,
-                sessionId: finalSessionId,
-                responseTime: Date.now() - (startTime || Date.now())
-            });
+            // Provider can be unavailable (quota/rate limit). Keep chatbot useful with local fallback.
+            try {
+                result = ollamaService.generateFallbackResponse(message.trim(), interactionHistory);
+            } catch (fallbackError) {
+                // Return error message - always valid JSON
+                return res.json({
+                    response: `Je suis désolé, je rencontre actuellement des difficultés techniques avec le service d'IA. Veuillez réessayer dans quelques instants ou nous contacter directement.`,
+                    persona: 'professional',
+                    confidence: 0,
+                    contextKeywords: [],
+                    model: 'error',
+                    visitorId: finalVisitorId,
+                    sessionId: finalSessionId,
+                    responseTime: Date.now() - (startTime || Date.now())
+                });
+            }
         }
 
         const responseTime = Date.now() - startTime;

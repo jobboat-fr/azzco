@@ -321,6 +321,37 @@ class OllamaService {
             throw new Error(`Gemini API Error: ${errorMessage}`);
         }
     }
+
+    /**
+     * Local fallback used when external AI provider is unavailable.
+     * Keeps the chatbot useful during quota/rate-limit windows.
+     */
+    generateFallbackResponse(userMessage, interactionHistory = []) {
+        const safeMessage = String(userMessage || '').toLowerCase();
+        const personaDetection = personaDetector.detectPersona(userMessage || '', interactionHistory || []);
+        const contextKeywords = personaDetector.extractContextKeywords(userMessage || '');
+
+        let response = "Merci pour votre message. Nous pouvons vous aider sur trois axes: cadrage stratégique, MVP IA, puis accélération business. Dites-moi votre objectif principal et votre horizon (30, 90 ou 180 jours), et je vous propose un plan concret.";
+
+        if (safeMessage.includes('prix') || safeMessage.includes('tarif') || safeMessage.includes('budget')) {
+            response = "Bonne question. Les tarifs dépendent surtout du périmètre (audit, MVP, automatisation, growth). Donnez-moi votre besoin en 2-3 lignes et je vous propose une estimation structurée avant prise de contact.";
+        } else if (safeMessage.includes('mvp') || safeMessage.includes('startup') || safeMessage.includes('lancer')) {
+            response = "Parfait. Pour lancer un MVP rapidement, on recommande: 1) validation du besoin, 2) version minimale livrable, 3) mesure des retours clients. Si vous voulez, je vous prépare le plan d'exécution en étapes.";
+        } else if (safeMessage.includes('contact') || safeMessage.includes('rendez-vous') || safeMessage.includes('rdv')) {
+            response = "Vous pouvez nous contacter directement via la page Contact. Si vous préférez, décrivez ici votre contexte et je vous aide à structurer un brief clair pour accélérer l'échange.";
+        } else if (safeMessage.includes('jobboat') || safeMessage.includes('outwings')) {
+            response = "Nous travaillons sur des solutions orientées impact business: activation produit, expérience utilisateur, et croissance. Je peux vous orienter vers l'offre la plus pertinente selon votre cas.";
+        }
+
+        return {
+            response,
+            persona: personaDetection.persona || 'professional',
+            confidence: personaDetection.confidence || 0.5,
+            contextKeywords,
+            model: 'fallback-local',
+            provider: 'local'
+        };
+    }
     
     /**
      * Clean and format response text
