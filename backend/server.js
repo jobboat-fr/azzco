@@ -13,15 +13,38 @@ const { initDatabase } = require('./models/database');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+function buildCorsOptions() {
+    const allowedOrigins = (process.env.FRONTEND_URL || '')
+        .split(',')
+        .map(o => o.trim())
+        .filter(Boolean);
+
+    return {
+        origin: (origin, callback) => {
+            // Allow non-browser requests (server-to-server, health checks, curl)
+            if (!origin) return callback(null, true);
+
+            // If no explicit origin configured, allow all in development
+            if (allowedOrigins.length === 0 && process.env.NODE_ENV !== 'production') {
+                return callback(null, true);
+            }
+
+            if (allowedOrigins.includes('*') || allowedOrigins.includes(origin)) {
+                return callback(null, true);
+            }
+
+            return callback(new Error('CORS origin not allowed'));
+        },
+        credentials: true
+    };
+}
+
 // Middleware
 // Vercel sits behind proxies and sets X-Forwarded-For.
 // Required for express-rate-limit to correctly identify clients.
 app.set('trust proxy', 1);
 app.use(helmet());
-app.use(cors({
-    origin: process.env.FRONTEND_URL || '*',
-    credentials: true
-}));
+app.use(cors(buildCorsOptions()));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('combined'));

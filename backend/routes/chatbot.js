@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 const ollamaService = require('../services/ollamaService');
-const { getDatabase } = require('../models/database');
+const { getDatabase, isPostgres } = require('../models/database');
 const { logVisitor, logChatInteraction } = require('../services/analyticsService');
 
 const CHAT_HISTORY_LIMIT = parseInt(process.env.AI_CONTEXT_HISTORY_LIMIT || '6', 10);
@@ -23,49 +23,61 @@ async function getInteractionHistory(sessionId, limit = CHAT_HISTORY_LIMIT) {
         }
         
         const maxLimit = Math.max(parseInt(limit, 10) || 1, 1);
-        const query = `
-            SELECT message, response, persona_detected, timestamp
-            FROM chat_logs
-            WHERE session_id = ?
-            ORDER BY timestamp DESC
-            LIMIT ${maxLimit}
-        `;
-
-        return await new Promise((resolve) => {
-            db.all(query, [sessionId], (err, rows) => {
-                if (err) {
-                    console.warn('Unable to fetch chat history:', err.message);
-                    resolve([]);
-                    return;
-                }
-
-                if (!rows || rows.length === 0) {
-                    resolve([]);
-                    return;
-                }
-
-                // Reverse to chronological order and format for the AI service
-                const formattedHistory = [];
-                rows.slice().reverse().forEach(row => {
-                    if (row.message) {
-                        formattedHistory.push({
-                            role: 'user',
-                            content: row.message,
-                            persona: row.persona_detected || 'professional'
-                        });
+        let rows = [];
+        if (isPostgres()) {
+            const result = await db.query(
+                `SELECT message, response, persona_detected, timestamp
+                 FROM chat_logs
+                 WHERE session_id = $1
+                 ORDER BY timestamp DESC
+                 LIMIT $2`,
+                [sessionId, maxLimit]
+            );
+            rows = result.rows || [];
+        } else {
+            const query = `
+                SELECT message, response, persona_detected, timestamp
+                FROM chat_logs
+                WHERE session_id = ?
+                ORDER BY timestamp DESC
+                LIMIT ${maxLimit}
+            `;
+            rows = await new Promise((resolve) => {
+                db.all(query, [sessionId], (err, sqliteRows) => {
+                    if (err) {
+                        console.warn('Unable to fetch chat history:', err.message);
+                        resolve([]);
+                        return;
                     }
-                    if (row.response) {
-                        formattedHistory.push({
-                            role: 'assistant',
-                            content: row.response,
-                            persona: row.persona_detected || 'professional'
-                        });
-                    }
+                    resolve(sqliteRows || []);
                 });
-
-                resolve(formattedHistory);
             });
+        }
+
+        if (!rows || rows.length === 0) {
+            return [];
+        }
+
+        // Reverse to chronological order and format for the AI service
+        const formattedHistory = [];
+        rows.slice().reverse().forEach(row => {
+            if (row.message) {
+                formattedHistory.push({
+                    role: 'user',
+                    content: row.message,
+                    persona: row.persona_detected || 'professional'
+                });
+            }
+            if (row.response) {
+                formattedHistory.push({
+                    role: 'assistant',
+                    content: row.response,
+                    persona: row.persona_detected || 'professional'
+                });
+            }
         });
+
+        return formattedHistory;
     } catch (error) {
         console.warn('Chat history unavailable:', error.message);
         return [];
@@ -260,6 +272,17 @@ router.get('/history/:sessionId', async (req, res) => {
         if (!db) {
             console.warn('⚠️  Database not available - returning empty history');
             return res.json({ history: [] });
+        }
+
+        if (isPostgres()) {
+            const result = await db.query(
+                `SELECT message, response, persona_detected, timestamp
+                 FROM chat_logs
+                 WHERE session_id = $1
+                 ORDER BY timestamp ASC`,
+                [sessionId]
+            );
+            return res.json({ history: result.rows || [] });
         }
 
         return new Promise((resolve, reject) => {

@@ -43,25 +43,25 @@
     --bg-dark-soft: #0a0a0a;
     --bg-ice: #f0f8fa;
     
-    /* Gradients - Luxury & Icy */
-    --gradient-gold: linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #f4e4bc 100%);
-    --gradient-gold-subtle: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+    /* Gradients - Luxury & Icy (calmed for less visual noise) */
+    --gradient-gold: linear-gradient(135deg, #c9a227 0%, #d4af37 50%, #e8d48b 100%);
+    --gradient-gold-subtle: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(255, 215, 0, 0.03) 100%);
     --gradient-ice: linear-gradient(180deg, #ffffff 0%, #f0f8fa 100%);
     --gradient-dark: linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
     --gradient-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
     
-    /* Shadows - Luxury depth */
+    /* Shadows - Luxury depth (softer for calmer look) */
     --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.04);
-    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.08);
-    --shadow-large: 0 8px 32px rgba(0, 0, 0, 0.12);
-    --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.2);
-    --shadow-gold-glow: 0 0 40px rgba(212, 175, 55, 0.3);
-    --shadow-ice: 0 4px 20px rgba(232, 244, 248, 0.5);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.06);
+    --shadow-large: 0 8px 32px rgba(0, 0, 0, 0.08);
+    --shadow-gold: 0 0 16px rgba(212, 175, 55, 0.1);
+    --shadow-gold-glow: 0 0 24px rgba(212, 175, 55, 0.15);
+    --shadow-ice: 0 4px 20px rgba(232, 244, 248, 0.3);
     
     /* Borders */
-    --border-light: 1px solid rgba(0, 0, 0, 0.08);
-    --border-gold: 1px solid rgba(212, 175, 55, 0.3);
-    --border-gold-bright: 1px solid rgba(212, 175, 55, 0.5);
+    --border-light: 1px solid rgba(0, 0, 0, 0.06);
+    --border-gold: 1px solid rgba(212, 175, 55, 0.2);
+    --border-gold-bright: 1px solid rgba(212, 175, 55, 0.35);
     
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -115,7 +115,7 @@ body::before {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    opacity: 0.03;
+    opacity: 0.018;
     z-index: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -148,9 +148,45 @@ section.bg-dark::before {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    opacity: 0.05;
+    opacity: 0.03;
     z-index: 0;
     pointer-events: none;
+}
+
+/* Calm hero badges (less visual noise) */
+.hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.hero-pill svg {
+    color: var(--color-gold);
+    opacity: 0.9;
+}
+
+/* Subtle section icons (less noise than full gold gradient) */
+.icon-circle-subtle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    background: rgba(212, 175, 55, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon-circle-subtle svg {
+    color: var(--color-gold);
 }
 
 /* Navigation - Luxury Minimalist */
@@ -628,6 +664,18 @@ section.bg-dark::before {
     color: var(--text-tertiary);
 }
 
+.footer-legal {
+    margin-top: 0.35rem;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-legal-highlight {
+    color: var(--color-gold);
+    font-weight: 400;
+}
+
 /* Chatbot Widget */
 .chatbot-widget {
     position: fixed;
@@ -642,8 +690,8 @@ section.bg-dark::before {
 }
 
 .chatbot-toggle {
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     background: var(--gradient-gold);
     border: none;
@@ -659,6 +707,12 @@ section.bg-dark::before {
     -webkit-tap-highlight-color: transparent;
 }
 
+.chatbot-toggle svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
 .chatbot-toggle:hover {
     transform: scale(1.1);
     box-shadow: var(--shadow-gold-glow);
@@ -668,10 +722,10 @@ section.bg-dark::before {
     position: fixed;
     top: 0;
     right: 0;
-    width: 380px;
+    width: min(380px, calc(100vw - 2rem));
     height: auto;
-    min-height: auto;
-    max-height: 100vh;
+    min-height: 200px;
+    max-height: min(85vh, calc(100vh - 2rem));
     background: var(--bg-primary);
     border: var(--border-light);
     box-shadow: var(--shadow-large);
@@ -679,6 +733,7 @@ section.bg-dark::before {
     flex-direction: column;
     transition: height var(--transition-base);
     overflow: hidden;
+    border-radius: 12px;
 }
 
 .chatbot-container.active {
@@ -717,10 +772,12 @@ section.bg-dark::before {
 .chatbot-messages {
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
     padding: 1.5rem;
     min-height: 0;
     display: flex;
     flex-direction: column;
+    -webkit-overflow-scrolling: touch;
 }
 
 .chatbot-message {
@@ -824,26 +881,32 @@ section.bg-dark::before {
     
     /* Chatbot Mobile */
     .chatbot-widget {
-        bottom: 1rem;
-        right: 1rem;
+        bottom: max(1rem, env(safe-area-inset-bottom));
+        right: max(1rem, env(safe-area-inset-right));
         top: auto;
     }
     
     .chatbot-toggle {
-        width: 56px;
-        height: 56px;
+        width: 44px;
+        height: 44px;
+    }
+    
+    .chatbot-toggle svg {
+        width: 20px;
+        height: 20px;
     }
     
     .chatbot-container {
         width: 100vw;
-        width: 100dvw; /* Dynamic viewport width for mobile browsers */
-        height: auto;
-        min-height: auto;
-        max-height: 100vh;
+        width: 100dvw;
+        height: 100vh;
+        height: 100dvh;
+        min-height: 100dvh;
         max-height: 100dvh;
         top: 0;
         right: 0;
         left: 0;
+        bottom: 0;
         border: none;
         border-radius: 0;
     }
@@ -899,10 +962,9 @@ section.bg-dark::before {
     }
     
     .chatbot-container {
-        width: 420px;
+        width: min(400px, calc(100vw - 2rem));
         min-height: 200px;
-        max-height: calc(100vh - 120px);
-        max-width: calc(100vw - 3rem);
+        max-height: min(85vh, calc(100dvh - 4rem));
     }
     
     .chatbot-header {

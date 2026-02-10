@@ -2,8 +2,25 @@ const express = require('express');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 const { logVisitor, logPageView, logEvent } = require('../services/analyticsService');
-const { getDatabase } = require('../models/database');
+const { getDatabase, isPostgres } = require('../models/database');
 const geolocationService = require('../services/geolocationService');
+
+function isAdminAuthorized(req) {
+    const adminToken = process.env.ANALYTICS_ADMIN_TOKEN;
+    const isProduction = process.env.NODE_ENV === 'production' || !!process.env.VERCEL;
+
+    // In local dev, allow without token for convenience
+    if (!adminToken && !isProduction) return true;
+    if (!adminToken && isProduction) return false;
+
+    const bearer = req.get('authorization') || '';
+    const bearerToken = bearer.startsWith('Bearer ') ? bearer.slice(7).trim() : null;
+    const headerToken = req.get('x-admin-token');
+    const queryToken = req.query.adminToken;
+
+    const provided = bearerToken || headerToken || queryToken;
+    return provided === adminToken;
+}
 
 /**
  * POST /api/analytics/visitor
@@ -119,7 +136,46 @@ router.post('/event', async (req, res) => {
  */
 router.get('/stats', async (req, res) => {
     try {
+        if (!isAdminAuthorized(req)) {
+            return res.status(401).json({
+                success: false,
+                error: 'Non autorisé'
+            });
+        }
+
         const db = getDatabase();
+        if (!db) {
+            return res.status(503).json({
+                success: false,
+                visitors: {},
+                chat: {},
+                error: 'Base de données indisponible'
+            });
+        }
+
+        if (isPostgres()) {
+            const statsResult = await db.query(
+                `SELECT
+                    COUNT(DISTINCT visitor_id) AS total_visitors,
+                    COUNT(*) AS total_visits,
+                    COUNT(DISTINCT DATE(first_visit)) AS unique_days
+                 FROM visitors`
+            );
+
+            const chatStatsResult = await db.query(
+                `SELECT
+                    COUNT(*) AS total_messages,
+                    COUNT(DISTINCT visitor_id) AS unique_chat_users,
+                    AVG(response_time) AS avg_response_time
+                 FROM chat_logs`
+            );
+
+            return res.json({
+                success: true,
+                visitors: statsResult.rows?.[0] || {},
+                chat: chatStatsResult.rows?.[0] || {}
+            });
+        }
 
         const stats = await new Promise((resolve, reject) => {
             db.get(
@@ -150,12 +206,14 @@ router.get('/stats', async (req, res) => {
         });
 
         res.json({
+            success: true,
             visitors: stats,
             chat: chatStats
         });
     } catch (error) {
         console.error('Analytics stats error:', error);
-        res.json({ 
+        res.status(500).json({ 
+            success: false,
             visitors: {},
             chat: {},
             error: 'Erreur lors de la récupération des statistiques'

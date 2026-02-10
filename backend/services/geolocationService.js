@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const IPAPI_API_KEY = process.env.IPAPI_API_KEY || '';
-const IPAPI_BASE_URL = 'http://api.ipapi.com/api';
+const IPAPI_BASE_URL = 'https://api.ipapi.com/api';
 
 /**
  * Service for IP geolocation using ipapi.com
