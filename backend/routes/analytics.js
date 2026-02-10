@@ -16,9 +16,8 @@ function isAdminAuthorized(req) {
     const bearer = req.get('authorization') || '';
     const bearerToken = bearer.startsWith('Bearer ') ? bearer.slice(7).trim() : null;
     const headerToken = req.get('x-admin-token');
-    const queryToken = req.query.adminToken;
-
-    const provided = bearerToken || headerToken || queryToken;
+    // Never accept admin token from query string to avoid leaks in logs/referrers/history.
+    const provided = bearerToken || headerToken;
     return provided === adminToken;
 }
 
