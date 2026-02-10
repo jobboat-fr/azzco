@@ -19,21 +19,43 @@ const { initDatabase } = require(path.join(backendPath, 'models', 'database'));
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+function normalizeOrigin(origin) {
+    return String(origin || '').trim().replace(/\/+$/, '').toLowerCase();
+}
+
+function isAllowedVercelPreview(origin) {
+    try {
+        const { hostname, protocol } = new URL(origin);
+        if (protocol !== 'https:') return false;
+        if (!hostname.endsWith('.vercel.app')) return false;
+        return hostname.includes('azzco');
+    } catch (error) {
+        return false;
+    }
+}
+
 function buildCorsOptions() {
     const allowedOrigins = (process.env.FRONTEND_URL || '')
         .split(',')
-        .map(o => o.trim())
+        .map(o => normalizeOrigin(o))
         .filter(Boolean);
+    const defaultOrigins = [
+        'https://azzcolabs.business',
+        'https://www.azzcolabs.business'
+    ];
+    const allowedOriginSet = new Set([...defaultOrigins, ...allowedOrigins]);
 
     return {
         origin: (origin, callback) => {
             if (!origin) return callback(null, true);
+            const normalizedOrigin = normalizeOrigin(origin);
 
-            if (allowedOrigins.length === 0 && process.env.NODE_ENV !== 'production') {
+            if (allowedOriginSet.has('*') || allowedOriginSet.has(normalizedOrigin)) {
                 return callback(null, true);
             }
 
-            if (allowedOrigins.includes('*') || allowedOrigins.includes(origin)) {
+            // Allow preview deployments used for QA and pre-production checks on Vercel.
+            if (isAllowedVercelPreview(normalizedOrigin)) {
                 return callback(null, true);
             }
 
