@@ -8,10 +8,7 @@
     'use strict';
     if (typeof window.FORMSPREE_CONFIG === 'undefined') {
         window.FORMSPREE_CONFIG = {
-            projectId: '2901802241138621618',
-            deployKey: '4044d470f6b64579adc57322e34c626a',
-            // Form IDs - Update these with your actual Formspree form IDs
-            // Create forms at: https://formspree.io/forms
+            // Keep only public form endpoints required by browser submission.
             endpoints: {
                 contact: 'https://formspree.io/f/xbdjyzov',
                 newsletter: 'https://formspree.io/f/xbdjyzov'
