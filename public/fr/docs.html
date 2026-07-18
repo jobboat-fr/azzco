@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation — VIGIL, VTLVS, JobBoat & Services | AZZ&CO LABS</title>
+    <meta name="description" content="Documentation technique des produits et services AZZ&CO LABS : architecture du conseil multi-LLM VIGIL, spécifications de recharge sans fil VTLVS, plateforme JobBoat et méthode de livraison agentique.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.azzcolabs.business/fr/docs">
+    <link rel="alternate" hreflang="en" href="https://www.azzcolabs.business/docs">
+    <link rel="alternate" hreflang="fr" href="https://www.azzcolabs.business/fr/docs">
+    <link rel="alternate" hreflang="x-default" href="https://www.azzcolabs.business/docs">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:title" content="Documentation | AZZ&CO LABS">
+    <meta property="og:description" content="Architecture et spécifications de VIGIL, VTLVS et JobBoat.">
+    <meta property="og:url" content="https://www.azzcolabs.business/fr/docs">
+    <meta name="theme-color" content="#060606">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/fr/" aria-label="Accueil AZZ&CO LABS"><img src="/assets/images/logo.svg" alt="AZZ&CO LABS" class="logo-img"></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/fr/services.html" class="nav-link">Services</a></li>
+                <li><a href="/fr/vigil.html" class="nav-link">VIGIL</a></li>
+                <li><a href="/fr/vtlvs.html" class="nav-link">VTLVS</a></li>
+                <li><a href="/fr/jobboat.html" class="nav-link">JobBoat</a></li>
+                <li><a href="/fr/docs.html" class="nav-link active">Docs</a></li>
+                <li><a href="/fr/contact.html" class="nav-link nav-cta">Réserver un appel</a></li>
+                <li><a href="/docs.html" class="lang-switch" hreflang="en">EN</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <header class="hero" style="padding-bottom:3rem;">
+        <span class="eyebrow">Documentation</span>
+        <h1>Comment nos systèmes <span class="gradient-text">fonctionnent vraiment.</span></h1>
+        <p class="hero-sub">Architecture, spécifications et méthode de livraison — écrites noir sur blanc, parce qu'un système qu'on ne peut pas expliquer est un système auquel on ne peut pas faire confiance.</p>
+    </header>
+
+    <section style="padding-top:1rem;">
+        <div class="container docs-layout">
+            <aside class="docs-nav" aria-label="Sections de la documentation">
+                <a href="#vigil">Architecture VIGIL</a>
+                <a href="#vigil-council">— Le conseil</a>
+                <a href="#vigil-stack">— Stack &amp; chiffres</a>
+                <a href="#vtlvs">Matériel VTLVS</a>
+                <a href="#vtlvs-markets">— Marchés</a>
+                <a href="#jobboat">Plateforme JobBoat</a>
+                <a href="#method">Méthode de livraison</a>
+                <a href="#faq">FAQ</a>
+            </aside>
+            <article class="docs-body">
+                <h2 id="vigil">VIGIL — Architecture du conseil multi-LLM</h2>
+                <p>VIGIL est un copilote IA de réunion. Son principe de conception fondamental : <strong>aucun modèle seul n'a notre confiance.</strong> Chaque intervention est rédigée, relue et votée par un conseil de modèles de familles différentes avant d'atteindre l'utilisateur.</p>
+
+                <h3 id="vigil-council">Le pipeline du conseil</h3>
+                <ol>
+                    <li><strong>Ingestion</strong> — la transcription de réunion arrive en temps réel dans le Collectif de Workers IA.</li>
+                    <li><strong>Worker principal</strong> — Claude Sonnet, spécialisé par rôle (conseiller CFO / Tech / Juridique / Produit), rédige une proposition d'intervention.</li>
+                    <li><strong>Relecteurs</strong> — GPT-4o et Gemini Flash notent la proposition sur six dimensions en JSON structuré. Des familles de modèles différentes sont utilisées volontairement, pour éviter l'effondrement des biais.</li>
+                    <li><strong>Vote de consensus</strong> — un vote pondéré doit franchir un seuil de consensus de <code>66%</code> et une porte de maturité de <code>80%</code>.</li>
+                    <li><strong>Repli « président »</strong> — si le consensus échoue, un modèle président synthétise la réponse finale.</li>
+                </ol>
+                <p>En parallèle, le <strong>moteur de patterns comportementaux</strong> (550+ patterns répartis en 50 ensembles) lit la fenêtre de transcription de chaque interlocuteur et émet des signaux en direct : stress, évitement, agilité d'apprentissage, alignement de persona.</p>
+
+                <h3 id="vigil-stack">Stack &amp; chiffres validés</h3>
+                <div class="table-wrap"><table>
+                    <tr><th>Couche</th><th>Technologie</th></tr>
+                    <tr><td>Runtime / API</td><td>Node.js 20+, Express</td></tr>
+                    <tr><td>Mémoire / RAG</td><td>Supabase Postgres + pgvector</td></tr>
+                    <tr><td>Cache / file</td><td>Upstash Redis</td></tr>
+                    <tr><td>Modèles du conseil</td><td>Claude Sonnet + GPT-4o + Gemini Flash (API directes)</td></tr>
+                    <tr><td>Audio en direct</td><td>Recall.ai + LiveKit, Groq Whisper STT, ElevenLabs TTS</td></tr>
+                    <tr><td>Facturation / auth</td><td>Stripe, Supabase Auth</td></tr>
+                </table></div>
+                <p>Résultats validés en proof-of-concept : <strong>0,008&nbsp;$ par délibération</strong> (37× sous le seuil de viabilité de 0,30&nbsp;$), <strong>latence P95 de 10,0&nbsp;s</strong> (sous le budget de 15&nbsp;s du mode chuchotement en direct), <strong>10/10 exécutions</strong> ayant identifié le bon problème dans le scénario de test, avec une vraie diversité de relecture (70 points d'écart de harm-risk entre les modèles relecteurs).</p>
+
+                <h2 id="vtlvs">VTLVS — Borne de recharge sans fil universelle</h2>
+                <p>VTLVS <em>(prononcé Atlas)</em> est un SKU matériel unique qui recharge sans fil toutes les classes de véhicules électriques. Le pari reprend celui de l'USB-C : gagner en étant <strong>une abstraction unique pour tous les appareils</strong>.</p>
+                <div class="table-wrap"><table>
+                    <tr><th>Spécification</th><th>Valeur</th></tr>
+                    <tr><td>Format</td><td>700 × 700 × 200 mm</td></tr>
+                    <tr><td>Résistance</td><td>IP68 étanche · IK10 anti-choc</td></tr>
+                    <tr><td>Plage de puissance</td><td>250 W (vélo) → 22 kW (SUV) — plage dynamique de 90×</td></tr>
+                    <tr><td>Bobines TX</td><td>4 bobines imbriquées, r = 360 / 280 / 200 / 80 mm + relais statique</td></tr>
+                    <tr><td>Classification véhicule</td><td>Par le poids, &lt; 200 ms — sans tag, sans app, sans connectivité</td></tr>
+                </table></div>
+
+                <h3 id="vtlvs-markets">Quatre modèles de revenus, une borne</h3>
+                <ul>
+                    <li><strong>B2C vente directe</strong> — pour particuliers et copropriétés.</li>
+                    <li><strong>B2B parking</strong> — Hardware-as-a-Service pour opérateurs de parking.</li>
+                    <li><strong>B2G municipal</strong> — concessions de recharge en voirie pour les villes.</li>
+                    <li><strong>B2B2C hôtellerie</strong> — la recharge comme service, facturée en SaaS.</li>
+                </ul>
+                <p>Un SKU unique sur les quatre marchés réduit stock, chaîne logistique et support — l'idée stratégique derrière le produit.</p>
+
+                <h2 id="jobboat">JobBoat — Plateforme carrière</h2>
+                <p>JobBoat fusionne trois expériences aujourd'hui dispersées dans des applications séparées : contenus carrière inspirants, réseau professionnel, et découverte d'emplois avec une vraie compréhension du profil.</p>
+                <ul>
+                    <li><strong>Plateforme web</strong> et applications <strong>mobiles natives</strong> (Expo + React Native, iOS &amp; Android).</li>
+                    <li><strong>Recommandations profil-aware</strong> — un matching piloté par la compréhension profonde du profil plutôt que par mots-clés.</li>
+                    <li><strong>Filiation du moteur comportemental</strong> — la technologie d'analyse de patterns développée pour JobBoat est devenue le socle du moteur comportemental de VIGIL.</li>
+                    <li><strong>RGPD dès la conception</strong> — les données utilisateur alimentent les recommandations et ne sont jamais revendues.</li>
+                </ul>
+
+                <h2 id="method">Notre méthode de livraison (services)</h2>
+                <p>Chaque mission client — automatisation, installation agentique, systèmes, web ou data — suit le même chemin auditable :</p>
+                <ol>
+                    <li><strong>Diagnostic</strong> — consultation gratuite ; nous cartographions workflows, données et contraintes, et classons les automatisations par levier.</li>
+                    <li><strong>Conception</strong> — une architecture écrite et un plan de déploiement : périmètre, garde-fous, coûts, métriques de succès. Vous validez avant toute construction.</li>
+                    <li><strong>Déploiement</strong> — itérations courtes, validation humaine sur tout ce qui touche vos clients, journaux d'audit sur chaque action automatisée.</li>
+                    <li><strong>Exploitation ou transmission</strong> — exploitation mensuelle par nos soins, ou transmission documentée que votre équipe peut faire tourner sans nous.</li>
+                </ol>
+                <p>Nos principes non négociables : <strong>routage déterministe</strong> (des règles décident quel système traite quoi — pas l'improvisation), <strong>séparation préparation / exécution</strong> (les environnements d'analyse ne peuvent jamais envoyer ni écrire en production), et <strong>gouvernance des coûts</strong> (budgets par exécution, surveillés).</p>
+
+                <h2 id="faq">FAQ</h2>
+                <h3>Peut-on auto-héberger ce que vous construisez ?</h3>
+                <p>Oui. Les systèmes clients sont construits sur votre infrastructure ou vos comptes cloud, documentation et transmission incluses par défaut.</p>
+                <h3>Quels modèles IA utilisez-vous ?</h3>
+                <p>Ceux qui conviennent à la tâche et au budget — typiquement Anthropic Claude, OpenAI GPT et Google Gemini via API directes. Pour les étapes critiques de relecture, nous mélangeons volontairement les familles de modèles.</p>
+                <h3>Travaillez-vous en français ou en anglais ?</h3>
+                <p>Les deux, nativement. Contrats, documentation et support disponibles dans les deux langues.</p>
+                <h3>Comment démarrer ?</h3>
+                <p><a href="/fr/contact.html" style="color:var(--gold);">Réservez une consultation gratuite</a> — réponse sous 24 heures.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="cta-band">
+        <h2>Une question sans réponse dans la doc ?</h2>
+        <p>Posez-la directement — les questions d'ingénierie sont bienvenues.</p>
+        <a href="/fr/contact.html" class="btn btn-primary">Nous contacter</a>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="/assets/images/logo.svg" alt="AZZ&CO LABS" style="height:32px;margin-bottom:1rem;">
+                    <p>AZZ&CO LABS SAS — studio d'ingénierie IA.<br>Freneuse / Paris, France.</p>
+                    <p><a href="mailto:rached.azer@azzcolabs.business">rached.azer@azzcolabs.business</a></p>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <a href="/fr/services.html#automation">Automatisation IA</a>
+                    <a href="/fr/services.html#agentic">IA Agentique</a>
+                    <a href="/fr/services.html#systems">Architecture Système</a>
+                    <a href="/fr/services.html#web">Création Web</a>
+                    <a href="/fr/services.html#data">Analyse de Données</a>
+                </div>
+                <div>
+                    <h4>Produits</h4>
+                    <a href="/fr/vigil.html">VIGIL</a>
+                    <a href="/fr/vtlvs.html">VTLVS</a>
+                    <a href="/fr/jobboat.html">JobBoat</a>
+                    <a href="/fr/docs.html">Documentation</a>
+                </div>
+                <div>
+                    <h4>Entreprise</h4>
+                    <a href="/fr/contact.html">Contact</a>
+                    <a href="/careers.html">Carrières</a>
+                    <a href="/privacy.html">Confidentialité</a>
+                    <a href="/terms.html">CGU</a>
+                    <a href="/gdpr.html">RGPD</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 AZZ&CO LABS SAS. Tous droits réservés.</span>
+                <span><a href="/docs.html" style="color:inherit;">EN</a> · <a href="/fr/docs.html" style="color:inherit;">FR</a></span>
+            </div>
+        </div>
+    </footer>
+    <script src="/script.js" defer></script>
+</body>
+</html>

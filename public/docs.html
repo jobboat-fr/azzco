@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation — VIGIL, VTLVS, JobBoat & Services | AZZ&CO LABS</title>
+    <meta name="description" content="Technical documentation for AZZ&CO LABS products and services: VIGIL multi-LLM council architecture, VTLVS wireless charging specifications, JobBoat platform, and our agentic AI delivery method.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.azzcolabs.business/docs">
+    <link rel="alternate" hreflang="en" href="https://www.azzcolabs.business/docs">
+    <link rel="alternate" hreflang="fr" href="https://www.azzcolabs.business/fr/docs">
+    <link rel="alternate" hreflang="x-default" href="https://www.azzcolabs.business/docs">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Documentation | AZZ&CO LABS">
+    <meta property="og:description" content="Architecture and specifications for VIGIL, VTLVS and JobBoat.">
+    <meta property="og:url" content="https://www.azzcolabs.business/docs">
+    <meta name="theme-color" content="#060606">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "AZZ&CO LABS Documentation",
+      "description": "Technical documentation for VIGIL, VTLVS and JobBoat.",
+      "author": { "@type": "Organization", "name": "AZZ&CO LABS" },
+      "url": "https://www.azzcolabs.business/docs"
+    }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" aria-label="AZZ&CO LABS home"><img src="/assets/images/logo.svg" alt="AZZ&CO LABS" class="logo-img"></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/services.html" class="nav-link">Services</a></li>
+                <li><a href="/vigil.html" class="nav-link">VIGIL</a></li>
+                <li><a href="/vtlvs.html" class="nav-link">VTLVS</a></li>
+                <li><a href="/jobboat.html" class="nav-link">JobBoat</a></li>
+                <li><a href="/docs.html" class="nav-link active">Docs</a></li>
+                <li><a href="/contact.html" class="nav-link nav-cta">Book a call</a></li>
+                <li><a href="/fr/docs.html" class="lang-switch" hreflang="fr">FR</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <header class="hero" style="padding-bottom:3rem;">
+        <span class="eyebrow">Documentation</span>
+        <h1>How our systems <span class="gradient-text">actually work.</span></h1>
+        <p class="hero-sub">Architecture, specifications and delivery method — written down, because systems you can't explain are systems you can't trust.</p>
+    </header>
+
+    <section style="padding-top:1rem;">
+        <div class="container docs-layout">
+            <aside class="docs-nav" aria-label="Documentation sections">
+                <a href="#vigil">VIGIL architecture</a>
+                <a href="#vigil-council">— The council</a>
+                <a href="#vigil-stack">— Stack &amp; numbers</a>
+                <a href="#vtlvs">VTLVS hardware</a>
+                <a href="#vtlvs-markets">— Markets</a>
+                <a href="#jobboat">JobBoat platform</a>
+                <a href="#method">Delivery method</a>
+                <a href="#faq">FAQ</a>
+            </aside>
+            <article class="docs-body">
+                <h2 id="vigil">VIGIL — Multi-LLM council architecture</h2>
+                <p>VIGIL is an AI meeting copilot. Its core design principle: <strong>no single model is trusted alone.</strong> Every intervention is drafted, reviewed and voted on by a council of models from different families before it reaches the user.</p>
+
+                <h3 id="vigil-council">The council pipeline</h3>
+                <ol>
+                    <li><strong>Ingest</strong> — a real-time meeting transcript flows into the AI Worker Collective.</li>
+                    <li><strong>Primary worker</strong> — Claude Sonnet, specialized per role (CFO / Tech / Legal / Product advisor), drafts a proposed intervention.</li>
+                    <li><strong>Reviewers</strong> — GPT-4o and Gemini Flash score the draft on six dimensions in structured JSON. Different model families are used deliberately, to avoid bias collapse.</li>
+                    <li><strong>Consensus vote</strong> — a weighted vote must pass a <code>66%</code> consensus threshold and an <code>80%</code> readiness gate.</li>
+                    <li><strong>Chairman fallback</strong> — if consensus fails, a chairman model synthesizes the final answer.</li>
+                </ol>
+                <p>In parallel, the <strong>Behavioral Pattern Engine</strong> (550+ patterns across 50 ensembles) reads each speaker's transcript window and emits live signals: stress, evasion, learning agility, persona alignment.</p>
+
+                <h3 id="vigil-stack">Stack &amp; validated numbers</h3>
+                <div class="table-wrap"><table>
+                    <tr><th>Layer</th><th>Technology</th></tr>
+                    <tr><td>Runtime / API</td><td>Node.js 20+, Express</td></tr>
+                    <tr><td>Memory / RAG</td><td>Supabase Postgres + pgvector</td></tr>
+                    <tr><td>Cache / queue</td><td>Upstash Redis</td></tr>
+                    <tr><td>Council models</td><td>Claude Sonnet + GPT-4o + Gemini Flash (direct APIs)</td></tr>
+                    <tr><td>Live audio</td><td>Recall.ai + LiveKit, Groq Whisper STT, ElevenLabs TTS</td></tr>
+                    <tr><td>Billing / auth</td><td>Stripe, Supabase Auth</td></tr>
+                </table></div>
+                <p>Validated proof-of-concept results: <strong>$0.008 per council run</strong> (37× under the $0.30 viability threshold), <strong>P95 latency 10.0&nbsp;s</strong> (under the 15&nbsp;s live-whisper budget), <strong>10/10 runs</strong> flagged the correct issue in the test scenario, with real reviewer diversity (70-point harm-risk variance between reviewer models).</p>
+
+                <h2 id="vtlvs">VTLVS — Universal wireless charging pad</h2>
+                <p>VTLVS <em>(pronounced Atlas)</em> is a single hardware SKU that wirelessly charges every class of electric vehicle. The design bet mirrors USB-C: win by being <strong>one abstraction over every device</strong>.</p>
+                <div class="table-wrap"><table>
+                    <tr><th>Specification</th><th>Value</th></tr>
+                    <tr><td>Form factor</td><td>700 × 700 × 200 mm</td></tr>
+                    <tr><td>Environmental rating</td><td>IP68 waterproof · IK10 impact</td></tr>
+                    <tr><td>Power range</td><td>250 W (e-bike) → 22 kW (SUV) — 90× dynamic range</td></tr>
+                    <tr><td>TX coils</td><td>4 nested coils, r = 360 / 280 / 200 / 80 mm + solid-state relay</td></tr>
+                    <tr><td>Vehicle classification</td><td>Weight-first, &lt; 200 ms — no tag, no app, no connectivity</td></tr>
+                </table></div>
+
+                <h3 id="vtlvs-markets">Four revenue models, one pad</h3>
+                <ul>
+                    <li><strong>B2C retail</strong> — direct sale for homes and buildings.</li>
+                    <li><strong>B2B parking</strong> — Hardware-as-a-Service for parking operators.</li>
+                    <li><strong>B2G municipal</strong> — curbside charging concessions for cities.</li>
+                    <li><strong>B2B2C hospitality</strong> — charging as an amenity, billed via SaaS.</li>
+                </ul>
+                <p>One SKU across all four collapses stock, supply chain and support — the strategic insight behind the product.</p>
+
+                <h2 id="jobboat">JobBoat — Career platform</h2>
+                <p>JobBoat merges three experiences that today live in separate apps: inspiring career content, professional networking, and job discovery with genuine profile understanding.</p>
+                <ul>
+                    <li><strong>Web platform</strong> plus <strong>native mobile</strong> apps (Expo + React Native, iOS &amp; Android).</li>
+                    <li><strong>Profile-aware recommendations</strong> — matching driven by deep profile understanding rather than keyword search.</li>
+                    <li><strong>Behavioral engine lineage</strong> — the pattern-analysis technology developed for JobBoat became the foundation of VIGIL's Behavioral Pattern Engine.</li>
+                    <li><strong>GDPR-first</strong> — user data powers recommendations and is never resold.</li>
+                </ul>
+
+                <h2 id="method">Our delivery method (services)</h2>
+                <p>Every client engagement — automation, agentic installation, systems, web or data — follows the same auditable path:</p>
+                <ol>
+                    <li><strong>Diagnose</strong> — free consultation; we map workflows, data and constraints, and rank automation candidates by leverage.</li>
+                    <li><strong>Design</strong> — a written architecture and rollout plan: scope, guardrails, costs, success metrics. You approve before any build.</li>
+                    <li><strong>Deploy</strong> — short iterations, human-in-the-loop gates on anything customer-facing, audit logs on every automated action.</li>
+                    <li><strong>Operate or hand over</strong> — monthly operation by us, or a documented handover your team can run without us.</li>
+                </ol>
+                <p>Design principles we do not compromise on: <strong>deterministic routing</strong> (rules decide which system handles what — not vibes), <strong>prepare-only vs. execute separation</strong> (analysis environments can never send or write to production), and <strong>cost governance</strong> (per-run budgets, monitored).</p>
+
+                <h2 id="faq">FAQ</h2>
+                <h3>Can we self-host what you build?</h3>
+                <p>Yes. Client systems are built on your infrastructure or your cloud accounts, with documentation and handover included by default.</p>
+                <h3>Which AI models do you use?</h3>
+                <p>Whatever fits the task and budget — typically Anthropic Claude, OpenAI GPT and Google Gemini via direct APIs. For review-critical steps we deliberately mix model families.</p>
+                <h3>Do you work in English or French?</h3>
+                <p>Both, natively. Contracts, documentation and support available in either language.</p>
+                <h3>How do we start?</h3>
+                <p><a href="/contact.html" style="color:var(--gold);">Book a free consultation</a> — we reply within 24 hours.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="cta-band">
+        <h2>Questions the docs didn't answer?</h2>
+        <p>Ask us directly — engineering questions welcome.</p>
+        <a href="/contact.html" class="btn btn-primary">Contact us</a>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img src="/assets/images/logo.svg" alt="AZZ&CO LABS" style="height:32px;margin-bottom:1rem;">
+                    <p>AZZ&CO LABS SAS — AI engineering studio.<br>Freneuse / Paris, France.</p>
+                    <p><a href="mailto:rached.azer@azzcolabs.business">rached.azer@azzcolabs.business</a></p>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <a href="/services.html#automation">AI Automation</a>
+                    <a href="/services.html#agentic">Agentic AI Installation</a>
+                    <a href="/services.html#systems">System Design</a>
+                    <a href="/services.html#web">Web Design</a>
+                    <a href="/services.html#data">Data Analysis</a>
+                </div>
+                <div>
+                    <h4>Products</h4>
+                    <a href="/vigil.html">VIGIL</a>
+                    <a href="/vtlvs.html">VTLVS</a>
+                    <a href="/jobboat.html">JobBoat</a>
+                    <a href="/docs.html">Documentation</a>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <a href="/contact.html">Contact</a>
+                    <a href="/careers.html">Careers</a>
+                    <a href="/privacy.html">Privacy</a>
+                    <a href="/terms.html">Terms</a>
+                    <a href="/gdpr.html">GDPR</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 AZZ&CO LABS SAS. All rights reserved.</span>
+                <span><a href="/docs.html" style="color:inherit;">EN</a> · <a href="/fr/docs.html" style="color:inherit;">FR</a></span>
+            </div>
+        </div>
+    </footer>
+    <script src="/script.js" defer></script>
+</body>
+</html>

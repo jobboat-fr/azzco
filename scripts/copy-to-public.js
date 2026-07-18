@@ -13,6 +13,12 @@ const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 // Files to copy to public
 const staticFiles = [
     'index.html',
+    'services.html',
+    'vigil.html',
+    'vtlvs.html',
+    'docs.html',
+    'robots.txt',
+    'sitemap.xml',
     'mission.html',
     'jobboat.html',
     'invest.html',
@@ -34,6 +40,7 @@ const staticFiles = [
 // Directories to copy
 const staticDirs = [
     'assets',
+    'fr',
     'zohoverify'
 ];
 

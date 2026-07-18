@@ -17,6 +17,50 @@
       "destination": "/api/index.js"
     },
     {
+      "source": "/services",
+      "destination": "/services.html"
+    },
+    {
+      "source": "/vigil",
+      "destination": "/vigil.html"
+    },
+    {
+      "source": "/vtlvs",
+      "destination": "/vtlvs.html"
+    },
+    {
+      "source": "/docs",
+      "destination": "/docs.html"
+    },
+    {
+      "source": "/fr",
+      "destination": "/fr/index.html"
+    },
+    {
+      "source": "/fr/services",
+      "destination": "/fr/services.html"
+    },
+    {
+      "source": "/fr/vigil",
+      "destination": "/fr/vigil.html"
+    },
+    {
+      "source": "/fr/vtlvs",
+      "destination": "/fr/vtlvs.html"
+    },
+    {
+      "source": "/fr/jobboat",
+      "destination": "/fr/jobboat.html"
+    },
+    {
+      "source": "/fr/docs",
+      "destination": "/fr/docs.html"
+    },
+    {
+      "source": "/fr/contact",
+      "destination": "/fr/contact.html"
+    },
+    {
       "source": "/mission",
       "destination": "/mission.html"
     },

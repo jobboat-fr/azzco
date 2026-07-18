@@ -1,275 +1,125 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JobBoat | Plateforme IA pour accélérer la recherche d'emploi</title>
-    <meta name="description" content="JobBoat est la solution IA d'AZZ&CO LABS pour optimiser candidatures, matching et suivi des opportunités.">
+    <title>JobBoat — Career Platform: Jobs, Content & Professional Network | AZZ&CO LABS</title>
+    <meta name="description" content="JobBoat blends inspiring career content, professional networking and intuitive job discovery into one platform — web and native mobile (iOS & Android). Built by AZZ&CO LABS, France.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.azzcolabs.business/jobboat.html">
+    <link rel="canonical" href="https://www.azzcolabs.business/jobboat">
+    <link rel="alternate" hreflang="en" href="https://www.azzcolabs.business/jobboat">
+    <link rel="alternate" hreflang="fr" href="https://www.azzcolabs.business/fr/jobboat">
+    <link rel="alternate" hreflang="x-default" href="https://www.azzcolabs.business/jobboat">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="fr_FR">
-    <meta property="og:site_name" content="AZZ&CO LABS">
-    <meta property="og:title" content="JobBoat | Plateforme IA pour accélérer la recherche d'emploi">
-    <meta property="og:description" content="Découvrez JobBoat, la solution IA d'AZZ&CO LABS pour optimiser candidatures et opportunités.">
-    <meta property="og:url" content="https://www.azzcolabs.business/jobboat.html">
-    <meta property="og:image" content="https://www.azzcolabs.business/assets/images/logo.svg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="JobBoat | Plateforme IA pour accélérer la recherche d'emploi">
-    <meta name="twitter:description" content="Matching, automatisation et accompagnement carrière avec l'IA.">
-    <meta name="twitter:image" content="https://www.azzcolabs.business/assets/images/logo.svg">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" href="favicon.svg">
-    <link rel="stylesheet" href="styles.css">
+    <meta property="og:title" content="JobBoat — The career platform built around you">
+    <meta property="og:description" content="Content, network and job discovery in one experience — with recommendations that actually fit your profile.">
+    <meta property="og:url" content="https://www.azzcolabs.business/jobboat">
+    <meta name="theme-color" content="#060606">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://www.azzcolabs.business/"},
-        {"@type": "ListItem", "position": 2, "name": "JobBoat", "item": "https://www.azzcolabs.business/jobboat.html"}
-      ]
+      "@type": "SoftwareApplication",
+      "name": "JobBoat",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "description": "Career platform blending content, professional networking and job discovery with profile-aware recommendations.",
+      "url": "https://www.azzcolabs.business/jobboat",
+      "author": { "@type": "Organization", "name": "AZZ&CO LABS" }
     }
     </script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="assets/images/logo.svg" alt="AZZ&CO LABS" class="logo-img" />
-                </a>
-            </div>
+            <a href="/" aria-label="AZZ&CO LABS home"><img src="/assets/images/logo.svg" alt="AZZ&CO LABS" class="logo-img"></a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link">Accueil</a></li>
-                <li><a href="mission.html" class="nav-link">Mission</a></li>
-                <li><a href="jobboat.html" class="nav-link active">JobBoat</a></li>
-                <li><a href="invest.html" class="nav-link">Investir</a></li>
-                <li><a href="outwings.html" class="nav-link">OutWings</a></li>
-                <li><a href="careers.html" class="nav-link">Carrières</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="/services.html" class="nav-link">Services</a></li>
+                <li><a href="/vigil.html" class="nav-link">VIGIL</a></li>
+                <li><a href="/vtlvs.html" class="nav-link">VTLVS</a></li>
+                <li><a href="/jobboat.html" class="nav-link active">JobBoat</a></li>
+                <li><a href="/docs.html" class="nav-link">Docs</a></li>
+                <li><a href="/contact.html" class="nav-link nav-cta">Book a call</a></li>
+                <li><a href="/fr/jobboat.html" class="lang-switch" hreflang="fr">FR</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
         </div>
     </nav>
 
-    <!-- JobBoat Hero -->
-    <section class="hero bg-dark" style="min-height: 70vh; padding-top: 120px; background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%); position: relative; overflow: hidden;">
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 70%); pointer-events: none;"></div>
-        <div class="hero-content" style="position: relative; z-index: 1;">
-            <span class="section-tag" style="color: var(--color-gold); border-color: var(--color-gold); background: rgba(212, 175, 55, 0.1); padding: 0.5rem 1.5rem;">Produit Développé par AZZ&CO LABS</span>
-            <h1 class="hero-title" style="font-size: clamp(2.5rem, 7vw, 5rem); margin-top: 1.5rem; color: var(--color-white); line-height: 1.1;">
-                JobBoat
-            </h1>
-            <p class="hero-description" style="max-width: 800px; color: rgba(255, 255, 255, 0.9); font-size: 1.375rem; line-height: 1.9; margin-top: 2rem;">
-                JobBoat est l'un de nos produits phares, développé par l'équipe AZZ&CO LABS. Une plateforme de recherche d'emploi intelligente qui utilise l'IA pour transformer l'expérience de recherche d'emploi et aider les candidats à trouver leur poste idéal.
-            </p>
+    <header class="hero">
+        <span class="eyebrow">JobBoat · Career Platform</span>
+        <h1>The career platform <span class="gradient-text">built around you.</span></h1>
+        <p class="hero-sub">Job boards show you listings. Social networks show you noise. JobBoat merges the best of both: content that inspires, a network that opens doors, and job discovery that actually understands your profile.</p>
+        <div class="hero-buttons">
+            <a href="/contact.html" class="btn btn-primary">Join the waitlist</a>
+            <a href="/docs.html#jobboat" class="btn btn-secondary">Read the docs</a>
+        </div>
+        <p class="hero-note">Web + native mobile (Expo / React Native, iOS &amp; Android)</p>
+    </header>
+
+    <section>
+        <div class="section-head">
+            <h2>Everything a career needs, in one place</h2>
+            <p>Not another job board. A daily companion for professional growth.</p>
+        </div>
+        <div class="container grid grid-3">
+            <div class="card"><div class="icon">✨</div><h3>Content that inspires</h3><p>A feed built around your ambitions — career stories, skills content and opportunities that look like you, not generic listings.</p></div>
+            <div class="card"><div class="icon">🤝</div><h3>A network that opens doors</h3><p>Professional networking designed for outcomes: connections, mentorship and visibility with the people who hire.</p></div>
+            <div class="card"><div class="icon">🎯</div><h3>Discovery that understands you</h3><p>Deep profile understanding drives recommendations that genuinely match — powered by the same behavioral engine family used in VIGIL.</p></div>
+            <div class="card"><div class="icon">📱</div><h3>Native on mobile</h3><p>A true native app on iOS and Android (Expo + React Native), not a wrapped website — because job hunting happens everywhere.</p></div>
+            <div class="card"><div class="icon">🛠️</div><h3>Modern tools for growth</h3><p>Profile building, career project support and skill development tools included from day one.</p></div>
+            <div class="card"><div class="icon">🔒</div><h3>Your data, respected</h3><p>GDPR-first by design. Your profile powers your recommendations — it is never the product being sold.</p></div>
         </div>
     </section>
 
-    <!-- Overview -->
-    <section class="section">
-        <div class="container">
-            <div style="max-width: 900px; margin: 0 auto;">
-                <h2 class="card-title" style="font-size: 2rem; margin-bottom: 2rem;">Une Expérience Pensée Pour Vous</h2>
-                <p class="card-text" style="font-size: 1.125rem; margin-bottom: 2rem;">
-                    JobBoat est une plateforme innovante qui comprend vos besoins, s'adapte à votre profil, et vous 
-                    guide vers les opportunités qui vous correspondent vraiment. Notre intelligence artificielle analyse 
-                    votre profil et vous propose des offres d'emploi personnalisées.
-                </p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-                    <div style="padding: 1.5rem; border-left: 2px solid var(--color-gold);">
-                        <p style="font-weight: 400; margin-bottom: 0.5rem;">Un contenu qui vous ressemble et vous inspire</p>
-                    </div>
-                    <div style="padding: 1.5rem; border-left: 2px solid var(--color-gold);">
-                        <p style="font-weight: 400; margin-bottom: 0.5rem;">Un réseau professionnel qui vous ouvre des portes</p>
-                    </div>
-                    <div style="padding: 1.5rem; border-left: 2px solid var(--color-gold);">
-                        <p style="font-weight: 400; margin-bottom: 0.5rem;">Une découverte d'emplois simple et intuitive</p>
-                    </div>
-                    <div style="padding: 1.5rem; border-left: 2px solid var(--color-gold);">
-                        <p style="font-weight: 400; margin-bottom: 0.5rem;">Un soutien pour vos projets de carrière</p>
-                    </div>
-                    <div style="padding: 1.5rem; border-left: 2px solid var(--color-gold);">
-                        <p style="font-weight: 400; margin-bottom: 0.5rem;">Des outils modernes pour votre développement</p>
-                    </div>
-                    <div style="padding: 1.5rem; border-left: 2px solid var(--color-gold);">
-                        <p style="font-weight: 400; margin-bottom: 0.5rem;">Une compréhension approfondie de votre profil</p>
-                    </div>
-                    <div style="padding: 1.5rem; border-left: 2px solid var(--color-gold);">
-                        <p style="font-weight: 400; margin-bottom: 0.5rem;">Des recommandations qui vous correspondent</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="cta-band">
+        <h2>Be first on board.</h2>
+        <p>JobBoat is in active development. Join the waitlist and we'll notify you at launch — early members get founding-user perks.</p>
+        <a href="/contact.html" class="btn btn-primary">Join the waitlist</a>
     </section>
 
-    <!-- Web App -->
-    <section class="section bg-ice">
+    <footer>
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Application Web</span>
-                <h2 class="section-title">JobBoat Web</h2>
-                <p class="section-description">Disponible maintenant</p>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
-                <div class="card">
-                    <h3 class="card-title">Jupiter Room</h3>
-                    <p class="card-text">
-                        Un accompagnement personnalisé pour vous préparer à vos entretiens avec confiance
-                    </p>
+            <div class="footer-grid">
+                <div>
+                    <img src="/assets/images/logo.svg" alt="AZZ&CO LABS" style="height:32px;margin-bottom:1rem;">
+                    <p>AZZ&CO LABS SAS — AI engineering studio.<br>Freneuse / Paris, France.</p>
+                    <p><a href="mailto:rached.azer@azzcolabs.business">rached.azer@azzcolabs.business</a></p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Auto-Apply Hub</h3>
-                    <p class="card-text">
-                        Nous gérons vos candidatures pour vous, en vous faisant gagner du temps précieux
-                    </p>
+                <div>
+                    <h4>Services</h4>
+                    <a href="/services.html#automation">AI Automation</a>
+                    <a href="/services.html#agentic">Agentic AI Installation</a>
+                    <a href="/services.html#systems">System Design</a>
+                    <a href="/services.html#web">Web Design</a>
+                    <a href="/services.html#data">Data Analysis</a>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Mission Control Dashboard</h3>
-                    <p class="card-text">
-                        Un tableau de bord clair pour suivre votre progression et vos opportunités
-                    </p>
+                <div>
+                    <h4>Products</h4>
+                    <a href="/vigil.html">VIGIL</a>
+                    <a href="/vtlvs.html">VTLVS</a>
+                    <a href="/jobboat.html">JobBoat</a>
+                    <a href="/docs.html">Documentation</a>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Web3 Portal</h3>
-                    <p class="card-text">
-                        Des outils modernes pour valoriser votre engagement et vos réussites
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mobile App -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Application Mobile</span>
-                <h2 class="section-title">JobBoat Mobile</h2>
-                <p class="section-description">Disponible maintenant</p>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
-                <div class="card">
-                    <h3 class="card-title">Feed Social</h3>
-                    <p class="card-text">
-                        Un contenu qui vous inspire et vous aide à grandir professionnellement
-                    </p>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">Shorts</h3>
-                    <p class="card-text">
-                        Des vidéos courtes et inspirantes pour votre développement professionnel
-                    </p>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">Jobs Swipe</h3>
-                    <p class="card-text">
-                        Découvrez des opportunités qui vous correspondent, simplement et rapidement
-                    </p>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">Create Content</h3>
-                    <p class="card-text">
-                        Partagez votre expertise et construisez votre présence professionnelle facilement
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <img src="assets/images/logo.svg" alt="AZZ&CO LABS" class="footer-logo" />
-                    <p style="margin-top: 1rem; font-weight: 300;">Innovation Technologique & Intelligence Artificielle</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="index.html">Accueil</a></li>
-                        <li><a href="mission.html">Mission</a></li>
-                        <li><a href="jobboat.html">JobBoat</a></li>
-                        <li><a href="invest.html">Investir</a></li>
-                        <li><a href="outwings.html">OutWings</a></li>
-                        <li><a href="careers.html">Carrières</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Légal</h4>
-                    <ul>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="privacy.html">Confidentialité</a></li>
-                        <li><a href="terms.html">Conditions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="mailto:rached.azer@azzcolabs.business">Email</a></li>
-                        <li><a href="tel:+33602560229">Téléphone</a></li>
-                        <li><a href="https://www.linkedin.com/company/azz-co-labs" target="_blank">LinkedIn Entreprise</a></li>
-                    </ul>
+                <div>
+                    <h4>Company</h4>
+                    <a href="/contact.html">Contact</a>
+                    <a href="/careers.html">Careers</a>
+                    <a href="/privacy.html">Privacy</a>
+                    <a href="/terms.html">Terms</a>
+                    <a href="/gdpr.html">GDPR</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 AZZ&CO LABS. Tous droits réservés.</p>
-                <p class="footer-legal">
-                    AZZ&CO LABS, <span class="footer-legal-highlight">Société par actions simplifiée</span> au capital de
-                    <span class="footer-legal-highlight">200,00&nbsp;€</span> –
-                    Siège social : <span class="footer-legal-highlight">Bâtiment Fougères, Rue de Guyenne, 78840 Freneuse</span>, France –
-                    RCS <span class="footer-legal-highlight">Versailles 100&nbsp;667&nbsp;021</span> –
-                    SIREN <span class="footer-legal-highlight">100&nbsp;667&nbsp;021</span>
-                </p>
+                <span>© 2026 AZZ&CO LABS SAS. All rights reserved.</span>
+                <span><a href="/jobboat.html" style="color:inherit;">EN</a> · <a href="/fr/jobboat.html" style="color:inherit;">FR</a></span>
             </div>
         </div>
     </footer>
-
-    <!-- Chatbot Widget -->
-    <div class="chatbot-widget" id="chatbotWidget">
-        <div class="chatbot-toggle" id="chatbotToggle">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-        </div>
-        <div class="chatbot-container" id="chatbotContainer">
-            <div class="chatbot-header">
-                <div class="chatbot-header-info">
-                    <h3>AZZ&CO LABS Support</h3>
-                    <p style="font-size: 0.875rem; font-weight: 300; color: var(--text-secondary); margin-top: 0.25rem;">
-                        Je suis là pour vous servir. Comment puis-je vous aider ?
-                    </p>
-                </div>
-                <button class="chatbot-close" id="chatbotClose">×</button>
-            </div>
-            <div class="chatbot-messages" id="chatbotMessages">
-                <!-- Messages will be added dynamically -->
-            </div>
-            <div class="chatbot-input-container">
-                <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Tapez votre message..." />
-                <button id="chatbotSend" class="chatbot-send">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-    <script src="chatbot.js"></script>
-    <script src="speed-insights.js"></script>
+    <script src="/script.js" defer></script>
 </body>
 </html>
